@@ -27,6 +27,9 @@ export const Header = () => {
                     <li className={styles["nav-list-item"]}>
                         <Link to='/register' className={styles.link}>Register</Link>
                     </li>
+                    <li className={styles["nav-list-item"]}>
+                        <Link to='/logout' className={styles.link}>Logout</Link>
+                    </li>
                 </ul>
             </nav>
 
