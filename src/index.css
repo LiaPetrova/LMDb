@@ -6,6 +6,13 @@ body {
     padding: 0;
     font-size: 0;
     font-family: 'Roboto Slab', serif;
+    background-image: url("../public/background.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 

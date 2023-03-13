@@ -1,9 +1,7 @@
 .App {
-    background-image: url("../public/background.jpg");
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+    
+}
+
+.width {
+    width: 80%;
 }
