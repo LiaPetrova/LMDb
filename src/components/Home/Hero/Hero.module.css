@@ -1,0 +1,21 @@
+.hero  {
+    font-size: 24px;
+    text-align: center;
+    padding: 3rem;
+    text-shadow: 0.5px 0.5px 0.5px rgb(197, 60, 60), 0 0 0.1em rgb(54, 54, 250), 0 0 0.1em rgb(174, 89, 243);
+}
+
+.main-title {
+    color: var(--clr-light-text);
+    margin: 0;
+    margin-bottom: 1rem;
+    font-weight: 900;
+}
+
+.sub-title {
+    color: var(--clr-light-text);
+    margin: 0;
+    margin-bottom: 2rem;
+    font-weight: 500;
+
+}

@@ -1,7 +1,8 @@
-.App {
-    
-}
-
 .width {
     width: 80%;
+    margin: 0 auto;
+}
+
+.main {
+    margin-top: 7rem;
 }

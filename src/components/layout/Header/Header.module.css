@@ -30,6 +30,6 @@
 .nav-desctop .nav-list .link {
     font-size: 1.3rem;
     letter-spacing: 1px;
-    color: #ED5858;
+    color: var(--clr-primary);
     text-decoration: none;
 }

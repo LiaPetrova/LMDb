@@ -5,15 +5,19 @@ import styles from './Header.module.css';
 
 export const Header = () => {
 
-    const { currentUser } = useAuthContext();
+    const { currentUser, isAdmin } = useAuthContext();
     return (
-        <header className={styles.header}>
+        <header className={`${styles.header} width`}>
             <div className={styles.logo}>
                 <Link to='/'><img src={logo} alt="" className={styles["logo-img"]} /></Link>
             </div>
 
             <nav className={styles['nav-desctop']}>
                 <ul className={styles["nav-list"]}>
+                    {isAdmin &&
+                        <li className={styles["nav-list-item"]}>
+                            <Link to="/add" className={styles.link}>Add</Link>
+                        </li>}
                     <li className={styles["nav-list-item"]}>
                         <Link to="/movies" className={styles.link}>Movies</Link>
                     </li>

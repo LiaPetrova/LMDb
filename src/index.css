@@ -1,5 +1,15 @@
-@import-normalize; 
+@import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+    --clr-primary: #ED5858;
+    --clr-secondary: #410E23;
+    --clr-dark-bgn: #09071e;
+    --clr-light-bgn: #3b3069;
+    --clr-dark-text: #5A558B;
+    --clr-light-text: #9f98dd;
+    --clr-light-violet: #e0dcff;
+}
 
 body {
     margin: 0;
@@ -15,4 +25,22 @@ body {
     padding: 0;
 }
 
+.btn {
+    background-color: var(--clr-primary);
+    padding: 10px 24px;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    letter-spacing: 1.2px;
+}
 
+.btn .link {
+    text-decoration: none;
+    color: var(--clr-light-violet);
+
+}
+
+.box-shadow {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}

@@ -1,25 +1,31 @@
 import { Route, Routes } from 'react-router-dom';
-import styles from './App.css';
+import './App.css';
 import { Header } from './components/layout/Header/Header';
 import { Login } from './components/auth/Login/Login';
 import { Logout } from './components/auth/Logout/Logout';
 import Register from './components/auth/Register/Register';
 import Reset from './components/auth/Reset/Reset';
 import { AuthProvider } from './contexts/AuthContext';
+import { Home } from './pages/Home/Home';
+import { AddNew } from './pages/Admin/AddNew/AddNew';
 
 function App() {
 
     return (
 
-        <div className={`${styles.App} ${styles.width}`}>
+        <div className='width'>
             <AuthProvider>
                 <Header />
+                <main className="main">
                 <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/add' element={<AddNew />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/reset' element={<Reset />} />
                 </Routes>
+                </main>
             </AuthProvider>
         </div>
     );
