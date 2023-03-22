@@ -1,32 +1,52 @@
-.form {
+.section {
     font-size: 20px;
-    color: var(--clr-light-violet);
+    color: var(--clr-dark-text);
     margin: 0 auto;
     padding: 2rem 4rem;
-    background-color: var(--clr-light-bgn);
-    max-width: 70%;
+    background-color: var(--clr-light-violet);
+    max-width: 60%;
     border-radius: 14px;
 }
 
 .heading {
     text-align: center;
+    margin-bottom: 4rem;
 }
-
+.input-box {
+    /* display: flex;
+    gap: 16px;
+    align-items: center; */
+}
 .input {
-    display: block;
-    background-color:var(--clr-dark-bgn);
+    background-color:#fff;
     border: none;
-    border-bottom:2px solid var(--clr-light-violet);
+    border-bottom:3px solid var(--clr-dark-text);
     border-radius: 8px;
     width: 600px;
     height: 30px;
-    color: var(--clr-light-text);
+    color: var(--clr-dark-text);
     font-size: 18px;
     padding: 1px 8px;
+    margin-bottom: 0.3rem;
+
+}
+
+.textarea {
+    height: 200px;
+}
+
+.input-radio {
+    margin-right: 0.3rem;
 
 }
 
 .icon {
     font-size: 17px;
     color: var(--clr-light-text);
+}
+
+.label {
+    display: block;
+    margin-top: 0.6rem;
+    margin-bottom: 0.2rem;
 }

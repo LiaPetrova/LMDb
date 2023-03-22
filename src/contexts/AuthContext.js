@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (user) => setCurrentUser(user));
 
         setIsAdmin(currentUser?.uid === process.env.REACT_APP_ADMIN_UID);
-        console.log(isAdmin);
         setLoading(false);
 
         return unsubscribe;
@@ -25,8 +24,8 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{ currentUser, loading, isAdmin }}>
             {!loading && children}
         </AuthContext.Provider>
-    )
+    );
 
-}
+};
 
 

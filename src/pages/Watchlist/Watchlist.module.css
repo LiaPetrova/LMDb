@@ -1,0 +1,44 @@
+.section {
+    margin-bottom: 5rem;
+}
+
+.title-wrapper {
+    display: flex;
+    position: relative;
+    margin-bottom: 3rem;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+.devider {
+    height: 100%;
+    width: 4px;
+    border-radius: 3px;
+    background-color: var(--clr-primary);
+    position: absolute;
+}
+
+.title {
+    color: var(--clr-white);
+    font-size: 2rem;
+    text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
+    margin-left: 1.1rem;
+}
+
+.title-wrapper i {
+ margin-top: 0.3rem;
+ color:  var(--clr-primary);
+ font-size: 2rem;
+}
+
+.series, .movies {
+    display: flex;
+    gap: 2rem;
+}
+
+.no-results {
+    color: var(--clr-white);
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
+}

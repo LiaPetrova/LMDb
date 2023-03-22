@@ -4,5 +4,28 @@
 }
 
 .main {
-    margin-top: 7rem;
+    margin-top: 10rem;
+}
+.btn {
+    background-color: var(--clr-primary);
+    padding: 10px 24px;
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    letter-spacing: 1.2px;
+}
+
+.btn.link {
+    text-decoration: none;
+    color: var(--clr-light-violet);
+
+}
+
+.box-shadow {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.link {
+    text-decoration: none;
 }
