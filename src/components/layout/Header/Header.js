@@ -13,7 +13,7 @@ export const Header = () => {
 
 
     const changeBackground = () => {
-        if (window.scrollY >= 66) {
+        if (window.scrollY >= 120) {
             setHeaderBgn(true)
         } else {
             setHeaderBgn(false)

@@ -1,8 +1,10 @@
-.card-wrapper {
+/* HOME SHOW CARD */
+
+.home-card-wrapper {
     position: relative;
 }
 
-.card {
+.home-card {
     color: var(--clr-white);
     display: flex;
     flex-direction: column;
@@ -13,19 +15,19 @@
     width: 13rem;
 }
 
-.card .img-container {
+.home-card .home-img-container {
     flex-basis: 80%;
     overflow: hidden;
     width: 100%;
 
 }
-.card .img-container img{
+.home-card .home-img-container img{
     overflow: hidden;
     width: 100%;
     object-fit: cover;
 }
 
-.add {
+.home-add {
     position: absolute;
     right: 0;
     background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
@@ -36,28 +38,122 @@
     top: 0;
 }
 
-.add i {
+.home-add i {
     color: var(--clr-primary);
     font-size: 1.5rem;
 
 }
 
-.card .content {
+.home-card .home-content {
     padding: 0.7rem;
     flex-basis: 20%;
 }
 
-.card .rating {
+.home-card .home-rating {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    margin-bottom: 0.7rem;
 }
-.card i {
+.home-card i {
     color: var(--clr-secondary);
 }
 
-.card .show-info .title{
+.home-title {
+    font-weight: 700;
+}
+
+.home-card .home-show-info .home-title, .home-year{
     margin-bottom: 0.5rem;
 }
 
+
+
+/* CATALOG SHOW CARD */
+.catalog-add {
+    /* position: absolute; */
+    right: 0;
+    z-index: 10;
+    background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    padding: 0.5rem 0.7rem;
+    border-end-end-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border: none;
+    top: 0;
+    cursor: pointer;
+}
+
+.catalog-add i {
+    color: var(--clr-primary);
+    font-size: 1.5rem;
+    
+    
+}
+
+
+.catalog-card-wrapper {
+    position: relative;
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.catalog-card {
+    color: var(--clr-white);
+    display: flex;
+    overflow: hidden;
+    border-top-left-radius : 0.5rem;
+    border-end-start-radius : 0.5rem;
+    background-color: var(--clr-black-bgn);
+    height: 17rem;
+    width: 60rem;
+}
+
+.catalog-card .catalog-img-container {
+    overflow: hidden;
+    width: 12rem;
+
+
+}
+.catalog-card .catalog-img-container img{
+    overflow: hidden;
+    object-fit: cover;
+    width: 8rem;
+    border-radius: 7px;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.catalog-card .catalog-content {
+    padding: 1.2rem;
+    width: 48rem;
+}
+
+.catalog-card .catalog-rating {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.catalog-card i {
+    color: var(--clr-secondary);
+}
+.catalog-card .catalog-title {
+font-size: 1.5rem;
+}
+
+.catalog-card .catalog-title, .catalog-year{
+    margin-bottom: 0.5rem;
+}
+
+.genres {
+    margin: 1.5rem 0;
+    color: var(--clr-grey);
+}
+
+.genres .genre {
+    background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    margin-right:0.7rem;
+}

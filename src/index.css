@@ -11,7 +11,9 @@ p, h1, h2, h3, h4, h5, h6 {
     --clr-secondary: #F7BB0E;
     --clr-white: #F6F6F6;
     --clr-dark-bgn: #19181b;
-    --clr-grey: #cecdcd;
+    --clr-black-bgn: #161616e5;
+    --clr-grey: #acacac;
+    
 }
 
 body {

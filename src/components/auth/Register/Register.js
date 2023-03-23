@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   auth,
 } from "../../../firebase_setup/firebase";
@@ -12,11 +12,13 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
 
 
   const register = () => {
     if (!name) alert("Please enter name");
     registerWithEmail(name, email, password);
+    navigate('/');
   };
 
   const onGoogleRegisterHandler = ()  => {

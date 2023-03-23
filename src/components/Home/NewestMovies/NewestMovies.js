@@ -16,7 +16,7 @@ export const NewestMovies = ({ styles }) => {
             </ Link>
             <div className={styles.movies}>
                 {moviesList.length > 0 ? moviesList.map(x =>
-                    <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} />)
+                    <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} page='Home'/>)
                     : <p className={styles['no-results']}>Nothing to show</p>}
             </div>
         </section>

@@ -10,6 +10,7 @@ import { Home } from './pages/Home/Home';
 import { AddNew } from './pages/Admin/AddNew/AddNew';
 import { ShowsProvider } from './contexts/ShowsConext';
 import { Watchlist } from './pages/Watchlist/Watchlist';
+import { MoviesCatalog } from './pages/MoviesCatalog/MoviesCatalog';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                     <Route path='/logout' element={<Logout />} />
                     <Route path='/reset' element={<Reset />} />
                     <Route path='/watchlist' element={<Watchlist />} />
+                    <Route path='/movies' element={<MoviesCatalog />} />
                 </Routes>
                 </ShowsProvider>
                 </main>
