@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import { addDoc, collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { auth, firestore } from '../firebase_setup/firebase';
 
 const googleProvider = new GoogleAuthProvider();
@@ -59,10 +59,23 @@ const sendPasswordReset = async (email) => {
 const logout = async () => {
    await signOut(auth);
 };
+
+const getUserAdditionalData = async (userId) => {
+    const userRef = doc(firestore, 'users', userId);
+    try {
+        const result = await getDoc(userRef);
+        const fields = result.data();
+        return fields;
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
 export {
     registerWithGoogle,
     logIn,
     registerWithEmail,
     sendPasswordReset,
     logout,
+    getUserAdditionalData
 };

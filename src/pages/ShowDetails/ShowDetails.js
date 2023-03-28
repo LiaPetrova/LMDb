@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom"
+import { CommentSection } from "../../components/CommentSection/CommentSection";
 import { RatingModal } from "../../components/RatingModal/RatingModal";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { getOne, handleRating, sendRating } from "../../services/showsService";
@@ -183,6 +184,7 @@ export const ShowDetails = () => {
                                 </div>
 
                             </div>
+                        <CommentSection showId={showId}/>
                         </section>
                     </div>
 
