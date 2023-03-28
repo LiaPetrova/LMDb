@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, arrayUnion, doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, arrayUnion, doc, getDoc, updateDoc, arrayRemove, setDoc, FieldValue, increment, deleteField } from "firebase/firestore";
 import { firestore } from "../firebase_setup/firebase";
 
 
@@ -11,7 +11,10 @@ export const addNewShow = async (type, showData) => {
     try {
         await addDoc(collectionType, {
             ...showData,
-            rating: '',
+            rating: {
+                ratingPoints: 0,
+                usersRated: []
+            },
             createdAt: serverTimestamp()
         });
     } catch (err) {
@@ -50,7 +53,7 @@ export const getAll = async (type) => {
 
 export const getOne = async (showId, type) => {
     let showType = '';
-    if(type === 'Movie') {
+    if (type === 'Movie') {
         showType = 'movies'
     } else if (type === 'Series') {
         showType = 'series'
@@ -60,8 +63,8 @@ export const getOne = async (showId, type) => {
         const result = await getDoc(showRef);
         const id = result.id;
         const fields = result.data();
-    return {id, fields};
-    } catch(err) {
+        return { id, fields };
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
@@ -88,12 +91,51 @@ export const getAllFromWatchlist = async (userId) => {
     try {
         const result = await getDoc(doc(currentUserRef, userId))
         // .then(doc => doc.data().watchlist);
-        const watchlist = result.data().watchlist;
-        return watchlist;
+        const userWatchlist = result.data().watchlist;
+        return userWatchlist;
     } catch (err) {
         console.error(err);
         alert(err.message);
     }
 
 };
+
+
+export const handleRating = async (action, type, userId, showId, ratePoints, usersRatedCount, oldRatingPoints, userHasRated, currentUserRating) => {
+    let showType = '';
+    if (type === 'Movie') {
+        showType = 'movies'
+    } else if (type === 'Series') {
+        showType = 'series'
+    }
+    const currentShowRef = doc(firestore, showType, showId);
+    // const result = await getDoc(currentShowRef);
+    // const fields = result.data();
+    // const oldRatingPoints = fields.rating.ratingPoints;
+    // let usersRatedCount = Object.keys(fields.rating.usersRated).length;
+    // const currentUserRating = fields.rating.usersRated[userId];
+    let newRatingPoints = 0;
+
+    if (action === 'send') {
+        if (userHasRated) {
+
+            newRatingPoints = ((oldRatingPoints * usersRatedCount) - currentUserRating + ratePoints) / usersRatedCount;
+        } else {
+            newRatingPoints = ((oldRatingPoints * usersRatedCount) + ratePoints) / (usersRatedCount + 1);
+            usersRatedCount++;
+        }
+
+        await setDoc(currentShowRef, { rating: { usersRated: { [userId]: ratePoints }, ratingPoints: newRatingPoints } }, { merge: true });
+
+    } else if (action === 'remove') {
+        console.log(newRatingPoints);
+        newRatingPoints = ((oldRatingPoints * usersRatedCount) - currentUserRating) / (usersRatedCount - 1) || 0;
+        usersRatedCount--;
+
+        await setDoc(currentShowRef, { rating: { usersRated: { [userId]: deleteField() }, ratingPoints: newRatingPoints } }, { merge: true });
+    }
+    return {newRatingPoints, usersRatedCount};
+};
+
+
 

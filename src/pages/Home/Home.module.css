@@ -28,8 +28,13 @@
 
 .title-wrapper i {
  margin-top: 0.3rem;
- color:  var(--clr-primary);
+ color: var(--clr-primary);
  font-size: 2rem;
+ transition: all 0.6s ease-in-out;
+}
+
+.title-wrapper i:hover {
+    color:  var(--clr-white);
 }
 
 .series, .movies {

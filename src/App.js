@@ -11,6 +11,8 @@ import { AddNew } from './pages/Admin/AddNew/AddNew';
 import { ShowsProvider } from './contexts/ShowsConext';
 import { Watchlist } from './pages/Watchlist/Watchlist';
 import { MoviesCatalog } from './pages/MoviesCatalog/MoviesCatalog';
+import { SeriesCatalog } from './pages/SeriesCatalog/SeriesCatalog';
+import { ShowDetails } from './pages/ShowDetails/ShowDetails';
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
                     <Route path='/reset' element={<Reset />} />
                     <Route path='/watchlist' element={<Watchlist />} />
                     <Route path='/movies' element={<MoviesCatalog />} />
+                    <Route path='/series' element={<SeriesCatalog />} />
+                    <Route path='/catalog/:type/:showId' element={<ShowDetails />} />
                 </Routes>
                 </ShowsProvider>
                 </main>

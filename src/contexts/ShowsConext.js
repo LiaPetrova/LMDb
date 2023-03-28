@@ -7,6 +7,7 @@ export const useShowsContext = () => useContext(ShowsContext);
 export const ShowsProvider = ({ children }) => {
     const [moviesList, setMoviesList] = useState([]);
     const [seriesList, setSeriesList] = useState([]);
+    const [userWatchlist, setUserWatchlist] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
     const { currentUser } = useAuthContext();
     useEffect(() => {
@@ -19,6 +20,7 @@ export const ShowsProvider = ({ children }) => {
                     //     fields: doc.fields
                     // });
                     setMoviesList(state => [...state, { id: doc.id, fields: doc.fields }]);
+                    console.log(moviesList);
                 });
                 // setMoviesList(arr);
             });
@@ -35,18 +37,30 @@ export const ShowsProvider = ({ children }) => {
             });
         
     }, []);
-
     useEffect(() => {
+
         if (currentUser?.uid) {
             getAllFromWatchlist(currentUser.uid)
                 .then(result => {
-                    result.forEach(async x => {
+                    setUserWatchlist(result);
+                    result.forEach(async (x) => {
                         const show = await getOne(x.showId, x.type);
-                        setWatchlist(state => [...state, { id: show.id, fields: show.fields }])
+                        setWatchlist(state => [...state, { id: show.id, fields: show.fields }]);
                     });
                 });
         };
-    }, [currentUser?.uid])
+
+    }, [currentUser?.uid]);
+
+//     useEffect(() => {
+// console.log(userWatchlist);
+//        userWatchlist.forEach(async (x) => {
+//             const show = await getOne(x.showId, x.type);
+//             setWatchlist(state => [...state, { id: show.id, fields: show.fields }]);
+//             console.log(watchlist);
+//         });
+
+//     }, [userWatchlist]);
 
     return <ShowsContext.Provider value={{ moviesList, seriesList, watchlist, setWatchlist }}>
         {children}

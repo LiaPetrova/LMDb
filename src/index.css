@@ -1,9 +1,14 @@
 @import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&family=Quattrocento+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-p, h1, h2, h3, h4, h5, h6 {
+
+p, h1, h2, h3, h4, h5, h6, div, ul {
     margin: 0;
     padding: 0;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 :root {
@@ -11,6 +16,8 @@ p, h1, h2, h3, h4, h5, h6 {
     --clr-secondary: #F7BB0E;
     --clr-white: #F6F6F6;
     --clr-dark-bgn: #19181b;
+    --clr-dark-grey: #2e2e2ef1;
+    --clr-light-black: rgb(20, 20, 20);
     --clr-black-bgn: #161616e5;
     --clr-grey: #acacac;
     
@@ -21,12 +28,17 @@ body {
     padding: 0;
     /* font-size: 0; */
     font-family: 'Roboto Slab', serif;
+    font-family: 'Baloo 2', cursive;
+    
+    font-family: 'Quattrocento Sans', sans-serif;
     background-image: url("../public/background.jpg");
+    background-color: var(--clr-light-black);
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     height: 100vh;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 

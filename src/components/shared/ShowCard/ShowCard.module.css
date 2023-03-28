@@ -2,17 +2,23 @@
 
 .home-card-wrapper {
     position: relative;
+    transition: scale 0.6s ease-in-out;
 }
+
 
 .home-card {
     color: var(--clr-white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 0.6rem;
     background-color: var(--clr-dark-bgn);
     height: 24rem;
     width: 13rem;
+}
+
+.home-card-wrapper:hover {
+    scale: 1.06;
 }
 
 .home-card .home-img-container {
@@ -21,27 +27,37 @@
     width: 100%;
 
 }
-.home-card .home-img-container img{
+
+.home-card .home-img-container img {
     overflow: hidden;
     width: 100%;
     object-fit: cover;
 }
 
-.home-add {
+.home-add, .home-remove {
     position: absolute;
     right: 0;
-    background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    background-color: var(--clr-dark-grey);
     padding: 0.5rem 0.7rem;
     border-end-start-radius: 0.5rem;
     border-start-end-radius: 0.5rem;
     border: none;
     top: 0;
+    font-size: 1.5rem;
+    transition:all 0.6s ease-in-out;
+    cursor: pointer;
 }
 
-.home-add i {
-    color: var(--clr-primary);
-    font-size: 1.5rem;
+.home-add {
+color: var(--clr-secondary);
+}
 
+.home-remove {
+    color: var(--clr-primary);
+}
+
+.home-add:hover, .home-remove:hover {
+    background-color: var(--clr-dark-bgn);
 }
 
 .home-card .home-content {
@@ -54,7 +70,8 @@
     gap: 0.5rem;
     align-items: center;
 }
-.home-card i {
+
+.home-rating i {
     color: var(--clr-secondary);
 }
 
@@ -62,31 +79,44 @@
     font-weight: 700;
 }
 
-.home-card .home-show-info .home-title, .home-year{
+.home-card .home-show-info .home-title,
+.home-year {
     margin-bottom: 0.5rem;
 }
 
 
 
 /* CATALOG SHOW CARD */
-.catalog-add {
+.catalog-add, .catalog-remove {
     /* position: absolute; */
     right: 0;
     z-index: 10;
-    background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    background-color: var(--clr-black-bgn);
+    /* background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%); */
     padding: 0.5rem 0.7rem;
     border-end-end-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border: none;
     top: 0;
     cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.6s ease-in-out;
+
 }
 
-.catalog-add i {
+.catalog-add {
+    color: var(--clr-secondary);
+}
+
+.catalog-remove {
     color: var(--clr-primary);
-    font-size: 1.5rem;
-    
-    
+}
+
+
+.catalog-add:hover, .catalog-remove:hover {
+    background-color: var(--clr-grey);
+    background-color: var(--clr-dark-grey);
+
 }
 
 
@@ -101,59 +131,86 @@
     color: var(--clr-white);
     display: flex;
     overflow: hidden;
-    border-top-left-radius : 0.5rem;
-    border-end-start-radius : 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-end-start-radius: 0.5rem;
     background-color: var(--clr-black-bgn);
     height: 17rem;
     width: 60rem;
 }
 
-.catalog-card .catalog-img-container {
+.catalog-img-container {
     overflow: hidden;
     width: 12rem;
 
 
 }
-.catalog-card .catalog-img-container img{
+
+.catalog-img-container img {
     overflow: hidden;
     object-fit: cover;
     width: 8rem;
     border-radius: 7px;
-    margin-left: 2rem;
-    margin-top: 2rem;
+    padding-left: 2rem;
+    padding-top: 1.3rem;
 }
 
 
 
-.catalog-card .catalog-content {
+.catalog-content {
     padding: 1.2rem;
+    padding-right: 5rem;
     width: 48rem;
 }
 
-.catalog-card .catalog-rating {
+.catalog-rating {
     display: flex;
     gap: 0.5rem;
     align-items: center;
 }
-.catalog-card i {
+
+.catalog-rating i {
     color: var(--clr-secondary);
 }
-.catalog-card .catalog-title {
-font-size: 1.5rem;
+
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
 }
 
-.catalog-card .catalog-title, .catalog-year{
-    margin-bottom: 0.5rem;
+.catalog-title,
+.catalog-year {
+    font-size: 1.5rem;
+    color: var(--clr-secondary);
+}
+
+.catalog-year {
+    color: var(--clr-white);
+}
+
+
+
+.catalog-title,
+.catalog-year,
+.duration {
+    margin-bottom: 0.6rem;
 }
 
 .genres {
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 2rem 0;
     color: var(--clr-grey);
 }
 
 .genres .genre {
-    background:radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    background: radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
-    margin-right:0.7rem;
+    margin-right: 0.7rem;
+}
+
+.desc {
+    font-size: 1rem;
+    word-break: break-all;
+    word-wrap:break-word;
 }

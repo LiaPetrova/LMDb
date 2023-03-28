@@ -8,12 +8,20 @@
 }
 .btn {
     background-color: var(--clr-primary);
-    padding: 10px 24px;
-    border-radius: 14px;
+    padding: 0.4rem 1.7rem;
+    border-radius: 0.6rem;
     font-size: 20px;
     font-weight: 700;
-    border: none;
+    border: 2px solid var(--clr-primary);
     letter-spacing: 1.2px;
+    color: var(--clr-white);
+    transition: all 0.5s ease-in-out,
+
+}
+
+.btn:hover {
+    scale: 1.04;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .btn.link {
@@ -28,4 +36,10 @@
 .link {
     text-decoration: none;
 }
+
+.border-radius { 
+    border-radius: 0.6rem;
+    
+}
+
 

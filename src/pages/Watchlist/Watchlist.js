@@ -6,7 +6,6 @@ import styles from './Watchlist.module.css';
 export const Watchlist = () => {
     const { watchlist, setWatchlist } = useShowsContext();
     console.log(watchlist);
-    
     return (
         <section className={styles.section}>
             <div className={styles['title-wrapper']}>
@@ -15,7 +14,7 @@ export const Watchlist = () => {
             </div>
             <div className={styles.movies}>
                 {watchlist.length > 0 ? watchlist.map(x =>
-                    <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist}/>)
+                    <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} page='Home'/>)
                     : <p className={styles['no-results']}>Nothing to show...</p>}
             </div>
         </section>

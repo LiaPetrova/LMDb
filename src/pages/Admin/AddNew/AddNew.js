@@ -5,7 +5,7 @@ import styles from './AddNew.module.css';
 
 export const AddNew = () => {
     const { isAdmin } = useAuthContext();
-    const [values, setValues] = useState({ type: '', title: '', year: 0, desc: '' });
+    const [values, setValues] = useState({ type: '', title: '', year: 0, desc: '', duration: 0 });
     const [imageList, setImageList] = useState(['']);
     const [actorsList, setActorsList] = useState([{ fullName: '', roleName: '', imageUrl: '', wikiUrl: '' }]);
     const [genreList, setGenreList] = useState(['']);
@@ -67,9 +67,10 @@ export const AddNew = () => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        let { type, title, year, desc } = values;
+        let { type, title, year, desc, duration, director } = values;
         year = Number(year);
-        const showData = { type, title, year, desc, imageList, actorsList, genreList };
+        duration = Number(duration);
+        const showData = { type, title, year, duration, director, desc, imageList, actorsList, genreList };
         if (type === 'Movie') {
             addNewShow('Movie', showData);
         } else {
@@ -124,6 +125,26 @@ export const AddNew = () => {
                         type="number"
                         name='year'
                         id='year'
+                        className={styles.input}
+                        onChange={handleSimpleInputChange}
+                    />
+                </div>
+                <div className={styles['input-box']}>
+                    <label className={styles.label} htmlFor="duration">Duration</label>
+                    <input
+                        type="number"
+                        name='duration'
+                        id='duration'
+                        className={styles.input}
+                        onChange={handleSimpleInputChange}
+                    />
+                </div>
+                <div className={styles['input-box']}>
+                    <label className={styles.label} htmlFor="director">Director</label>
+                    <input
+                        type="text"
+                        name='director'
+                        id='director'
                         className={styles.input}
                         onChange={handleSimpleInputChange}
                     />
