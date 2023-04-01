@@ -13,6 +13,7 @@ export const ShowDetails = () => {
     const [show, setShow] = useState({});
     const { currentUser } = useAuthContext();
     const [rateShow, setRateShow] = useState(false);
+    const [commentSectionOpen, setCommentSectionOpen] = useState(false);
 
     const openRateModal = () => {
         if (!currentUser) {
@@ -35,7 +36,7 @@ export const ShowDetails = () => {
                 setCurrentRating(result.fields.rating.ratingPoints);
                 setUsersRatedCount(Object.keys(result.fields.rating.usersRated).length);
             });
-            console.log(currentUser);
+        console.log(currentUser);
 
     }, [showId, type, currentUser]);
 
@@ -51,7 +52,7 @@ export const ShowDetails = () => {
     };
 
     const removeRateHandler = (rating) => {
-        handleRating('remove', type, currentUser.uid, showId, rating,  usersRatedCount, currentRating, hasRated, hasRatedWith)
+        handleRating('remove', type, currentUser.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
             .then(result => {
                 setCurrentRating(result.newRatingPoints);
                 setUsersRatedCount(result.usersRatedCount);
@@ -137,7 +138,7 @@ export const ShowDetails = () => {
                                             <ol className={styles['carousel__viewport']}>
                                                 {show.imageList.map((x, i) => {
                                                     return <li key={i} id={`carousel__slide ${i}`}
-                                                        tabindex="0"
+                                                        tabIndex="0"
                                                         className={styles['carousel__slide']}>
                                                         <div className={styles['carousel__snapper']}>
                                                             <img src={x} alt="" />
@@ -184,7 +185,15 @@ export const ShowDetails = () => {
                                 </div>
 
                             </div>
-                        <CommentSection showId={showId}/>
+                            <a href="#comment-section" className="link" onClick={() => setCommentSectionOpen(!commentSectionOpen)}>
+                                <div className={styles['title-wrapper']}>
+                                    <div className={styles.devider}></div>
+                                    <h2 className={styles.title}>Users Reviews</h2>
+                                    {commentSectionOpen ? <i className="fa-solid fa-angle-up"></i> : <i className="fa-solid fa-angle-down"></i>}
+                                </div>
+                            </a>
+                            {commentSectionOpen && <CommentSection id='comment-section' showId={showId} />}
+
                         </section>
                     </div>
 

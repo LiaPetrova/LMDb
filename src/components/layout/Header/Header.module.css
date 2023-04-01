@@ -38,10 +38,40 @@
     font-weight: 500;
 }
 
+
+.search {
+    position: relative;
+}
+.search input {
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 30rem;
+    height: 2.3rem;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: var(--clr-grey-bgn);
+    padding: 0.2rem 0.6rem;
+    color: var(--clr-white);
+    font-size: 1rem
+}
+
+.search .search-btn {
+    position: absolute;
+    right: 0.1rem;
+    bottom: 0;
+    top: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.search .search-btn i{
+    color: var(--clr-secondary);
+    font-size: 1rem;
+}
 .nav-desctop .nav-list .link {
     font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
     color: var(--clr-primary);
     text-decoration: none;
     font-family: 'Maven Pro', sans-serif;

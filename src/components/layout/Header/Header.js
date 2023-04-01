@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useShowsContext } from '../../../contexts/ShowsConext';
 import styles from './Header.module.css';
+import { SearchPanel } from './SearchPanel/SearchPanel';
 let lastScrollTop = 0;
 
 export const Header = () => {
@@ -10,6 +12,17 @@ export const Header = () => {
     const { currentUser, isAdmin } = useAuthContext();
     const [headerBgn, setHeaderBgn] = useState(false);
     const [showHeader, setShowHeader] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchPanel, setSearchPanel] = useState(false);
+    const { allShowsList } = useShowsContext();
+
+    const openSearchPanel = () => setSearchPanel(true);
+    const closeSearchPanel = () => setSearchPanel(false);
+
+    const changeHandler = (e) => {
+        setSearchTerm(e.target.value);
+        openSearchPanel(true);
+    };
 
 
     const changeBackground = () => {
@@ -18,8 +31,9 @@ export const Header = () => {
         } else {
             setHeaderBgn(false)
         }
-        
-    }
+
+    };
+
 
     const toggleHeader = () => {
         let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
@@ -28,7 +42,7 @@ export const Header = () => {
             setShowHeader(false);
         } else if (st < lastScrollTop) {
             // upscroll code
-            setShowHeader(true);            
+            setShowHeader(true);
         } // else was horizontal scroll
         lastScrollTop = st <= 0 ? 0 : st;
     }
@@ -42,51 +56,63 @@ export const Header = () => {
 
 
     return (
-        <header className={`${styles.header} width ${headerBgn ? styles['header-bgn'] : ''} ${showHeader ? '' : styles['header-inactive']}`}>
-            <div className={styles.logo}>
-                <Link to='/'><img src={logo} alt="" className={styles["logo-img"]} /></Link>
-            </div>
+        <>
+            <header className={`${styles.header} width ${headerBgn ? styles['header-bgn'] : ''} ${showHeader ? '' : styles['header-inactive']}`}>
+                <div className={styles.logo}>
+                    <Link to='/'><img src={logo} alt="" className={styles["logo-img"]} /></Link>
+                </div>
 
-            <nav className={styles['nav-desctop']}>
-                <ul className={styles["nav-list"]}>
-                    {isAdmin &&
+                <div className={styles.search}>
+                    <input type="text" value={searchTerm} onChange={changeHandler} />
+                    <button
+                        // onClick={} 
+                        className={styles['search-btn']}>
+                        <i className={`fa-solid fa-magnifying-glass box-shadow`}></i>
+                    </button>
+                </div>
+
+                <nav className={styles['nav-desctop']}>
+                    <ul className={styles["nav-list"]}>
+                        {isAdmin &&
+                            <li className={styles["nav-list-item"]}>
+                                <Link to="/add" className={styles.link}>Add</Link>
+                            </li>}
                         <li className={styles["nav-list-item"]}>
-                            <Link to="/add" className={styles.link}>Add</Link>
-                        </li>}
-                    <li className={styles["nav-list-item"]}>
-                        <Link to="/movies" className={styles.link}>Movies</Link>
-                    </li>
+                            <Link to="/movies" className={styles.link}>Movies</Link>
+                        </li>
 
-                    <li className={styles["nav-list-item"]}>
-                        <Link to='/series' className={styles.link}>Series</Link>
-                    </li>
-                    <li className={styles["nav-list-item"]}>
-                        <Link to='/genres' className={styles.link}>Genres</Link>
-                    </li>
-                    {!currentUser ?
-                        <>
-                            <li className={styles["nav-list-item"]}>
-                                <Link to='/login' className={styles.link}>Login</Link>
-                            </li>
-                            <li className={styles["nav-list-item"]}>
-                                <Link to='/register' className={styles.link}>Register</Link>
-                            </li>
-                        </>
-                        : <>
-                            <li className={styles["nav-list-item"]}>
-                                <Link to='/watchlist' className={styles.link}>Watchlist</Link>
-                            </li>
-                            <li className={styles["nav-list-item"]}>
-                                <Link to='/logout' className={styles.link}>Logout</Link>
-                            </li>
+                        <li className={styles["nav-list-item"]}>
+                            <Link to='/series' className={styles.link}>Series</Link>
+                        </li>
+                        <li className={styles["nav-list-item"]}>
+                            <Link to='/genres' className={styles.link}>Genres</Link>
+                        </li>
+                        {!currentUser ?
+                            <>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/login' className={styles.link}>Login</Link>
+                                </li>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/register' className={styles.link}>Register</Link>
+                                </li>
+                            </>
+                            : <>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/watchlist' className={styles.link}>Watchlist</Link>
+                                </li>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/logout' className={styles.link}>Logout</Link>
+                                </li>
 
-                        </>
-                    }
+                            </>
+                        }
 
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
 
-        </header>
+            </header>
+            <SearchPanel closeSearchPanel={closeSearchPanel} searchPanel={searchPanel}/>
+        </>
 
     )
 }

@@ -7,6 +7,7 @@ export const useShowsContext = () => useContext(ShowsContext);
 export const ShowsProvider = ({ children }) => {
     const [moviesList, setMoviesList] = useState([]);
     const [seriesList, setSeriesList] = useState([]);
+    const [allShowsList, setAllShowsList] = useState([]);
     const [userWatchlist, setUserWatchlist] = useState([]);
     const [watchlist, setWatchlist] = useState([]);
     const { currentUser } = useAuthContext();
@@ -35,7 +36,6 @@ export const ShowsProvider = ({ children }) => {
                 });
                 // setMoviesList(arr);
             });
-        
     }, []);
     useEffect(() => {
 
@@ -52,6 +52,10 @@ export const ShowsProvider = ({ children }) => {
 
     }, [currentUser?.uid]);
 
+    useEffect(() => {
+        setAllShowsList([...seriesList, ...moviesList]);
+    }, [moviesList, seriesList])
+
 //     useEffect(() => {
 // console.log(userWatchlist);
 //        userWatchlist.forEach(async (x) => {
@@ -62,7 +66,7 @@ export const ShowsProvider = ({ children }) => {
 
 //     }, [userWatchlist]);
 
-    return <ShowsContext.Provider value={{ moviesList, seriesList, watchlist, setWatchlist }}>
+    return <ShowsContext.Provider value={{ moviesList, seriesList, watchlist, setWatchlist, allShowsList }}>
         {children}
     </ShowsContext.Provider>
 };

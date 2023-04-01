@@ -20,9 +20,9 @@ function App() {
 
         <div className='width'>
             <AuthProvider>
+                    <ShowsProvider>
                 <Header />
                 <main className="main">
-                    <ShowsProvider>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/add' element={<AddNew />} />
@@ -35,8 +35,8 @@ function App() {
                     <Route path='/series' element={<SeriesCatalog />} />
                     <Route path='/catalog/:type/:showId' element={<ShowDetails />} />
                 </Routes>
-                </ShowsProvider>
                 </main>
+                </ShowsProvider>
             </AuthProvider>
         </div>
     );

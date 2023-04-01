@@ -1,0 +1,123 @@
+.comment-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.comment-wrapper .header {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+
+.comment-wrapper .header .author,
+.comment-wrapper .header .header-right {
+    color: var(--clr-grey);
+    font-size: 1.2rem;
+}
+
+.comment-wrapper .header .header-right {
+    display: flex;
+    gap: 0.7rem;
+}
+
+.comment-wrapper .content {
+    
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 2rem;
+    background: radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    border: none;
+    border-radius: 0.8rem;
+    color: var(--clr-white);
+    font-size: 1rem;
+    padding: 3rem 1.5rem;
+}
+
+.comment-wrapper .content {
+    position: relative;
+}
+
+.comment-wrapper .content .buttons {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.comment-wrapper .content button {
+    border: none;
+    background-color: transparent;
+    color: var(--clr-grey);
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.comment-wrapper .content  .date{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    color: var(--clr-grey);
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.comment-wrapper .content .text {
+    word-break: break-all;
+}
+
+.comment-wrapper .content .like.selected {
+    color: rgb(14, 102, 202);
+
+}
+
+
+.comment-wrapper .content .dislike.selected {
+    color: rgb(153, 10, 10);
+
+}
+
+.comment-wrapper .content .like,
+.comment-wrapper .content .dislike,
+.comment-wrapper .content .edit,
+.comment-wrapper .content .delete {
+    transition: all 0.5s ease-in-out;
+}
+
+.comment-wrapper .content .like:hover {
+    color: rgb(14, 102, 202);
+    scale: 1.1;
+}
+
+.comment-wrapper .content .dislike:hover,
+.comment-wrapper .content .delete:hover {
+    color: rgb(153, 10, 10);
+    scale: 1.1;
+}
+
+.comment-wrapper .content .edit:hover {
+    color: var(--clr-secondary);
+    scale: 1.1;
+}
+
+.edit-container {
+    margin-bottom: 2rem;
+}
+
+.edit-container .content {
+    margin-bottom: 1rem;
+}
+
+.edit-container .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.edit-container .buttons button:nth-child(1) {
+    background-color: var(--clr-grey);
+    border-color: var(--clr-grey);
+}

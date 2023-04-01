@@ -1,6 +1,6 @@
 export const timeAgoHandler = (value) => {
     const now = new Date();
-    const then = new Date(value.toDate());
+    const then = new Date(value);
 
     const timePassed = now.getTime() - then.getTime();
     const miliseconds = 1000;

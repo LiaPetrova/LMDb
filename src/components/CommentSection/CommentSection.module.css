@@ -1,3 +1,36 @@
-.white-review {
-    
+.write-review {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.write-review textarea{
+    box-sizing: border-box;
+    width: 900px;
+    margin-bottom: 1.5rem;
+    background: radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
+    border: none;
+    border-radius: 0.8rem;
+    color: var(--clr-white);
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+}
+
+.btn-write-review {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.no-results {
+    color: var(--clr-white);
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem;
+}
+.write-review button{
+}
+
+.comment-section {
+    width: 900px;
+    margin: 0 auto;
 }
