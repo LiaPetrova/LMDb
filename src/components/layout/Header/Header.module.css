@@ -52,7 +52,7 @@
     background-color: var(--clr-grey-bgn);
     padding: 0.2rem 0.6rem;
     color: var(--clr-white);
-    font-size: 1rem
+    font-size: 1rem;
 }
 
 .search .search-btn {

@@ -1,10 +1,10 @@
 .section {
     font-size: 20px;
-    color: var(--clr-dark-text);
+    color: var(--clr-white);
     margin: 0 auto;
     padding: 2rem 4rem;
-    background-color: var(--clr-light-violet);
-    max-width: 60%;
+    background-color: var(--clr-dark-grey);
+    max-width: 50%;
     border-radius: 14px;
 }
 
@@ -18,7 +18,7 @@
     align-items: center; */
 }
 .input {
-    background-color:#fff;
+    background-color:rgba(104, 104, 104, 0.815);;
     border: none;
     border-bottom:3px solid var(--clr-dark-text);
     border-radius: 8px;
@@ -48,5 +48,18 @@
 .label {
     display: block;
     margin-top: 0.6rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--clr-secondary);
+}
+
+.form button {
+    margin-right: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.form .submit-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
 }

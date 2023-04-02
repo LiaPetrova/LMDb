@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useShowsContext } from '../../../contexts/ShowsConext';
+import { filterSearchResults } from '../../../utils/filterSearchResults';
 import styles from './Header.module.css';
 import { SearchPanel } from './SearchPanel/SearchPanel';
 let lastScrollTop = 0;
@@ -14,6 +15,7 @@ export const Header = () => {
     const [showHeader, setShowHeader] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchPanel, setSearchPanel] = useState(false);
+    const [searchResult, setSearchResults] = useState([]);
     const { allShowsList } = useShowsContext();
 
     const openSearchPanel = () => setSearchPanel(true);
@@ -21,6 +23,7 @@ export const Header = () => {
 
     const changeHandler = (e) => {
         setSearchTerm(e.target.value);
+        setSearchResults(filterSearchResults(allShowsList, e.target.value));
         openSearchPanel(true);
     };
 
@@ -111,7 +114,7 @@ export const Header = () => {
                 </nav>
 
             </header>
-            <SearchPanel closeSearchPanel={closeSearchPanel} searchPanel={searchPanel}/>
+            <SearchPanel searchResult={searchResult} closeSearchPanel={closeSearchPanel} searchPanel={searchPanel}/>
         </>
 
     )

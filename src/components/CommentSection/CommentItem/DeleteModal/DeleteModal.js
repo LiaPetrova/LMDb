@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styles from './DeleteModal.module.css'
 
 export const DeleteModal = ({

@@ -251,38 +251,12 @@ export const AddNew = () => {
                         )
                     })}
 
-                    {JSON.stringify(actorsList)}
+                    {/* {JSON.stringify(actorsList)} */}
 
                 </div>
-                <button className='btn'>Submit</button>
+                <button className={`btn ${styles['submit-btn']}`}>Submit</button>
             </form>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.</p>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit est nisi tenetur vel dicta unde voluptatum sit a eos consequuntur neque tempora tempore, distinctio, laboriosam alias molestias debitis optio qui.s</p>
+           
         </section>
     )
 };

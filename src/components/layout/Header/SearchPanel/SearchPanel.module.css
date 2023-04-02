@@ -1,7 +1,7 @@
 .modal {
     visibility: hidden;
     position: fixed;
-    z-index: 999;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -22,32 +22,41 @@
 
 
 
-.modal-content {
+.panel-content {
     background-color: var(--clr-dark-grey);
-    padding: 2rem;
+    padding-top: 3rem;
     border: 1px solid var(--clr-dark-grey);
     border-radius: 0.6rem;
-    width: 600px;
+    width: 37%;
     transition: all 0.8s ease-in-out;
     position: absolute;
     top: 50rem;
-    left: 16rem;
+    left: 19%;
     text-align: center;
+    overflow: hidden;
+
 }
 
-.modal.inactive .modal-content {
+.modal.inactive .panel-content {
     opacity: 0;
 }
 
-.modal.active .modal-content {
+.modal.active .panel-content {
     opacity: 1;
     top: 4.5rem;
 }
 
-.modal-content .title {
-    margin-bottom: 1.5rem;
 
-
+.panel-content .header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--clr-grey);
 }
 
 .close {
@@ -55,9 +64,6 @@
     font-weight: bold;
     color: var(--clr-grey);
     border-radius: 10px;
-    position: absolute;
-    top: 0;
-    right: 0.6rem;
     transition: all 0.5s ease-in-out;
 }
 
@@ -68,5 +74,65 @@
     color: var(--clr-primary);
     text-decoration: none;
     cursor: pointer;
+}
+
+.panel-content .no-results {
+    margin-bottom: 1rem;
+    color: var(--clr-grey);
+    font-size: 1rem;
+}
+
+.panel-content .result-list {
+    list-style: none;
+}
+
+.panel-content .result-list .result-item {
+    display: flex;
+    height: 6rem;
+    overflow: hidden;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--clr-grey);
+    border-bottom: 0.5px solid rgba(104, 104, 104, 0.815);
+    transition: all 0.5s ease-in-out;
+}
+
+.panel-content .result-list .result-item:hover {
+    background-color: rgba(104, 104, 104, 0.815);
+}
+
+
+/* TODO */
+.panel-content .result-list li:nth-last-of-type() {
+    border-bottom: none;
+}
+
+.result-item .img-container  {
+    width: 3.5rem;
+}
+.result-item .img-container .img{
+    width: 100%;
+object-fit: cover;
+}
+
+.result-item .content {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.result-item .content .title{
+    color: var(--clr-white);
+}
+
+.result-item .content .rating{
+    display: flex;
+    gap: 0.3rem;
+}
+
+.result-item .content .rating i{
+    color: var(--clr-secondary);
 }
 
