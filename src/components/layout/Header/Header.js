@@ -16,15 +16,29 @@ export const Header = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchPanel, setSearchPanel] = useState(false);
     const [searchResult, setSearchResults] = useState([]);
-    const { allShowsList } = useShowsContext();
+    const { allShowsList, moviesList, seriesList } = useShowsContext();
+    const [type, setType] = useState('All');
+
 
     const openSearchPanel = () => setSearchPanel(true);
     const closeSearchPanel = () => setSearchPanel(false);
 
     const changeHandler = (e) => {
-        setSearchTerm(e.target.value);
-        setSearchResults(filterSearchResults(allShowsList, e.target.value));
-        openSearchPanel(true);
+        if (e.target.name === 'type') {
+            setType(e.target.value);
+        } else {
+            setSearchTerm(e.target.value);
+        }
+        if(e.target.name === 'searchTerm') {
+            if(type === 'movies') {
+                setSearchResults(filterSearchResults(moviesList, e.target.value));
+            } else if (type === 'series') {
+                setSearchResults(filterSearchResults(seriesList, e.target.value));
+            } else {
+                setSearchResults(filterSearchResults(allShowsList, e.target.value));
+            }
+            openSearchPanel(true);
+        }
     };
 
 
@@ -66,7 +80,12 @@ export const Header = () => {
                 </div>
 
                 <div className={styles.search}>
-                    <input type="text" value={searchTerm} onChange={changeHandler} />
+                    <select className={styles['select']} name="type" id="type" onChange={changeHandler}>
+                        <option value="all">All</option>
+                        <option value="movies">Movies</option>
+                        <option value="series">Series</option>
+                    </select>
+                    <input type="text" value={searchTerm} onChange={changeHandler} name='searchTerm'/>
                     <button
                         // onClick={} 
                         className={styles['search-btn']}>
@@ -114,7 +133,7 @@ export const Header = () => {
                 </nav>
 
             </header>
-            <SearchPanel searchResult={searchResult} closeSearchPanel={closeSearchPanel} searchPanel={searchPanel}/>
+            <SearchPanel searchResult={searchResult} closeSearchPanel={closeSearchPanel} searchPanel={searchPanel} />
         </>
 
     )

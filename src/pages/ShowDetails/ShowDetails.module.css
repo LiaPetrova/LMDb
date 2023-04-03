@@ -345,7 +345,7 @@
     position: absolute;
 }
 
-.title {
+.title-wrapper .title {
     color: var(--clr-white);
     font-size: 2rem;
     text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);

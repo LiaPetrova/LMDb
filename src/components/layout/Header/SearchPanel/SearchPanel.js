@@ -23,7 +23,7 @@ export const SearchPanel = ({
                 </div>
                 <div className={styles.results}>
                     {searchResult.length > 0 ?
-                        <ul className={styles['result-list']}>
+                        <ul className={`${styles['result-list']} ${searchResult.length > 0 ? styles['active'] : styles.inactive}`}>
                             {searchResult.map(x => {
                                 return <Link onClick={closeSearchPanel} to={`catalog/${x.fields.type}/${x.id}`} className='link'>
                                     <li

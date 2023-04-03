@@ -31,7 +31,7 @@
     transition: all 0.8s ease-in-out;
     position: absolute;
     top: 50rem;
-    left: 19%;
+    left: 17%;
     text-align: center;
     overflow: hidden;
 
@@ -82,9 +82,6 @@
     font-size: 1rem;
 }
 
-.panel-content .result-list {
-    list-style: none;
-}
 
 .panel-content .result-list .result-item {
     display: flex;

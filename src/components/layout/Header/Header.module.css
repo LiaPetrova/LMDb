@@ -51,9 +51,33 @@
     border: none;
     background-color: var(--clr-grey-bgn);
     padding: 0.2rem 0.6rem;
+    padding-left: 5.5rem;
     color: var(--clr-white);
     font-size: 1rem;
 }
+
+.search .select {
+    position: absolute;
+    left: 0.5rem;
+    max-width: 5rem;
+    font-size: 1rem;
+    bottom: 0;
+    top: 0;
+    border: none;
+    background-color: transparent;
+    color: var(--clr-secondary);
+}
+
+.search .select option {
+    background-color: var(--clr-dark-grey);
+    border-bottom: 0.3px solid var(--clr-grey);
+    padding: 4px 6px;
+}
+
+/* .search .select option:hover
+ {
+    background-color: var(--clr-grey);
+} */
 
 .search .search-btn {
     position: absolute;
@@ -72,7 +96,7 @@
     font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
     text-decoration: none;
     font-family: 'Maven Pro', sans-serif;
 
