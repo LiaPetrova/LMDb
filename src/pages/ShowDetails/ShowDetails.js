@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { CommentSection } from "../../components/CommentSection/CommentSection";
 import { RatingModal } from "../../components/RatingModal/RatingModal";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -11,9 +11,10 @@ export const ShowDetails = () => {
     const navigate = useNavigate();
     const { showId, type } = useParams();
     const [show, setShow] = useState({});
-    const { currentUser } = useAuthContext();
+    const { currentUser, isAdmin } = useAuthContext();
     const [rateShow, setRateShow] = useState(false);
     const [commentSectionOpen, setCommentSectionOpen] = useState(false);
+    const [selectedSlide, setSelectedSlide] = useState(0);
 
     const openRateModal = () => {
         if (!currentUser) {
@@ -82,6 +83,8 @@ export const ShowDetails = () => {
                     </div>
                     <div className={styles['sections-wrapper']}>
                         <section className={`${styles['details-section']} width`}>
+                            {isAdmin && <Link to={`/${type}/${showId}/edit`}><button className={`${styles.edit} btn`}>Edit</button></Link>}
+
                             <div className={styles.header}>
                                 <div className={styles['left-side']}>
                                     <h2 className={styles.title}>{show.title}</h2>
@@ -131,13 +134,14 @@ export const ShowDetails = () => {
                                     </div>
                                 </div>
                             </div>
+
                             <div className={styles['details-main']}>
                                 <div className={styles['img-wrapper']}>
                                     <div className={styles['img-container']}>
                                         <div className={styles.carousel} aria-label="Gallery">
                                             <ol className={styles['carousel__viewport']}>
                                                 {show.imageList.map((x, i) => {
-                                                    return <li key={i} id={`carousel__slide ${i}`}
+                                                    return <li key={i} id={`carousel__slide${i}`}
                                                         tabIndex="0"
                                                         className={styles['carousel__slide']}>
                                                         <div className={styles['carousel__snapper']}>
@@ -152,8 +156,11 @@ export const ShowDetails = () => {
                                                 <ol className={styles['carousel__navigation-list']}>
                                                     {show.imageList.map((x, i) => {
                                                         return <li key={i} className={styles['carousel__navigation-item']}>
-                                                            <a href={`#carousel__slide${i}`}
-                                                                className={styles['carousel__navigation-button']}>Go to slide {i}</a>
+                                                            <a
+                                                            title={`Go to slide ${i+1}`}
+                                                                onClick={() => setSelectedSlide(i)}
+                                                                href={`#carousel__slide${i}`}
+                                                                className={`${styles['carousel__navigation-button']} ${selectedSlide === i ? styles.selected : ''}`}>Go to slide {i}</a>
                                                         </li>
                                                     })}
 

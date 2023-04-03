@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { getAllComments, postComment } from '../../services/commentsService';
 import { CommentItem } from './CommentItem/CommentItem';
-import { DeleteModal } from './CommentItem/DeleteModal/DeleteModal';
 import styles from './CommentSection.module.css';
 
 export const CommentSection = ({ showId }) => {
@@ -35,7 +34,7 @@ export const CommentSection = ({ showId }) => {
     }
     return (
         <>
-           
+
             <section className={styles['comment-section']}>
                 {comments.length > 0 ? comments.map(x =>
                     <CommentItem
@@ -48,25 +47,35 @@ export const CommentSection = ({ showId }) => {
                     : <p className={styles['no-results']}>No reviews yet...</p>}
                 {currentUser?.uid && !openWriteReview && <button
                     onClick={() => setOpenWriteReview(true)}
-                    className={`btn ${styles['btn-write-review']}`}>
+                    className={`btn ${styles['btn-write-review']}`}
+
+                >
                     Write your review
                 </button>}
                 {openWriteReview &&
                     <div className={styles['write-review']}>
-                        <textarea 
-                        className={`box-shadow`} 
-                        onChange={changeHandler} 
-                        value={commentContent} 
-                        name="comment" 
-                        id="comment" 
-                        cols="30" rows="10"
-                        autoFocus
+                        <textarea
+                            className={`box-shadow`}
+                            onChange={changeHandler}
+                            value={commentContent}
+                            name="comment"
+                            id="comment"
+                            cols="30" rows="10"
+                            autoFocus
                         ></textarea>
-                        <button
-                            onClick={() => postCommentHandler()}
-                            className={`btn`}>
-                            Send
-                        </button>
+                        <div className={styles.buttons}>
+                            <button
+                                onClick={() => setOpenWriteReview(false)}
+                                className={`btn cancel`}>
+                                Cancel
+                            </button>
+                            <button
+                                onClick={() => postCommentHandler()}
+                                className={`btn`}>
+                                Send
+                            </button>
+
+                        </div>
                     </div>}
             </section>
         </>

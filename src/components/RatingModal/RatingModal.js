@@ -57,6 +57,7 @@ export const RatingModal = ({
                 </div>
                 <div className={styles['action-btns']}>
                     <button
+                        disabled={hasRatedWith === 0 && rating === 0 }
                         onClick={() => rateShowHandler(rating)}
                         className={`${styles['rate-btn']} btn`}
                     >Rate

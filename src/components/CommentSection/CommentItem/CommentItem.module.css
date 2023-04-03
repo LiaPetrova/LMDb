@@ -116,8 +116,3 @@
     gap: 1rem;
     justify-content: flex-end;
 }
-
-.edit-container .buttons button:nth-child(1) {
-    background-color: var(--clr-grey);
-    border-color: var(--clr-grey);
-}

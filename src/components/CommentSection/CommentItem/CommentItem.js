@@ -94,7 +94,7 @@ export const CommentItem = ({
                         <div className={styles.buttons}>
                             <button
                                 onClick={() => setOpenEditComment(false)}
-                                className='btn'>Cancel</button>
+                                className='btn cancel'>Cancel</button>
                             <button
                                 onClick={() => updateCommentHandler()}
                                 className='btn'>

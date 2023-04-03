@@ -21,7 +21,13 @@
 
 }
 
-.btn:hover {
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
     scale: 1.04;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -29,6 +35,11 @@
 .btn.link {
     text-decoration: none;
     color: var(--clr-white);
+}
+
+.btn.cancel {
+    background-color: var(--clr-grey);
+    border-color: var(--clr-grey);
 }
 
 .box-shadow {

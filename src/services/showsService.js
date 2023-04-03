@@ -23,6 +23,28 @@ export const addNewShow = async (type, showData) => {
     }
 };
 
+export const editShow = async (type, showId, showData) => {
+    let showType = '';
+    if (type === 'Movie') {
+        showType = 'movies'
+    } else if (type === 'Series') {
+        showType = 'series'
+    }
+    const currentShowRef = doc(firestore, showType, showId);
+    try {
+
+        const result = await updateDoc(currentShowRef, {
+            ...showData
+        }, { merge: true });
+        console.log(result);
+        return result;
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
 export const getAll = async (type) => {
     let collectionType = type === 'Movie' ? movieCollection : seriesCollection;
 

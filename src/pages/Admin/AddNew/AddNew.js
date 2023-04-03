@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { addNewShow } from '../../../services/showsService';
-import styles from './AddNew.module.css';
+import styles from '../Admin.module.css';
 
 export const AddNew = () => {
     const { isAdmin } = useAuthContext();
@@ -81,7 +81,7 @@ export const AddNew = () => {
 
     return (
         <section action="" className={styles['section']}>
-            <h2 className={styles.heading}>Add new title</h2>
+            <h2 className={styles.heading}>Add new show</h2>
             <form action="" className={styles.form} onSubmit={submitHandler}>
                 <div className={styles['input-box']}>
                     <div className={styles.label}>Type of show</div>

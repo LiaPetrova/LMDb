@@ -13,6 +13,7 @@ import { Watchlist } from './pages/Watchlist/Watchlist';
 import { MoviesCatalog } from './pages/MoviesCatalog/MoviesCatalog';
 import { SeriesCatalog } from './pages/SeriesCatalog/SeriesCatalog';
 import { ShowDetails } from './pages/ShowDetails/ShowDetails';
+import { EditShow } from './pages/Admin/EditShow/EditShow';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/add' element={<AddNew />} />
+                    <Route path='/:type/:showId/edit' element={<EditShow />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/logout' element={<Logout />} />

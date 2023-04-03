@@ -21,7 +21,10 @@ export const Header = () => {
 
 
     const openSearchPanel = () => setSearchPanel(true);
-    const closeSearchPanel = () => setSearchPanel(false);
+    const closeSearchPanel = () => {
+        setSearchPanel(false)
+        setSearchTerm('');
+    };
 
     const changeHandler = (e) => {
         if (e.target.name === 'type') {
@@ -29,8 +32,8 @@ export const Header = () => {
         } else {
             setSearchTerm(e.target.value);
         }
-        if(e.target.name === 'searchTerm') {
-            if(type === 'movies') {
+        if (e.target.name === 'searchTerm') {
+            if (type === 'movies') {
                 setSearchResults(filterSearchResults(moviesList, e.target.value));
             } else if (type === 'series') {
                 setSearchResults(filterSearchResults(seriesList, e.target.value));
@@ -85,7 +88,7 @@ export const Header = () => {
                         <option value="movies">Movies</option>
                         <option value="series">Series</option>
                     </select>
-                    <input type="text" value={searchTerm} onChange={changeHandler} name='searchTerm'/>
+                    <input type="text" value={searchTerm} onChange={changeHandler} name='searchTerm' />
                     <button
                         // onClick={} 
                         className={styles['search-btn']}>

@@ -34,3 +34,9 @@
     width: 900px;
     margin: 0 auto;
 }
+
+.write-review .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}

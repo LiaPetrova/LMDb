@@ -240,22 +240,36 @@
     display: inline-block;
 }
 
+
 .carousel__navigation-button {
     display: inline-block;
     width: 1rem;
     height: 1rem;
-    background-color: var(--clr-white);
+    background-color: transparent;
     background-clip: content-box;
-    border: 0.25rem solid transparent;
+    border: 0.15rem solid var(--clr-white);
     border-radius: 50%;
     font-size: 0;
-    transition: transform 0.1s;
+    transition:
+    background-color 0.6s ease-in-out 
+    ,transform 0.3s;
+}
+
+.carousel__navigation-button:hover {
+    background-color: var(--clr-white);
+    
+}
+
+.carousel__navigation-button.selected {
+    background-color: var(--clr-white);
+    
 }
 
 
 
+
 .content {
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 
 .desc,
@@ -363,4 +377,11 @@
     color:  var(--clr-white);
 }
 
+
+.edit {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2rem;
+}
 
