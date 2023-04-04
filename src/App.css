@@ -55,4 +55,135 @@
     
 }
 
+.no-results {
+    color: var(--clr-secondary);
+    font-size: 2rem;
+    text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-section {
+    font-size: 20px;
+    color: var(--clr-white);
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    background-color: var(--clr-dark-grey);
+    max-width: 50%;
+    border-radius: 14px;
+}
+
+.form-section.auth {
+    font-size: 20px;
+    color: var(--clr-white);
+    margin: 0 auto;
+    padding: 2rem 4rem;
+    background-color: var(--clr-dark-grey);
+    max-width: 30%;
+    border-radius: 14px;
+}
+
+.form-section .heading {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+
+.form-section .input {
+    box-sizing: border-box;
+    background-color:rgba(104, 104, 104, 0.815);;
+    border: none;
+    border-bottom:3px solid var(--clr-dark-text);
+    border-radius: 8px;
+    width: 100%;
+    line-height: 2;
+    color: var(--clr-dark-text);
+    font-size: 18px;
+    padding: 1px 8px;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    color: var(--clr-primary);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.input-alert {
+    border: 1px solid var(--clr-primary) !important;
+}
+
+.form-section .textarea {
+    height: 200px;
+}
+
+.form-section .input-radio {
+    margin-right: 0.3rem;
+
+}
+
+.form-section .icon {
+    font-size: 17px;
+    color: var(--clr-light-text);
+}
+
+.form-section .label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--clr-secondary);
+}
+
+.form-section  button {
+    margin-right: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.form-section .action-btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+}
+
+.form-section .reset-pass {
+    margin-top: 0;
+    width: 100%;
+}
+
+.form-section .google-btn {
+    background-color: var(--clr-blue);
+    border-color: var(--clr-blue);
+    margin-top: unset;
+}
+
+.link.anchor {
+    text-align: center;
+    margin-bottom: 0.2rem;
+}
+
+.link.anchor a{
+    color: var(--clr-blue);
+    font-weight: 500;
+    border-bottom-width: 0%;
+    border-color: var(--clr-blue);
+    display: inline-block;
+}
+
+
+.link.anchor > a::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0;
+    top: 5px;
+    background: transparent;
+    transition: all 0.7s ease-in-out;
+    
+  }
+  
+  .link.anchor > a:hover::after, .link.anchor > a.active-nav::after {
+    width: 100%;
+    background: var(--clr-blue);
+  }
 

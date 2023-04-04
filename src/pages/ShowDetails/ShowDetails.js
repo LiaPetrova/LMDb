@@ -152,12 +152,37 @@ export const ShowDetails = () => {
 
 
                                             </ol>
+                                            <aside className={styles['carousel__navigation__sides']}>
+                                                <div className={styles['arrows-container']}>
+                                                    <a
+                                                        title={`Go to previous`}
+                                                        href={`#carousel__slide${selectedSlide-1}`}
+                                                        className={`${styles['carousel__navigation-arrow']} ${selectedSlide > 0 ? '' : styles['hidden']}`}
+                                                        onClick={() => setTimeout(() => setSelectedSlide(currentSlide => currentSlide -1 ), 100)}
+                                                        
+                                                        >
+                                                        <i className="fa-solid fa-chevron-left"></i>
+                                                    </a>
+                                                    
+                                                    <a
+                                                        title={`Go to next`}
+                                                        href={`#carousel__slide${selectedSlide+1}`}
+                                                        className={`${styles['carousel__navigation-arrow']} ${selectedSlide < show.imageList.length -1 ? '' : styles['hidden']}`}
+                                                        onClick={() => setTimeout(() => setSelectedSlide(currentSlide => currentSlide + 1), 100)}
+                                                    >
+                                                        <i className="fa-solid fa-chevron-right box-shadow"></i>
+                                                    </a>
+                                                    
+                                                    
+
+                                                </div>
+                                            </aside>
                                             <aside className={styles['carousel__navigation']}>
                                                 <ol className={styles['carousel__navigation-list']}>
                                                     {show.imageList.map((x, i) => {
                                                         return <li key={i} className={styles['carousel__navigation-item']}>
                                                             <a
-                                                            title={`Go to slide ${i+1}`}
+                                                                title={`Go to slide ${i}`}
                                                                 onClick={() => setSelectedSlide(i)}
                                                                 href={`#carousel__slide${i}`}
                                                                 className={`${styles['carousel__navigation-button']} ${selectedSlide === i ? styles.selected : ''}`}>Go to slide {i}</a>

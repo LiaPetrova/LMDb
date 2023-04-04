@@ -25,9 +25,9 @@ export const SearchPanel = ({
                     {searchResult.length > 0 ?
                         <ul className={`${styles['result-list']} ${searchResult.length > 0 ? styles['active'] : styles.inactive}`}>
                             {searchResult.map(x => {
-                                return <Link onClick={closeSearchPanel} to={`catalog/${x.fields.type}/${x.id}`} className='link'>
+                                return <Link  key={x.id} onClick={closeSearchPanel} to={`catalog/${x.fields.type}/${x.id}`} className='link'>
                                     <li
-                                        key={x.id}
+                                       
                                         className={styles['result-item']}
                                     >
                                         <div className={styles['img-container']}>
@@ -43,7 +43,7 @@ export const SearchPanel = ({
                                                 </p>
                                             </div>
                                             <div className={styles.rating}>
-                                                <i class="fa-solid fa-star"></i>
+                                                <i className="fa-solid fa-star"></i>
                                                 {x.fields.rating.ratingPoints === 0 ?
                                                     <p>No rating yet</p>
                                                     : <p>{x.fields.rating.ratingPoints} / 10</p>

@@ -1,4 +1,4 @@
-.section {
+/* .section {
     font-size: 20px;
     color: var(--clr-white);
     margin: 0 auto;
@@ -12,11 +12,7 @@
     text-align: center;
     margin-bottom: 4rem;
 }
-.input-box {
-    /* display: flex;
-    gap: 16px;
-    align-items: center; */
-}
+
 .input {
     background-color:rgba(104, 104, 104, 0.815);;
     border: none;
@@ -62,4 +58,4 @@
     left: 50%;
     transform: translateX(-50%);
     margin-top: 2rem;
-}
+} */

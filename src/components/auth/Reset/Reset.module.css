@@ -1,0 +1,80 @@
+.modal {
+    visibility: hidden;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease-in-out scale 0.6 ease-in-out;
+}
+
+.modal.active {
+    visibility: visible;
+}
+
+.modal.inactive {
+    visibility: hidden;
+}
+
+
+
+
+.modal-content {
+    background-color: var(--clr-dark-grey);
+    padding: 2rem;
+    border: 1px solid var(--clr-dark-grey);
+    border-radius: 0.6rem;
+    width: 600px;
+    scale: 0;
+    transition: all 0.8s ease-in-out;
+    margin: 15% auto;
+    text-align: center;
+}
+
+.modal.inactive .modal-content {
+    scale: 0;
+    opacity: 0;
+}
+
+.modal.active .modal-content {
+    scale: 1;
+    opacity: 1;
+}
+
+.modal-content .title {
+    margin-bottom: 1.5rem;
+    color: var(--clr-white);
+}
+
+.close {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--clr-grey);
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0.6rem;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.close:hover,
+.close:focus {
+    scale: 1.2;
+    color: var(--clr-primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.action-btns {
+    display: flex;
+    justify-content: center;
+}
+
+#reset-pass {
+    margin-top: 0;
+}

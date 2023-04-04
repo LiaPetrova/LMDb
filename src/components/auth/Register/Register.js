@@ -2,73 +2,168 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  auth,
+    auth,
 } from "../../../firebase_setup/firebase";
+import { useInput } from "../../../hooks/useInput";
 import { registerWithEmail, registerWithGoogle } from "../../../services/authService";
-import "./Register.css";
-function Register() {
-    
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate();
+import userValidation from "../../../validationFunctions/validationFunctions";
+
+export const Register = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
 
-  const register = () => {
-    if (!name) alert("Please enter name");
-    registerWithEmail(name, email, password);
-    navigate('/');
-  };
+    const email = useInput(userValidation.emailIsValid);
+    const name = useInput(userValidation.nameIsLength);
+    const password = useInput(userValidation.passwordIsLength);
+    const repeatPassword = useInput(userValidation.isEqual.bind(null, password.value));
 
-  const onGoogleRegisterHandler = ()  => {
-    registerWithGoogle();
-  }
+    const formIsValid = 
+    email.fieldIsValid 
+    && password.fieldIsValid 
+    && password.fieldIsValid 
+    && repeatPassword.fieldIsValid;
 
 
-  useEffect(() => {
-    if (loading) {
-       return; 
-    } 
-  }, [user, loading]);
-  return (
-    <div className="register">
-      <div className="register__container">
-        <input
-          type="text"
-          className="register__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="text"
-          className="register__textBox"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
-        />
-        <input
-          type="password"
-          className="register__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button className="register__btn" onClick={register}>
-          Register
-        </button>
-        <button
-          className="register__btn register__google"
-          onClick={onGoogleRegisterHandler}
-        >
-          Register with Google
-        </button>
-        <div>
-          Already have an account? <Link to="/login">Login</Link> now.
-        </div>
-      </div>
-    </div>
-  );
-}
-export default Register;
+
+
+    const onRegisterHandler = async () => {
+        if (formIsValid) {
+            setIsLoading(true);
+           await registerWithEmail(name.value, email.value, password.value);
+            navigate('/');
+        }
+        setIsLoading(false);
+    };
+
+    const onGoogleRegisterHandler = () => {
+        registerWithGoogle();
+    };
+
+
+    useEffect(() => {
+        if (loading) {
+            return;
+        }
+    }, [user, loading]);
+    return (
+        <section className="form-section auth">
+            <div className="login__container">
+                <form className="form" onSubmit={onRegisterHandler}>
+                    <h2 className={'heading'}>Register</h2>
+                    <div className={'input-box'}>
+                        {/* <label className={'label'} htmlFor="email">Email</label> */}
+                        {email.hasError && <p className={'alert'}>Email must be valid!</p>}
+                        <input
+                            type="text"
+                            className={`input ${email.hasError && 'input-alert'}`}
+                            value={email.value}
+                            onChange={email.onChange}
+                            onBlur={email.onBlur}
+                            placeholder="E-mail Address"
+                            id="email"
+                        />
+                    </div>
+                    <div className={'input-box'}>
+                        {/* <label className={'label'} htmlFor="password">Password</label> */}
+                        {name.hasError && <p className={'alert'}>Full name must be at least 5 characters long!</p>}
+
+                        <input
+                            type="text"
+                            className={`input ${name.hasError ? 'input-alert': ''}`}
+                            value={name.value}
+                            onChange={name.onChange}
+                            onBlur={name.onBlur}
+                            placeholder="Full Name"
+                            id="name"
+                        />
+                    </div>
+                    <div className={'input-box'}>
+                        {/* <label className={'label'} htmlFor="password">Password</label> */}
+                        {password.hasError && <p className={'alert'}>Password must be at least 6 characters long!</p>}
+
+                        <input
+                            type="password"
+                            className={`input ${password.hasError ? 'input-alert': ''}`}
+                            value={password.value}
+                            onChange={password.onChange}
+                            onBlur={password.onBlur}
+                            placeholder="Password"
+                            id="password"
+                        />
+                    </div>
+                    <div className={'input-box'}>
+                        {/* <label className={'label'} htmlFor="password">Password</label> */}
+                        {repeatPassword.hasError && <p className={'alert'}>Passwords don't match!</p>}
+
+                        <input
+                            type="password"
+                            className={`input ${repeatPassword.hasError ? 'input-alert': ''}`}
+                            value={repeatPassword.value}
+                            onChange={repeatPassword.onChange}
+                            onBlur={repeatPassword.onBlur}
+                            placeholder="Repeat Password"
+                            id="repeatPassword"
+                        />
+                    </div>
+                    <button
+                    disabled={!formIsValid || isLoading}
+                        className="btn action-btn"
+                    >
+                        Register
+                    </button>
+                </form>
+                <button className={`btn google-btn action-btn`} onClick={onGoogleRegisterHandler}>
+                    Register with Google
+                </button>
+                <div className="link anchor">
+                    Already have an account? <Link className="link" to="/login">Login</Link> now.
+                </div>
+            </div>
+
+        </section>
+
+        // <div className="register">
+        //     <div className="register__container">
+        //         <input
+        //             type="text"
+        //             className="register__textBox"
+        //             value={email}
+        //             onChange={(e) => setEmail(e.target.value)}
+        //             placeholder="E-mail Address"
+        //         />
+        //         <input
+        //             type="text"
+        //             className="register__textBox"
+        //             value={name}
+        //             onChange={(e) => setName(e.target.value)}
+        //             placeholder="Full Name"
+        //         />
+        //         <input
+        //             type="password"
+        //             className="register__textBox"
+        //             value={password}
+        //             onChange={(e) => setPassword(e.target.value)}
+        //             placeholder="Password"
+        //         />
+        //         <button 
+        //         className="register__btn" 
+        //         onClick={onRegisterHandler}
+        //         >
+        //             Register
+        //         </button>
+        //         <button
+        //         disabled={!formIsValid || isLoading}
+        //             className="register__btn register__google"
+        //             onClick={onGoogleRegisterHandler}
+        //         >
+        //             Register with Google
+        //         </button>
+        //         <div>
+        //             Already have an account? <Link to="/login">Login</Link> now.
+        //         </div>
+        //     </div>
+        // </div>
+    );
+};

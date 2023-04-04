@@ -1,0 +1,19 @@
+.genres-section .genres-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(10% / 2);
+    row-gap: 4rem;
+}
+
+.genres-list-item {
+    flex-basis: 30%;
+    overflow: hidden;
+    height: 14rem;
+    border-radius: 0.8rem;
+    position: relative;
+    transition: all 0.6s ease-in-out;
+}
+
+.genres-list-item:hover {
+    scale: 1.05;
+}

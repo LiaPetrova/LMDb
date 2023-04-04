@@ -4,7 +4,7 @@
     align-items: center;
 }
 
-.write-review textarea{
+.write-review textarea {
     box-sizing: border-box;
     width: 900px;
     margin-bottom: 1.5rem;
@@ -27,12 +27,11 @@
     text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
     margin-bottom: 2rem;
 }
-.write-review button{
-}
 
 .comment-section {
     width: 900px;
     margin: 0 auto;
+    margin-top: 4.2rem;
 }
 
 .write-review .buttons {

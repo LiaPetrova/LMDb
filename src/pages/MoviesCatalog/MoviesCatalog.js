@@ -6,6 +6,7 @@ import styles from './MoviesCatalog.module.css';
 export const MoviesCatalog = () => {
     const { moviesList, watchlist, setWatchlist } = useShowsContext();
 
+    
     return (
         <section className={styles.section}>
             {/* <div className={styles['title-wrapper']}>
@@ -14,7 +15,7 @@ export const MoviesCatalog = () => {
         <div className={styles.movies}>
             {moviesList.length > 0 ? moviesList.map(x =>
                 <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} />)
-                : <p className={styles['no-results']}>Nothing to show</p>}
+                : <p className={'no-results'}>Nothing to show...</p>}
         </div>
     </section>
     );

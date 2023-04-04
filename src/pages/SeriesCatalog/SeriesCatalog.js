@@ -13,7 +13,7 @@ export const SeriesCatalog = () => {
         <div className={styles.series}>
             {seriesList.length > 0 ? seriesList.map(x =>
                 <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} />)
-                : <p className={styles['no-results']}>Nothing to show</p>}
+                : <p className={'no-results'}>Nothing to show...</p>}
         </div>
     </section>
     );

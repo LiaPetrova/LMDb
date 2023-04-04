@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addNewShow, editShow, getOne } from "../../../services/showsService";
+import { editShow, getOne } from "../../../services/showsService";
 import styles from '../Admin.module.css';
 
 
 export const EditShow = () => {
-    const {showId, type} = useParams();
+    const { showId, type } = useParams();
     const [show, setShow] = useState({});
-    const [values, setValues] = useState({ type: '', title: '', year: 0, desc: '', duration: 0, director: '' });
+    const [values, setValues] = useState({
+        type: '',
+        title: '',
+        year: 0,
+        desc: '',
+        duration: 0,
+        director: ''
+    });
     const [imageList, setImageList] = useState(['']);
     const [actorsList, setActorsList] = useState([{ fullName: '', roleName: '', imageUrl: '', wikiUrl: '' }]);
     const [genreList, setGenreList] = useState(['']);
@@ -30,7 +37,7 @@ export const EditShow = () => {
 
                 });
             });
-            
+
 
     }, [showId, type]);
 
@@ -148,149 +155,168 @@ export const EditShow = () => {
                         onChange={handleSimpleInputChange}
                         // defaultValue={show.title}
                         value={values.title}
+                        required
 
                     />
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="year">Year</label>
-                    <input
-                        type="number"
-                        name='year'
-                        id='year'
-                        className={styles.input}
-                        onChange={handleSimpleInputChange}
-                        value={values.year}
-                    />
-                </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="duration">Duration</label>
-                    <input
-                        type="number"
-                        name='duration'
-                        id='duration'
-                        className={styles.input}
-                        onChange={handleSimpleInputChange}
-                        value={values.duration}
-                    />
-                </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="director">Director</label>
-                    <input
-                        type="text"
-                        name='director'
-                        id='director'
-                        className={styles.input}
-                        onChange={handleSimpleInputChange}
-                        value={values.director}
-                    />
-                </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="genre">Genre</label>
-                </div>
-                {genreList?.map((x, i) => {
-                    return (
-                        <div className="box" key={i}>
-                            <input
-                                className={styles.input}
-                                name="genre"
-                                value={x}
-                                onChange={e => handleInputChange(e, i)}
-                            />
+                    <div className={styles['input-box']}>
+                        <label className={styles.label} htmlFor="year">Year</label>
+                        <input
+                            type="number"
+                            name='year'
+                            id='year'
+                            className={styles.input}
+                            onChange={handleSimpleInputChange}
+                            value={values.year}
+                            required
 
-                            <div className="btn-box">
-                                {genreList.length !== 1 && <button
-                                    className="btn"
-                                    onClick={(e) => handleRemoveClick(e, i, 'genre')}><i className="fa-solid fa-minus"></i></button>}
-                                {genreList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'genre')}><i className="fa-solid fa-plus"></i></button>}
-                            </div>
-                        </div>
-                    );
-                })}
+                        />
+                    </div>
+                    <div className={styles['input-box']}>
+                        <label className={styles.label} htmlFor="duration">Duration</label>
+                        <input
+                            type="number"
+                            name='duration'
+                            id='duration'
+                            className={styles.input}
+                            onChange={handleSimpleInputChange}
+                            value={values.duration}
+                            required
 
+                        />
+                    </div>
+                    <div className={styles['input-box']}>
+                        <label className={styles.label} htmlFor="director">Director</label>
+                        <input
+                            type="text"
+                            name='director'
+                            id='director'
+                            className={styles.input}
+                            onChange={handleSimpleInputChange}
+                            value={values.director}
+                            required
 
-                <label className={styles.label} htmlFor="desc">Description</label>
-                <textarea
-                    name='desc'
-                    id='desc'
-                    className={`${styles.input} ${styles.textarea}`}
-                    onChange={handleSimpleInputChange}
-                    value={values.desc}
-                />
-                <div className={styles.images}>
-                    <label className={styles.label} htmlFor="imgUrl">Image URL</label>
-                    {imageList.map((x, i) => {
+                        />
+                    </div>
+                    <div className={styles['input-box']}>
+                        <label className={styles.label} htmlFor="genre">Genre</label>
+                    </div>
+                    {genreList?.map((x, i) => {
                         return (
                             <div className="box" key={i}>
                                 <input
                                     className={styles.input}
-                                    name="movieImgUrl"
+                                    name="genre"
                                     value={x}
                                     onChange={e => handleInputChange(e, i)}
+                                    required
+
                                 />
 
                                 <div className="btn-box">
-                                    {imageList.length !== 1 && <button
+                                    {genreList.length !== 1 && <button
                                         className="btn"
-                                        onClick={(e) => handleRemoveClick(e, i, 'movie')}><i className="fa-solid fa-minus"></i></button>}
-                                    {imageList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'movie')}><i className="fa-solid fa-plus"></i></button>}
+                                        onClick={(e) => handleRemoveClick(e, i, 'genre')}><i className="fa-solid fa-minus"></i></button>}
+                                    {genreList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'genre')}><i className="fa-solid fa-plus"></i></button>}
                                 </div>
                             </div>
                         );
                     })}
-                    {/* {imageList.join(', ')} */}
 
-                    <label className={styles.label} htmlFor="imgUrl">Actors</label>
 
-                    {actorsList.map((x, i) => {
-                        return (
-                            <div key={i}>
-                                <input
-                                    className={styles.input}
-                                    name="fullName"
-                                    placeholder="Full Name"
-                                    defaultValue={x.fullName}
-                                    onChange={e => handleInputChange(e, i)}
-                                />
+                    <label className={styles.label} htmlFor="desc">Description</label>
+                    <textarea
+                        name='desc'
+                        id='desc'
+                        className={`${styles.input} ${styles.textarea}`}
+                        onChange={handleSimpleInputChange}
+                        value={values.desc}
+                        required
 
-                                <input
-                                    className={styles.input}
-                                    name="roleName"
-                                    placeholder="Role Name"
-                                    defaultValue={x.roleName}
-                                    onChange={e => handleInputChange(e, i)}
-                                />
+                    />
+                    <div className={styles.images}>
+                        <label className={styles.label} htmlFor="imgUrl">Image URL</label>
+                        {imageList.map((x, i) => {
+                            return (
+                                <div className="box" key={i}>
+                                    <input
+                                        className={styles.input}
+                                        name="movieImgUrl"
+                                        value={x}
+                                        onChange={e => handleInputChange(e, i)}
+                                        required
 
-                                <input
-                                    className={styles.input}
-                                    name="imageUrl"
-                                    placeholder="Image URL"
-                                    defaultValue={x.imageUrl}
-                                    onChange={e => handleInputChange(e, i)}
-                                />
+                                    />
 
-                                <input
-                                    className={styles.input}
-                                    name="wikiUrl"
-                                    placeholder="Link to Wikipedia"
-                                    defaultValue={x.wikiUrl}
-                                    onChange={e => handleInputChange(e, i)}
-                                />
-
-                                <div className="btn-box">
-                                    {actorsList.length !== 1 && <button
-                                        className="btn"
-                                        onClick={(e) => handleRemoveClick(e, i, 'actor')}><i className="fa-solid fa-minus"></i></button>}
-                                    {actorsList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'actor')}><i className="fa-solid fa-plus"></i></button>}
+                                    <div className="btn-box">
+                                        {imageList.length !== 1 && <button
+                                            className="btn"
+                                            onClick={(e) => handleRemoveClick(e, i, 'movie')}><i className="fa-solid fa-minus"></i></button>}
+                                        {imageList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'movie')}><i className="fa-solid fa-plus"></i></button>}
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
+                            );
+                        })}
+                        {/* {imageList.join(', ')} */}
+
+                        <label className={styles.label} htmlFor="imgUrl">Actors</label>
+
+                        {actorsList.map((x, i) => {
+                            return (
+                                <div key={i}>
+                                    <input
+                                        className={styles.input}
+                                        name="fullName"
+                                        placeholder="Full Name"
+                                        defaultValue={x.fullName}
+                                        onChange={e => handleInputChange(e, i)}
+                                        required
+
+                                    />
+
+                                    <input
+                                        className={styles.input}
+                                        name="roleName"
+                                        placeholder="Role Name"
+                                        defaultValue={x.roleName}
+                                        onChange={e => handleInputChange(e, i)}
+                                    />
+
+                                    <input
+                                        className={styles.input}
+                                        name="imageUrl"
+                                        placeholder="Image URL"
+                                        defaultValue={x.imageUrl}
+                                        onChange={e => handleInputChange(e, i)}
+                                        required
+
+                                    />
+
+                                    <input
+                                        className={styles.input}
+                                        name="wikiUrl"
+                                        placeholder="Link to Wikipedia"
+                                        defaultValue={x.wikiUrl}
+                                        onChange={e => handleInputChange(e, i)}
+                                        required
+
+                                    />
+
+                                    <div className="btn-box">
+                                        {actorsList.length !== 1 && <button
+                                            className="btn"
+                                            onClick={(e) => handleRemoveClick(e, i, 'actor')}><i className="fa-solid fa-minus"></i></button>}
+                                        {actorsList.length - 1 === i && <button className="btn" onClick={(e) => handleAddClick(e, 'actor')}><i className="fa-solid fa-plus"></i></button>}
+                                    </div>
+                                </div>
+                            )
+                        })}
+
+                    </div>
 
                 </div>
-
-                </div> 
                 <button className={`btn ${styles['submit-btn']}`}>Submit</button>
             </form>
-           
+
         </section>
     );
 };

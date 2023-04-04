@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useInput } from '../../hooks/useInput';
 import { getAllComments, postComment } from '../../services/commentsService';
+import validationFunctions from '../../validationFunctions/validationFunctions';
 import { CommentItem } from './CommentItem/CommentItem';
 import styles from './CommentSection.module.css';
 
 export const CommentSection = ({ showId }) => {
 
     const [openWriteReview, setOpenWriteReview] = useState(false);
-    const [commentContent, setCommentContent] = useState('');
+    const commentContent = useInput(validationFunctions.textIsLength);
     const { currentUser } = useAuthContext();
     const [comments, setComments] = useState([]);
 
@@ -22,15 +24,12 @@ export const CommentSection = ({ showId }) => {
     }, [showId]);
 
 
-
-    const changeHandler = (e) => {
-        setCommentContent(e.target.value)
-    };
-
     const postCommentHandler = async () => {
-        await postComment(showId, currentUser.uid, commentContent)
-            .then(result => setComments(state => [...state, result]));
-        setCommentContent('');
+        if(commentContent.fieldIsValid) {
+            await postComment(showId, currentUser.uid, commentContent.value)
+                .then(result => setComments(state => [...state, result]));
+            commentContent.fieldReset();
+        }
     }
     return (
         <>
@@ -54,15 +53,18 @@ export const CommentSection = ({ showId }) => {
                 </button>}
                 {openWriteReview &&
                     <div className={styles['write-review']}>
+
+                        {commentContent.hasError && <p className={'alert'}>Your review must be at least 10 characters long!</p>}
                         <textarea
-                            className={`box-shadow`}
-                            onChange={changeHandler}
-                            value={commentContent}
+                            className={`input ${commentContent.hasError && 'input-alert'} box-shadow`}
+                            value={commentContent.value}
+                            onChange={commentContent.onChange}
+                            onBlur={commentContent.onBlur}
                             name="comment"
                             id="comment"
                             cols="30" rows="10"
                             autoFocus
-                        ></textarea>
+                            ></textarea>
                         <div className={styles.buttons}>
                             <button
                                 onClick={() => setOpenWriteReview(false)}
@@ -70,6 +72,7 @@ export const CommentSection = ({ showId }) => {
                                 Cancel
                             </button>
                             <button
+                            disabled={!commentContent.fieldIsValid}
                                 onClick={() => postCommentHandler()}
                                 className={`btn`}>
                                 Send

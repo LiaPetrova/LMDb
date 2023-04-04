@@ -3,8 +3,6 @@ import './App.css';
 import { Header } from './components/layout/Header/Header';
 import { Login } from './components/auth/Login/Login';
 import { Logout } from './components/auth/Logout/Logout';
-import Register from './components/auth/Register/Register';
-import Reset from './components/auth/Reset/Reset';
 import { AuthProvider } from './contexts/AuthContext';
 import { Home } from './pages/Home/Home';
 import { AddNew } from './pages/Admin/AddNew/AddNew';
@@ -14,6 +12,10 @@ import { MoviesCatalog } from './pages/MoviesCatalog/MoviesCatalog';
 import { SeriesCatalog } from './pages/SeriesCatalog/SeriesCatalog';
 import { ShowDetails } from './pages/ShowDetails/ShowDetails';
 import { EditShow } from './pages/Admin/EditShow/EditShow';
+import { Genres } from './pages/Genres/Genres';
+import { GenreCatalog } from './pages/GenreCatalog/GenreCatalog';
+import { Register } from './components/auth/Register/Register';
+import { Reset } from './components/auth/Reset/Reset';
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
                     <Route path='/watchlist' element={<Watchlist />} />
                     <Route path='/movies' element={<MoviesCatalog />} />
                     <Route path='/series' element={<SeriesCatalog />} />
+                    <Route path='/genres' element={<Genres />} />
+                    <Route path='/catalog/:genre' element={<GenreCatalog />} />
                     <Route path='/catalog/:type/:showId' element={<ShowDetails />} />
                 </Routes>
                 </main>

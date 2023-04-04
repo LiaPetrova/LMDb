@@ -34,7 +34,6 @@
 .nav-desctop .nav-list {
     display: flex;
     list-style: none;
-    gap: 1rem;
     font-weight: 500;
 }
 
@@ -93,7 +92,7 @@
     font-size: 1rem;
 }
 .nav-desctop .nav-list .link {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 1.5px;
     color: var(--clr-secondary);
@@ -107,18 +106,16 @@
 }
 .nav-list-item {
     transition: all 0.6s ease-in-out;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.4rem;
 }
 
-/* .nav-list-item .link:hover {
-   color: var(--clr-secondary);
-} */
 .nav-list-item:hover {
-    /* scale: 1.05; */
+    scale: 1.05;
+    background-color: var(--clr-grey-bgn);
 }
 
 .nav-list-item:hover .link{
-    /* padding-top: 0.25rem; */
-    scale: 1.1;
     color: var(--clr-white);
  }
  

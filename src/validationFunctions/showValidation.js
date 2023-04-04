@@ -13,13 +13,11 @@ const urlIsValid = (value) => value === '' ? true : validator.isURL(value);
 const descriptionIsLength = (value) => validator.isLength(value, { min: 5, max: 800 });
 
 
-const causeValidation = {
+export const showValidation = {
     titleIsLength,
     purposeIsLength,
     placeIsLength,
     dateIsValid,
     urlIsValid,
     descriptionIsLength
-}
-
-export default causeValidation;
+};

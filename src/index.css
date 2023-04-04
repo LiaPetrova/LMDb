@@ -15,10 +15,12 @@ p, h1, h2, h3, h4, h5, h6, div, ul {
     --clr-primary: #f02f2f;
     --clr-secondary: #F7BB0E;
     --clr-white: #F6F6F6;
+    --clr-blue: rgb(30, 117, 218);
     --clr-dark-bgn: #19181b;
     --clr-dark-grey: #2e2e2ef1;
     --clr-light-black: rgb(20, 20, 20);
     --clr-grey-bgn: #272727b7;
+    --clr-grey-bgn2: #272727a2;
     --clr-black-bgn: #161616e5;
     --clr-grey: #acacac;
     

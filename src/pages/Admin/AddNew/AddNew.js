@@ -80,14 +80,14 @@ export const AddNew = () => {
     }
 
     return (
-        <section action="" className={styles['section']}>
-            <h2 className={styles.heading}>Add new show</h2>
-            <form action="" className={styles.form} onSubmit={submitHandler}>
-                <div className={styles['input-box']}>
-                    <div className={styles.label}>Type of show</div>
+        <section action="" className={'form-section'}>
+            <h2 className={'heading'}>Add new show</h2>
+            <form action="" className={'form'} onSubmit={submitHandler}>
+                <div className={'input-box'}>
+                    <div className={'label'}>Type of show</div>
                     <div>
                         <input
-                            className={styles['input-radio']}
+                            className={'input-radio'}
                             type="radio"
                             id='movie'
                             name='type'
@@ -98,7 +98,7 @@ export const AddNew = () => {
                     </div>
                     <div>
                         <input
-                            className={styles['input-radio']}
+                            className='input-radio'
                             type="radio"
                             id='series'
                             name='type'
@@ -109,54 +109,54 @@ export const AddNew = () => {
                     </div>
                 </div>
                 <br />
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="title">Title</label>
+                <div className={'input-box'}>
+                    <label className={'label'} htmlFor="title">Title</label>
                     <input
                         type="text"
                         name='title'
                         id='title'
-                        className={styles.input}
+                        className='input'
                         onChange={handleSimpleInputChange}
                     />
                 </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="year">Year</label>
+                <div className={'input-box'}>
+                    <label className={'label'} htmlFor="year">Year</label>
                     <input
                         type="number"
                         name='year'
                         id='year'
-                        className={styles.input}
+                        className={'input'}
                         onChange={handleSimpleInputChange}
                     />
                 </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="duration">Duration</label>
+                <div className={'input-box'}>
+                    <label className={'label'} htmlFor="duration">Duration</label>
                     <input
                         type="number"
                         name='duration'
                         id='duration'
-                        className={styles.input}
+                        className={'input'}
                         onChange={handleSimpleInputChange}
                     />
                 </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="director">Director</label>
+                <div className={'input-box'}>
+                    <label className={'label'} htmlFor="director">Director</label>
                     <input
                         type="text"
                         name='director'
                         id='director'
-                        className={styles.input}
+                        className={'input'}
                         onChange={handleSimpleInputChange}
                     />
                 </div>
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="genre">Genre</label>
+                <div className={'input-box'}>
+                    <label className={'label'} htmlFor="genre">Genre</label>
                 </div>
                 {genreList.map((x, i) => {
                     return (
-                        <div className="box" key={i}>
+                        <div className="input-box" key={i}>
                             <input
-                                className={styles.input}
+                                className='input'
                                 name="genre"
                                 value={x}
                                 onChange={e => handleInputChange(e, i)}
@@ -173,21 +173,21 @@ export const AddNew = () => {
                 })}
 
 
-                <label className={styles.label} htmlFor="desc">Description</label>
+                <label className={'label'} htmlFor="desc">Description</label>
                 <textarea
                     name='desc'
                     id='desc'
-                    className={`${styles.input} ${styles.textarea}`}
+                    className={`${'input'} ${'textarea'}`}
                     onChange={handleSimpleInputChange}
                 />
-                <div className={styles.images}>
-                    <label className={styles.label} htmlFor="imgUrl">Image URL</label>
+                <div className={'images'}>
+                    <label className={'label'} htmlFor="imgUrl">Image URL</label>
                     {/* <button onClick={addNewInput} className={`btn`}><i className="fa-solid fa-plus"></i></button> */}
                     {imageList.map((x, i) => {
                         return (
                             <div className="box" key={i}>
                                 <input
-                                    className={styles.input}
+                                    className={'input'}
                                     name="movieImgUrl"
                                     value={x}
                                     onChange={e => handleInputChange(e, i)}
@@ -204,13 +204,13 @@ export const AddNew = () => {
                     })}
                     {imageList.join(', ')}
 
-                    <label className={styles.label} htmlFor="imgUrl">Actors</label>
+                    <label className={'label'} htmlFor="imgUrl">Actors</label>
 
                     {actorsList.map((x, i) => {
                         return (
                             <div key={i}>
                                 <input
-                                    className={styles.input}
+                                    className={'input'}
                                     name="fullName"
                                     placeholder="Full Name"
                                     value={x.fullName}
@@ -218,7 +218,7 @@ export const AddNew = () => {
                                 />
 
                                 <input
-                                    className={styles.input}
+                                    className={'input'}
                                     name="roleName"
                                     placeholder="Role Name"
                                     value={x.roleName}
@@ -226,7 +226,7 @@ export const AddNew = () => {
                                 />
 
                                 <input
-                                    className={styles.input}
+                                    className={'input'}
                                     name="imageUrl"
                                     placeholder="Image URL"
                                     value={x.imageUrl}
@@ -234,7 +234,7 @@ export const AddNew = () => {
                                 />
 
                                 <input
-                                    className={styles.input}
+                                    className={'input'}
                                     name="wikiUrl"
                                     placeholder="Link to Wikipedia"
                                     value={x.wikiUrl}
@@ -254,7 +254,7 @@ export const AddNew = () => {
                     {/* {JSON.stringify(actorsList)} */}
 
                 </div>
-                <button className={`btn ${styles['submit-btn']}`}>Submit</button>
+                <button className={`btn ${'action-btn'}`}>Submit</button>
             </form>
            
         </section>

@@ -70,13 +70,13 @@
 }
 
 .comment-wrapper .content .like.selected {
-    color: rgb(14, 102, 202);
+    color: var(--clr-blue);
 
 }
 
 
 .comment-wrapper .content .dislike.selected {
-    color: rgb(153, 10, 10);
+    color: rgb(219, 64, 64);
 
 }
 
@@ -88,13 +88,13 @@
 }
 
 .comment-wrapper .content .like:hover {
-    color: rgb(14, 102, 202);
+    color: var(--clr-blue);
     scale: 1.1;
 }
 
 .comment-wrapper .content .dislike:hover,
 .comment-wrapper .content .delete:hover {
-    color: rgb(153, 10, 10);
+    color: rgb(219, 64, 64);
     scale: 1.1;
 }
 
