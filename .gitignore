@@ -1,4 +1,4 @@
 .env
 
-.cashe
- node_modules/.cashe
+.cache
+ node_modules/.cache
