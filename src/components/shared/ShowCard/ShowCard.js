@@ -16,7 +16,7 @@ const ShowCard = ({ show, id, page }) => {
     const { currentUser } = useAuthContext();
     const navigate = useNavigate();
 
-    console.log('ok');
+    console.log('raboti');
 
     const isAdded = watchlist?.some(x => x.id === id);
 

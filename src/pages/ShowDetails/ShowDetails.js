@@ -48,8 +48,8 @@ export const ShowDetails = () => {
 
     }, [showId, type, currentUser]);
 
-    const rateShowHandler = useMemo((rating) => {
-        handleRating('send', type, currentUser.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
+    const rateShowHandler = (rating) => {
+        handleRating('send', type, currentUser?.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
             .then(result => {
                 setCurrentRating(result.newRatingPoints);
                 setUsersRatedCount(result.usersRatedCount);
@@ -64,10 +64,10 @@ export const ShowDetails = () => {
         setHasRatedWith(rating);
         closeRateModal();
 
-    }, []);
+    };
 
-    const removeRateHandler = useCallback((rating) => {
-        handleRating('remove', type, currentUser.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
+    const removeRateHandler = (rating) => {
+        handleRating('remove', type, currentUser?.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
             .then(result => {
                 setCurrentRating(result.newRatingPoints);
                 setUsersRatedCount(result.usersRatedCount);
@@ -82,7 +82,7 @@ export const ShowDetails = () => {
         setHasRated(false);
         setHasRatedWith(0);
         closeRateModal();
-    }, []);
+    };
 
     const deleteShowHandler = useCallback(() => {
         // eslint-disable-next-line no-restricted-globals
