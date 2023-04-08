@@ -156,7 +156,7 @@
 
 
 .hamburger-wrapper i {
-    font-size: 1.8rem;
+    font-size: 2.6rem;
     color: var(--clr-white);
 }
 
@@ -172,17 +172,8 @@
 
 @media screen and (max-width: 1451px) {
     .search input {
-        box-sizing: border-box;
-        overflow: hidden;
         width: 24rem;
         height: 1.8rem;
-        border-radius: 0.8rem;
-        border: none;
-        background-color: var(--clr-grey-bgn);
-        padding: 0.2rem 0.6rem;
-        padding-left: 5.5rem;
-        color: var(--clr-white);
-        font-size: 0.9rem;
     }
 
     .nav-list-item {
@@ -203,28 +194,16 @@
 
     }
 
-    .nav-list-item {
-        padding: 0.3rem;
-        font-size: 0.9rem;
-    }
-
 }
 
 @media screen and (max-width: 1070px) {
 
-
-    .logo {
-        width: 4.5rem;
-    }
-
     .search input {
-        width: 20rem;
-        height: 1.6rem;
-
+        width: 18rem;
     }
 
     .nav-desctop .nav-list-item .link {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
 
@@ -233,7 +212,6 @@
 @media screen and (max-width: 920px) {
     .search input {
         width: 18rem;
-        height: 1.6rem;
 
     }
 
@@ -241,25 +219,21 @@
         padding: 0.3rem;
     }
 
-    .nav-desctop .nav-list-item .link {
-        font-size: 1rem;
-    }
-
-
-
-
 }
 
 @media screen and (max-width: 850px) {
+
+    .logo {
+        width: 6.5rem;
+    }
 
     .header {
         padding: 0.7rem 0;
     }
 
     .search input {
-        width: 22rem;
-        height: 1.6rem;
-
+        width: 24rem;
+        height: 2.6rem;
     }
 
     .hamburger-wrapper {
@@ -345,16 +319,12 @@
 
 @media screen and (max-width: 525px) {
     .hamburger-wrapper i {
-        font-size: 1.4rem;
+        font-size: 2.4rem;
     }
 
-    .logo {
-        width: 4rem;
-    }
 
     .search input {
-        width: 18rem;
-        height: 1.6rem;
+        width: 17rem;
 
     }
 
@@ -365,8 +335,15 @@
 @media screen and (max-width: 420px) {
 
     .search input {
-        width: 16rem;
-        height: 1.6rem;
+        width: 15rem;
+        height: 2.4rem;
+    }
+
+    .logo {
+        width: 6rem;
+    }
+    .hamburger-wrapper i {
+        font-size: 2.2rem;
     }
 
 }
@@ -375,10 +352,14 @@
 
     .search input {
         width: 14rem;
-        height: 1.4rem;
+        height: 1.6rem;
     }
 
     .logo {
         width: 3.8rem;
+    }
+
+    .hamburger-wrapper i {
+        font-size: 1.8rem;
     }
 }

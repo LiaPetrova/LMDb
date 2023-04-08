@@ -17,3 +17,16 @@
 .genres-list-item:hover {
     scale: 1.05;
 }
+
+@media screen and (max-width: 770px) {
+
+  
+    .genres-list-item {
+        flex-basis: 47%;
+        overflow: hidden;
+        height: 14rem;
+        border-radius: 0.8rem;
+        position: relative;
+        transition: all 0.6s ease-in-out;
+    }
+}

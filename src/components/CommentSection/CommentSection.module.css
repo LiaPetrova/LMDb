@@ -6,7 +6,7 @@
 
 .write-review textarea {
     box-sizing: border-box;
-    width: 900px;
+    width: 50rem;
     margin-bottom: 1.5rem;
     background: radial-gradient(circle, rgb(36, 36, 36) 0%, rgba(41, 41, 41, 0.6) 100%);
     border: none;
@@ -29,7 +29,7 @@
 }
 
 .comment-section {
-    width: 900px;
+    width: 50rem;
     margin: 0 auto;
     margin-top: 4.2rem;
 }
@@ -38,4 +38,37 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
+}
+
+@media screen and (max-width: 870px) {
+    .comment-section,
+    .write-review textarea {
+        width: 44rem;
+    }
+
+    .write-review textarea {
+        height: 11rem;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .comment-section,
+    .write-review textarea {
+        width: 40rem;
+    }
+    .write-review textarea {
+        height: 9rem;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .comment-section,
+    .write-review textarea {
+        width: 100%;
+    }
+
+    .write-review textarea {
+        height: 7rem;
+    }
+
 }

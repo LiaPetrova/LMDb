@@ -23,8 +23,8 @@
 }
 
 .bgn-img {
-    width: 1000px;
-    height: 500px;
+    width: 60rem;
+    height: 30rem;
     object-fit: cover;
     position: absolute;
     top: 0;
@@ -87,7 +87,6 @@
 .header .rating-wrapper {
     display: flex;
     gap: 1.5rem;
-    flex-basis: 27%;
     justify-content: flex-end;
 }
 
@@ -337,6 +336,8 @@
 .genres {
     margin: 1.5rem 0 2rem 0;
     color: var(--clr-grey);
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .genres .genre {
@@ -344,6 +345,7 @@
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
     margin-right: 0.7rem;
+    margin-bottom: 0.3rem;
 }
 
 
@@ -432,4 +434,117 @@
 .admin-buttons .edit {
     background-color: #d9a612;
     border-color: #d9a612;
+}
+
+
+@media screen and (max-width: 870px) {
+    .bgn-img {
+        width: 55rem;
+        height: 28rem;
+    }
+    .details-section {
+        padding: 2rem 2rem;
+
+    }
+    .header .title {
+        font-size: 2.5rem;
+    }
+
+    .header .small-info {
+        gap: 0.5rem
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .bgn-img {
+        width: 52rem;
+        height: 27rem;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .bgn-img {
+        width: 47rem;
+    }
+
+    .header .rating-wrapper {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .bgn-img {
+        width: 43rem;
+    }
+
+    .details-section {
+        padding: 1.5rem;
+
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .bgn-img {
+        width: 37rem;
+    }
+    .header .rating-wrapper {
+        gap: 0.6rem;
+    }
+
+    .background::before {
+        top: -2rem;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .bgn-img {
+        width: 33rem;
+    }
+    .rating-wrapper .current-rating>div,
+.rating-wrapper .your-rating>div {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+}
+}
+
+@media screen and (max-width: 470px) {
+    .bgn-img {
+        width: 29rem;
+    }
+    .bgn-img {
+        width: 26rem;
+        top: 2rem;
+    }
+
+}
+
+@media screen and (max-width: 410px) {
+    .bgn-img {
+        width: 26rem;
+        top: 4rem;
+
+    }
+    .details-section {
+        padding: 1.2rem;
+
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .current-rating i,
+    .your-rating i {
+        font-size: 1.7rem;
+    }
+
+    .current-rating .rating-points,
+    .your-rating .rating-points {
+        font-size: 1rem;
+    }
+
+    .bgn-img {
+        width: 24rem;
+    }
 }

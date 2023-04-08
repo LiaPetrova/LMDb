@@ -116,3 +116,23 @@
     gap: 1rem;
     justify-content: flex-end;
 }
+
+
+@media screen and (max-width: 570px) {
+    .comment-wrapper .content {
+
+        padding: 2.7rem 1rem;
+    }
+
+    .comment-wrapper .content .buttons {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .comment-wrapper .content  .date{
+        bottom: 0.5rem;
+        right: 0.5rem;
+    }
+}
+
+

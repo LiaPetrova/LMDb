@@ -97,25 +97,24 @@ section .top-ten::before {
     background-color: var(--clr-grey-bgn);
 }
 
-@media screen and (max-width: 1200px) {
-    /* .section .top-ten::before {
-        width: 10%;
-        left: -3rem;
-   
-    
-    }
-    .section .top-ten::after {
-        width: 10%;
-        right: -3rem;
-   
-    
-    } */
-}
 
-@media screen and (max-width: 519px) {
+@media screen and (max-width: 529px) {
     .section .top-ten::after,
     .section .top-ten::before {
-        top: 5.1rem
-    
+        top: 5.1rem;
+        height: 17rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .section .top-ten::after,
+    .section .top-ten::before {
+        height: 16rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .section .top-ten::after,
+    .section .top-ten::before {
+        height: 15rem;
     }
 }
