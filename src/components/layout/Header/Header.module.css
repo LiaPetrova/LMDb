@@ -95,9 +95,10 @@
     font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: 1.5px;
-    color: var(--clr-secondary);
+    color: var(--clr-white);
     text-decoration: none;
     font-family: 'Maven Pro', sans-serif;
+    display: inline-block;
 
 }
 
@@ -110,14 +111,62 @@
     border-radius: 0.4rem;
 }
 
-.nav-list-item:hover {
+.nav-list-item > .link::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0;
+    top: 7px;
+    background: transparent;
+    transition: all 0.6s ease-in-out;
+    
+  }
+
+  .nav-list-item > .link:hover::after, .nav-list-item > .link.active-nav::after {
+    width: 100%;
+    background: var(--clr-primary);
+  } 
+
+  .nav-list-item:hover .link{
+    scale: 1.06;
+}
+
+/* .nav-list-item:hover {
     scale: 1.05;
     background-color: var(--clr-grey-bgn);
 }
 
 .nav-list-item:hover .link{
     color: var(--clr-white);
- }
+ } */
+
+ /* .link.anchor a{
+    color: var(--clr-blue);
+    font-weight: 500;
+    border-bottom-width: 0%;
+    border-color: var(--clr-blue);
+    display: inline-block;
+}
+
+
+.link.anchor > a::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0;
+    top: 5px;
+    background: transparent;
+    transition: all 0.7s ease-in-out;
+    
+  }
+  
+  .link.anchor > a:hover::after, .link.anchor > a.active-nav::after {
+    width: 100%;
+    background: var(--clr-blue);
+  } */
+
  
 
 .header-bgn  {

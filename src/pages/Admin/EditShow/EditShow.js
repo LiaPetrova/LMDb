@@ -4,7 +4,7 @@ import { useShowsContext } from "../../../contexts/ShowsConext";
 import { editShow, getOne } from "../../../services/showsService";
 
 
-export const EditShow = () => {
+const EditShow = () => {
     const { showId, type } = useParams();
     const [show, setShow] = useState({});
     const [values, setValues] = useState({
@@ -121,19 +121,11 @@ export const EditShow = () => {
 
 
     return (
-<<<<<<< HEAD
         <section action="" className={'form-section'}>
             <h2 className='heading'>Edit show</h2>
             <form action="" className='form' onSubmit={editHandler}>
                 <div className='input-box'>
                     <div className='label'>Type of show</div>
-=======
-        <section action="" className={styles['section']}>
-            <h2 className={styles.heading}>Edit show</h2>
-            <form action="" className={styles.form} onSubmit={editHandler}>
-                <div className={styles['input-box']}>
-                    <div className={styles.label}>Type of show</div>
->>>>>>> parent of 87140975 (update)
                     <div>
                         <input
                             className='input-radio'
@@ -335,3 +327,5 @@ export const EditShow = () => {
         </section>
     );
 };
+
+export default EditShow;

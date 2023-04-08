@@ -6,13 +6,13 @@ import { useAuthContext } from "../../../contexts/AuthContext";
 import { auth } from "../../../firebase_setup/firebase";
 import { useInput } from "../../../hooks/useInput";
 import { sendPasswordReset } from "../../../services/authService";
-import validationFunctions from "../../../validationFunctions/validationFunctions";
+import validationFunctions from "../../../utils/validationFunctions/validationFunctions";
 import styles from './Reset.module.css';
 
-export const Reset = () => {
+const Reset = () => {
     const email = useInput(validationFunctions.emailIsValid);
 
-    const [loading, error] = useAuthState(auth);
+    const [loading ] = useAuthState(auth);
     const { currentUser } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
     const [notificationModal, setNotificationModal] = useState(false);
@@ -91,3 +91,5 @@ export const Reset = () => {
         </>
     );
 };
+
+export default Reset;

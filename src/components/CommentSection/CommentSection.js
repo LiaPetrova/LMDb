@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useInput } from '../../hooks/useInput';
 import { getAllComments, postComment } from '../../services/commentsService';
-import validationFunctions from '../../validationFunctions/validationFunctions';
+import validationFunctions from '../../utils/validationFunctions/validationFunctions';
 import { CommentItem } from './CommentItem/CommentItem';
 import styles from './CommentSection.module.css';
 

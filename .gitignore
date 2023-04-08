@@ -1,3 +1,4 @@
 .env
 
 .cashe
+ node_modules/.cashe

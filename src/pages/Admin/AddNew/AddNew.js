@@ -5,8 +5,7 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import { useShowsContext } from '../../../contexts/ShowsConext';
 import { addNewShow } from '../../../services/showsService';
 
-export const AddNew = () => {
-    const { isAdmin } = useAuthContext();
+const AddNew = () => {
     const [values, setValues] = useState({ type: '', title: '', year: 0, desc: '', duration: 0 });
     const [imageList, setImageList] = useState(['']);
     const [actorsList, setActorsList] = useState([{ fullName: '', roleName: '', imageUrl: '', wikiUrl: '' }]);
@@ -268,5 +267,7 @@ export const AddNew = () => {
             </form>
 
         </section>
-    )
+    );
 };
+
+export default AddNew;

@@ -5,7 +5,7 @@ import { Top10 } from "../../components/Home/Top10/Top10";
 import { useAuthContext } from "../../contexts/AuthContext";
 import styles from './Home.module.css';
 
-export const Home = () => {
+const Home = () => {
 
     const { currentUser } = useAuthContext();
     return (
@@ -19,4 +19,6 @@ export const Home = () => {
         </>
 
     );
-}
+};
+
+export default Home;

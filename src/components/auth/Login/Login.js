@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logIn, registerWithGoogle } from "../../../services/authService";
-<<<<<<< HEAD
-=======
-import { useAuthContext } from "../../../contexts/AuthContext";
-import userValidation from "../../../validationFunctions/validationFunctions";
->>>>>>> parent of 87140975 (update)
 import { useInput } from "../../../hooks/useInput";
+import validationFunctions from "../../../utils/validationFunctions/validationFunctions";
+import { toast } from "react-toastify";
 
 
 export const Login = () => {
@@ -16,33 +13,23 @@ export const Login = () => {
     const navigate = useNavigate();
 
 
-    const email = useInput(userValidation.isEmpty);
-    const password = useInput(userValidation.isEmpty);
+    const email = useInput(validationFunctions.isEmpty);
+    const password = useInput(validationFunctions.isEmpty);
 
     const formIsValid = email.fieldIsValid && password.fieldIsValid;
 
-<<<<<<< HEAD
-=======
-
-    useEffect(() => {
-        if (loading) {
-            // maybe trigger a loading screen
-            return;
-        }
-        if (currentUser) {
-            console.log('already logged in');
-            navigate('/');
-        };
-    }, [currentUser]);
-
->>>>>>> parent of 87140975 (update)
     const onLoginHandler = async (e) => {
         e.preventDefault();
-        if(formIsValid) {
+        if (formIsValid) {
             setIsLoading(true);
-            const result = await logIn(email.value, password.value);
-            navigate('/');
-            return result;
+            try {
+                await logIn(email.value, password.value);
+                navigate('/');
+                toast.success('Welcome back!');
+            } catch (err) {
+                toast.error('Wrong email or password!');
+                password.fieldReset();
+            }
         }
         setIsLoading(false);
     };
@@ -75,7 +62,7 @@ export const Login = () => {
 
                         <input
                             type="password"
-                            className={`input ${password.hasError ? 'input-alert': ''}`}
+                            className={`input ${password.hasError ? 'input-alert' : ''}`}
                             value={password.value}
                             onChange={password.onChange}
                             onBlur={password.onBlur}
@@ -84,7 +71,7 @@ export const Login = () => {
                         />
                     </div>
                     <button
-                    disabled={!formIsValid || isLoading}
+                        disabled={!formIsValid || isLoading}
                         className="btn action-btn"
                     >
                         Login

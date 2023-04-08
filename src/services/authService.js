@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { addDoc, collection, doc, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 import { auth, firestore } from '../firebase_setup/firebase';
 
 const googleProvider = new GoogleAuthProvider();
@@ -22,17 +23,11 @@ const registerWithGoogle = async () => {
         alert(err.message);
     }
 };
-const logIn = (email, password) => {
-    try {
-        const result = signInWithEmailAndPassword(auth, email, password);
-        return result;
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
+const logIn = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password);
+
 };
 const registerWithEmail = async (name, email, password) => {
-    try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
         const uid = user.uid;
@@ -42,10 +37,6 @@ const registerWithEmail = async (name, email, password) => {
             email,
             watchlist: []
         });
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
 };
 const sendPasswordReset = async (email) => {
     try {
@@ -57,7 +48,7 @@ const sendPasswordReset = async (email) => {
     }
 };
 const logout = async () => {
-   await signOut(auth);
+    await signOut(auth);
 };
 
 const getUserAdditionalData = async (userId) => {

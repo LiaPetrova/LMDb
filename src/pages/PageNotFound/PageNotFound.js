@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from './PageNotFound.module.css';
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
     return (
         <section className={styles['page-not-found']}>
             <div className={styles["lamp__wrap"]}>
@@ -25,5 +25,7 @@ export const PageNotFound = () => {
                 </div>
             </section>
         </section>
-    )
-}
+    );
+};
+
+export default PageNotFound;

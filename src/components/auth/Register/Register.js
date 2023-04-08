@@ -1,38 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
     auth,
 } from "../../../firebase_setup/firebase";
 import { useInput } from "../../../hooks/useInput";
 import { registerWithEmail, registerWithGoogle } from "../../../services/authService";
-import userValidation from "../../../validationFunctions/validationFunctions";
+import validationFunctions from "../../../utils/validationFunctions/validationFunctions";
 
-export const Register = () => {
-    const [user, loading, error] = useAuthState(auth);
+const Register = () => {
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
 
 
-    const email = useInput(userValidation.emailIsValid);
-    const name = useInput(userValidation.nameIsLength);
-    const password = useInput(userValidation.passwordIsLength);
-    const repeatPassword = useInput(userValidation.isEqual.bind(null, password.value));
+    const email = useInput(validationFunctions.emailIsValid);
+    const name = useInput(validationFunctions.nameIsLength);
+    const password = useInput(validationFunctions.passwordIsLength);
+    const repeatPassword = useInput(validationFunctions.isEqual.bind(null, password.value));
 
-    const formIsValid = 
-    email.fieldIsValid 
-    && password.fieldIsValid 
-    && password.fieldIsValid 
-    && repeatPassword.fieldIsValid;
-
-
+    const formIsValid =
+        email.fieldIsValid
+        && password.fieldIsValid
+        && password.fieldIsValid
+        && repeatPassword.fieldIsValid;
 
 
-    const onRegisterHandler = async () => {
+
+
+    const onRegisterHandler = async (e) => {
+        e.preventDefault();
         if (formIsValid) {
             setIsLoading(true);
-           await registerWithEmail(name.value, email.value, password.value);
-            navigate('/');
+            try {
+                await registerWithEmail(name.value, email.value, password.value);
+                navigate('/');
+                toast.success(`Welcome, ${name.value}`);
+            } catch (err){
+                password.fieldReset();
+                repeatPassword.fieldReset();
+                toast.error('Email is already taken!');
+            }
         }
         setIsLoading(false);
     };
@@ -71,7 +80,7 @@ export const Register = () => {
 
                         <input
                             type="text"
-                            className={`input ${name.hasError ? 'input-alert': ''}`}
+                            className={`input ${name.hasError ? 'input-alert' : ''}`}
                             value={name.value}
                             onChange={name.onChange}
                             onBlur={name.onBlur}
@@ -85,7 +94,7 @@ export const Register = () => {
 
                         <input
                             type="password"
-                            className={`input ${password.hasError ? 'input-alert': ''}`}
+                            className={`input ${password.hasError ? 'input-alert' : ''}`}
                             value={password.value}
                             onChange={password.onChange}
                             onBlur={password.onBlur}
@@ -99,7 +108,7 @@ export const Register = () => {
 
                         <input
                             type="password"
-                            className={`input ${repeatPassword.hasError ? 'input-alert': ''}`}
+                            className={`input ${repeatPassword.hasError ? 'input-alert' : ''}`}
                             value={repeatPassword.value}
                             onChange={repeatPassword.onChange}
                             onBlur={repeatPassword.onBlur}
@@ -108,7 +117,7 @@ export const Register = () => {
                         />
                     </div>
                     <button
-                    disabled={!formIsValid || isLoading}
+                        disabled={!formIsValid || isLoading}
                         className="btn action-btn"
                     >
                         Register
@@ -123,47 +132,7 @@ export const Register = () => {
             </div>
 
         </section>
-
-        // <div className="register">
-        //     <div className="register__container">
-        //         <input
-        //             type="text"
-        //             className="register__textBox"
-        //             value={email}
-        //             onChange={(e) => setEmail(e.target.value)}
-        //             placeholder="E-mail Address"
-        //         />
-        //         <input
-        //             type="text"
-        //             className="register__textBox"
-        //             value={name}
-        //             onChange={(e) => setName(e.target.value)}
-        //             placeholder="Full Name"
-        //         />
-        //         <input
-        //             type="password"
-        //             className="register__textBox"
-        //             value={password}
-        //             onChange={(e) => setPassword(e.target.value)}
-        //             placeholder="Password"
-        //         />
-        //         <button 
-        //         className="register__btn" 
-        //         onClick={onRegisterHandler}
-        //         >
-        //             Register
-        //         </button>
-        //         <button
-        //         disabled={!formIsValid || isLoading}
-        //             className="register__btn register__google"
-        //             onClick={onGoogleRegisterHandler}
-        //         >
-        //             Register with Google
-        //         </button>
-        //         <div>
-        //             Already have an account? <Link to="/login">Login</Link> now.
-        //         </div>
-        //     </div>
-        // </div>
     );
 };
+
+export default Register;

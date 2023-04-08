@@ -3,15 +3,11 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import styles from './ShowCard.module.css';
 import { useNavigate } from 'react-router-dom'
 import { addToWishList, removeFromWatchlist } from '../../../services/showsService';
-<<<<<<< HEAD
 import { useParsers } from '../../../utils/parsers';
 import { toast } from 'react-toastify';
 import { useShowsContext } from '../../../contexts/ShowsConext';
 import { useCallback } from 'react';
 import {memo} from 'react';
-=======
-import { durationParser, textShortener, yearParser } from '../../../utils/parsers';
->>>>>>> parent of 87140975 (update)
 
 const ShowCard = ({ show, id, page }) => {
 
@@ -26,27 +22,20 @@ const ShowCard = ({ show, id, page }) => {
 
     const addToWatchListHandler = useCallback(() => {
         if (!currentUser) {
+            toast.error('You need to be logged in to do that!')
             return navigate('/login');
         }
         addToWishList(show.type, currentUser.uid, id);
         setWatchlist(state => [...state, { fields: show, id: id }]);
-<<<<<<< HEAD
         toast.success(`You added ${show.title} to your watchlist!`);
     }, []);
-=======
-    };
->>>>>>> parent of 87140975 (update)
 
     const removeFromWatchlistHandler = useCallback(() => {
         removeFromWatchlist(show.type, currentUser.uid, id);
         setWatchlist(state => state.filter(x => x.id !== id));
-<<<<<<< HEAD
         toast.info(`You removed ${show.title} from your     !`);
 
     }, []);
-=======
-    };
->>>>>>> parent of 87140975 (update)
     return (
         <>
             {show && <article

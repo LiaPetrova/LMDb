@@ -1,7 +1,7 @@
 import { GenreCard } from './GenreCard/GenreCard';
 import styles from './Genres.module.css';
 
-export const Genres = () => {
+const Genres = () => {
 
     const genresList = [
         {
@@ -66,3 +66,5 @@ export const Genres = () => {
         </section>
     );
 };
+
+export default Genres;

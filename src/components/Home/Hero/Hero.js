@@ -6,7 +6,7 @@ export const Hero = () => {
         <div className={styles.hero}>
             <h1 className={styles['main-title']}>Join the community of LMDb now!</h1>
             <h2 className={styles['sub-title']}>Here we share the passion for old and new movies and series!</h2>
-            <Link className='btn btn-primary box-shadow link'>Register</Link>
+            <Link to={'/register'} className='btn btn-primary box-shadow link'>Register</Link>
         </div>
     );
 }
