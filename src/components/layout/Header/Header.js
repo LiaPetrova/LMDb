@@ -18,6 +18,7 @@ const Header = () => {
     const [searchResult, setSearchResults] = useState([]);
     const { allShowsList, moviesList, seriesList } = useShowsContext();
     const [type, setType] = useState('All');
+    const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
 
 
     const openSearchPanel = useCallback(() => setSearchPanel(true), []);
@@ -43,6 +44,10 @@ const Header = () => {
             openSearchPanel(true);
         }
     }, []);
+
+    const hamburgerMenuHandler = () => {
+        setHamburgerIsOpen(!hamburgerIsOpen);
+    };
 
 
     const changeBackground = useCallback(() => {
@@ -90,7 +95,58 @@ const Header = () => {
                         // onClick={} 
                         className={styles['search-btn']}>
                         <i className={`fa-solid fa-magnifying-glass box-shadow`}></i>
+
                     </button>
+                </div>
+
+                <div className={styles['hamburger-wrapper']}>
+
+                    <i 
+                    className={`${styles.hamburger} ${hamburgerIsOpen ? styles['i-active'] : styles['i-inactive']} fa-solid fa-xmark`} 
+                    onClick={hamburgerMenuHandler}
+                    >
+                    </i>
+
+                    <i 
+                    onClick={hamburgerMenuHandler} 
+                    className={`${hamburgerIsOpen ? styles['i-inactive'] : styles['i-active']} fa-solid fa-bars`} 
+                    ></i>
+                    <ul className={`${styles["nav-list"]} ${hamburgerIsOpen ? styles.active : styles.inactive}`}>
+                        {isAdmin &&
+                            <li className={styles["nav-list-item"]}>
+                                <Link to="/add" className={styles.link}>Add</Link>
+                            </li>}
+                        <li className={styles["nav-list-item"]}>
+                            <Link to="/movies" className={styles.link}>Movies</Link>
+                        </li>
+
+                        <li className={styles["nav-list-item"]}>
+                            <Link to='/series' className={styles.link}>Series</Link>
+                        </li>
+                        <li className={styles["nav-list-item"]}>
+                            <Link to='/genres' className={styles.link}>Genres</Link>
+                        </li>
+                        {!currentUser ?
+                            <>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/login' className={styles.link}>Login</Link>
+                                </li>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/register' className={styles.link}>Register</Link>
+                                </li>
+                            </>
+                            : <>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/watchlist' className={styles.link}>Watchlist</Link>
+                                </li>
+                                <li className={styles["nav-list-item"]}>
+                                    <Link to='/logout' className={styles.link}>Logout</Link>
+                                </li>
+
+                            </>
+                        }
+
+                    </ul>
                 </div>
 
                 <nav className={styles['nav-desctop']}>

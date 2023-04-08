@@ -6,6 +6,7 @@
 .main {
     margin-top: 10rem;
 }
+
 .btn {
     background-color: var(--clr-primary);
     padding: 0.4rem 1rem;
@@ -29,7 +30,7 @@
 
 .btn:hover:not(:disabled) {
     scale: 1.04;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn.link {
@@ -51,9 +52,9 @@
     text-decoration: none;
 }
 
-.border-radius { 
+.border-radius {
     border-radius: 0.6rem;
-    
+
 }
 
 .no-results {
@@ -92,9 +93,10 @@
 
 .form-section .input {
     box-sizing: border-box;
-    background-color:rgba(104, 104, 104, 0.815);;
+    background-color: rgba(104, 104, 104, 0.815);
+    ;
     border: none;
-    border-bottom:3px solid var(--clr-dark-text);
+    border-bottom: 3px solid var(--clr-dark-text);
     border-radius: 8px;
     width: 100%;
     line-height: 2;
@@ -134,7 +136,7 @@
     color: var(--clr-secondary);
 }
 
-.form-section  button {
+.form-section button {
     margin-right: 0.4rem;
     margin-bottom: 1rem;
 }
@@ -162,7 +164,7 @@
     margin-bottom: 0.2rem;
 }
 
-.link.anchor a{
+.link.anchor a {
     color: var(--clr-blue);
     font-weight: 500;
     border-bottom-width: 0%;
@@ -171,7 +173,7 @@
 }
 
 
-.link.anchor > a::after {
+.link.anchor>a::after {
     content: "";
     display: block;
     margin: auto;
@@ -180,18 +182,23 @@
     top: 5px;
     background: transparent;
     transition: all 0.7s ease-in-out;
-    
-  }
-  
-  .link.anchor > a:hover::after, .link.anchor > a.active-nav::after {
-    width: 100%;
-    background: var(--clr-blue);
-  }
-
-  @media screen and (max-width: 1015px) {
-    .width {
-        width: 87%;
-    }
 
 }
 
+.link.anchor>a:hover::after,
+.link.anchor>a.active-nav::after {
+    width: 100%;
+    background: var(--clr-blue);
+}
+
+@media screen and (max-width: 1015px) {
+    .width {
+        width: 87%;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .width {
+        width: 95%;
+    }
+}

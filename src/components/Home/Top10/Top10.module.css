@@ -13,7 +13,7 @@
 .section .top-ten::after {
     width: 6%;
     position: absolute;
-    right: 0;
+    right: -3px;
     top: 6.1rem;
     content: '';
     height: 18.3rem;
@@ -24,7 +24,7 @@
 section .top-ten::before {
     width: 6%;
     position: absolute;
-    left: 0;
+    left: -3px;
     top: 6.1rem;
     content: '';
     height: 18.3rem;
@@ -95,4 +95,27 @@ section .top-ten::before {
 
 .navigation-arrow:hover {
     background-color: var(--clr-grey-bgn);
+}
+
+@media screen and (max-width: 1200px) {
+    /* .section .top-ten::before {
+        width: 10%;
+        left: -3rem;
+   
+    
+    }
+    .section .top-ten::after {
+        width: 10%;
+        right: -3rem;
+   
+    
+    } */
+}
+
+@media screen and (max-width: 519px) {
+    .section .top-ten::after,
+    .section .top-ten::before {
+        top: 5.1rem
+    
+    }
 }

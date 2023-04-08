@@ -397,7 +397,8 @@
 
 .devider {
     height: 100%;
-    width: 4px;
+    width: 4px
+    ;
     border-radius: 3px;
     background-color: var(--clr-primary);
     position: absolute;
