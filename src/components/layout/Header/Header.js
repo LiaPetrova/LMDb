@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import { memo, useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-=======
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
->>>>>>> parent of 87140975 (update)
 import logo from '../../../assets/images/logo.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useShowsContext } from '../../../contexts/ShowsConext';
