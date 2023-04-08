@@ -23,11 +23,11 @@ export const ShowDetails = () => {
     const [currentRating, setCurrentRating] = useState(0);
     const [usersRatedCount, setUsersRatedCount] = useState(0);
     const { showEdit, setWatchlist, showDelete } = useShowsContext();
-    
+
     const parsers = useParsers();
-    
-    
-    
+
+
+
     const closeRateModal = useCallback(() => setRateShow(false), []);
     const openRateModal = () => {
         if (!currentUser) {
@@ -86,16 +86,16 @@ export const ShowDetails = () => {
 
     const deleteShowHandler = useCallback(() => {
         // eslint-disable-next-line no-restricted-globals
-       if(confirm(`Are you sure you want to delete ${show.title}`)) {
+        if (confirm(`Are you sure you want to delete ${show.title}`)) {
             deleteShow(showId, type);
             showDelete(showId, type);
-            if(type === 'Movie') {
+            if (type === 'Movie') {
                 return navigate('/movies');
-            } 
+            }
             return navigate('/series');
-       }
-       
-        
+        }
+
+
     }, []);
 
     return (
@@ -246,7 +246,9 @@ export const ShowDetails = () => {
                                         <ul className={styles['actors']}>
                                             {show.actorsList.map(x =>
                                                 <li className={`${styles['actor']}`} key={x.fullName}>
-                                                    <img className={`${styles['img']} box-shadow`} src={x.imageUrl} alt="actor" />
+                                                    <Link to={x.wikiUrl} target="_blank" title="See Wikipedia page">
+                                                        <img className={`${styles['img']} box-shadow`} src={x.imageUrl} alt="actor" />
+                                                    </Link>
                                                     <div className={styles['names-container']}>
                                                         <p><span>Actors Name:</span>{x.fullName}</p>
                                                         <p><span>Role Name:</span>{x.roleName}</p>

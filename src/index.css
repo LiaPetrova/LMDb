@@ -48,3 +48,15 @@ body {
 #root {
     padding-bottom: 3rem;
 }
+
+@media screen and (max-width: 1201px) {
+    html {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 1151px) {
+    html {
+        font-size: 14px;
+    }
+
+}

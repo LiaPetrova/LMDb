@@ -188,3 +188,10 @@
     background: var(--clr-blue);
   }
 
+  @media screen and (max-width: 1015px) {
+    .width {
+        width: 87%;
+    }
+
+}
+
