@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, arrayUnion, doc, getDoc, updateDoc, arrayRemove, setDoc, FieldValue, increment, deleteField } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query, serverTimestamp, arrayUnion, doc, getDoc, updateDoc, arrayRemove, setDoc, FieldValue, increment, deleteField, deleteDoc } from "firebase/firestore";
 import { firestore } from "../firebase_setup/firebase";
 
 
@@ -9,41 +9,23 @@ const seriesCollection = collection(firestore, "series");
 export const addNewShow = async (type, showData) => {
     let collectionType = type === 'Movie' ? movieCollection : seriesCollection;
     try {
-        await addDoc(collectionType, {
+        const data = {
             ...showData,
             rating: {
                 ratingPoints: 0,
                 usersRated: []
             },
             createdAt: serverTimestamp()
-        });
+        };
+       const result =  await addDoc(collectionType, data);
+
+        return {id: result.id, fields: data};
     } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
 
-export const editShow = async (type, showId, showData) => {
-    let showType = '';
-    if (type === 'Movie') {
-        showType = 'movies'
-    } else if (type === 'Series') {
-        showType = 'series'
-    }
-    const currentShowRef = doc(firestore, showType, showId);
-    try {
-
-        const result = await updateDoc(currentShowRef, {
-            ...showData
-        }, { merge: true });
-        console.log(result);
-        return result;
-
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
-}
 
 export const getAll = async (type) => {
     let collectionType = type === 'Movie' ? movieCollection : seriesCollection;
@@ -71,6 +53,40 @@ export const getAll = async (type) => {
         console.error(err);
         alert(err.message);
     }
+};
+
+
+export const editShow = async (type, showId, showData) => {
+    let showType = '';
+    if (type === 'Movie') {
+        showType = 'movies'
+    } else if (type === 'Series') {
+        showType = 'series'
+    }
+    const currentShowRef = doc(firestore, showType, showId);
+    try {
+
+        const result = await updateDoc(currentShowRef, {
+            ...showData
+        });
+        console.log(result);
+        return result;
+
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
+
+export const deleteShow = async (showId, type) => {
+    let showType = '';
+    if (type === 'Movie') {
+        showType = 'movies'
+    } else if (type === 'Series') {
+        showType = 'series'
+    }
+    const currentShowRef = doc(firestore, showType, showId);
+    return await deleteDoc(currentShowRef);
 };
 
 export const getOne = async (showId, type) => {
@@ -131,11 +147,7 @@ export const handleRating = async (action, type, userId, showId, ratePoints, use
         showType = 'series'
     }
     const currentShowRef = doc(firestore, showType, showId);
-    // const result = await getDoc(currentShowRef);
-    // const fields = result.data();
-    // const oldRatingPoints = fields.rating.ratingPoints;
-    // let usersRatedCount = Object.keys(fields.rating.usersRated).length;
-    // const currentUserRating = fields.rating.usersRated[userId];
+
     let newRatingPoints = 0;
 
     if (action === 'send') {

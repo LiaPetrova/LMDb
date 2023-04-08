@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useShowsContext } from "../../../contexts/ShowsConext";
-import { ShowCard } from "../../shared/ShowCard/ShowCard";
+import Loader from "../../shared/Loader/Loader";
+import  ShowCard  from "../../shared/ShowCard/ShowCard";
 
 export const NewestMovies = ({ styles }) => {
-    const { moviesList, watchlist, setWatchlist } = useShowsContext();
+    const { moviesList } = useShowsContext();
 
     return (
         <section className={styles.section}>
@@ -14,11 +15,14 @@ export const NewestMovies = ({ styles }) => {
                     <i className="fa-solid fa-angle-right"></i>
                 </div>
             </ Link>
-            <div className={styles.movies}>
-                {moviesList.length > 0 ? moviesList.map(x =>
-                    <ShowCard key={x.id} show={x.fields} id={x.id} watchlist={watchlist} setWatchlist={setWatchlist} page='Home'/>)
-                    : <p className={styles['no-results']}>Nothing to show</p>}
-            </div>
+
+                <div className={styles.movies}>
+                    {moviesList.length > 0 ? moviesList.slice(0, 5).map(x =>
+                        <ShowCard key={x.id} show={x.fields} id={x.id} page='Home' />)
+                        : <Loader />}
+                </div>
+                
+
         </section>
     );
 };

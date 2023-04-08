@@ -3,27 +3,50 @@ import { useAuthContext } from '../../../contexts/AuthContext';
 import styles from './ShowCard.module.css';
 import { useNavigate } from 'react-router-dom'
 import { addToWishList, removeFromWatchlist } from '../../../services/showsService';
+<<<<<<< HEAD
+import { useParsers } from '../../../utils/parsers';
+import { toast } from 'react-toastify';
+import { useShowsContext } from '../../../contexts/ShowsConext';
+import { useCallback } from 'react';
+import {memo} from 'react';
+=======
 import { durationParser, textShortener, yearParser } from '../../../utils/parsers';
+>>>>>>> parent of 87140975 (update)
 
-export const ShowCard = ({ show, id, watchlist, setWatchlist, page }) => {
+const ShowCard = ({ show, id, page }) => {
 
+    const parsers = useParsers();
+    const { watchlist, setWatchlist } = useShowsContext();
     const { currentUser } = useAuthContext();
     const navigate = useNavigate();
 
-    const isAdded = watchlist.some(x => x.id === id);
+    console.log('ok');
 
-    const addToWatchListHandler = () => {
+    const isAdded = watchlist?.some(x => x.id === id);
+
+    const addToWatchListHandler = useCallback(() => {
         if (!currentUser) {
             return navigate('/login');
         }
         addToWishList(show.type, currentUser.uid, id);
         setWatchlist(state => [...state, { fields: show, id: id }]);
+<<<<<<< HEAD
+        toast.success(`You added ${show.title} to your watchlist!`);
+    }, []);
+=======
     };
+>>>>>>> parent of 87140975 (update)
 
-    const removeFromWatchlistHandler = () => {
+    const removeFromWatchlistHandler = useCallback(() => {
         removeFromWatchlist(show.type, currentUser.uid, id);
         setWatchlist(state => state.filter(x => x.id !== id));
+<<<<<<< HEAD
+        toast.info(`You removed ${show.title} from your     !`);
+
+    }, []);
+=======
     };
+>>>>>>> parent of 87140975 (update)
     return (
         <>
             {show && <article
@@ -75,13 +98,13 @@ export const ShowCard = ({ show, id, watchlist, setWatchlist, page }) => {
                                             styles['home-year']
                                             : styles['catalog-year']
                                         }
-                                    >{yearParser(show.year)}</p>
+                                    >{parsers.yearParser(show.year)}</p>
 
 
                                 </div>
                                 {page !== 'Home' &&
                                     <p className={styles.duration}>
-                                        {durationParser(show.duration)}
+                                        {parsers.durationParser(show.duration)}
                                     </p>}
                                 <div
                                     className={page === 'Home' ?
@@ -112,7 +135,7 @@ export const ShowCard = ({ show, id, watchlist, setWatchlist, page }) => {
                                 }
 
                                 {page !== 'Home' &&
-                                    <div className={styles.desc}>{textShortener(show.desc)}</div>
+                                    <div className={styles.desc}>{parsers.textShortener(show.desc)}</div>
                                 }
 
                             </div>
@@ -142,3 +165,5 @@ export const ShowCard = ({ show, id, watchlist, setWatchlist, page }) => {
         </>
     );
 };
+
+export default memo(ShowCard);

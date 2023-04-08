@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAuthContext } from '../../../contexts/AuthContext';
+import { useShowsContext } from '../../../contexts/ShowsConext';
 import { addNewShow } from '../../../services/showsService';
-import styles from '../Admin.module.css';
 
 export const AddNew = () => {
     const { isAdmin } = useAuthContext();
@@ -9,6 +11,8 @@ export const AddNew = () => {
     const [imageList, setImageList] = useState(['']);
     const [actorsList, setActorsList] = useState([{ fullName: '', roleName: '', imageUrl: '', wikiUrl: '' }]);
     const [genreList, setGenreList] = useState(['']);
+    const navigate = useNavigate();
+    const { showAdd } = useShowsContext();
 
     const handleInputChange = (e, index) => {
         const { name, value } = e.target;
@@ -72,11 +76,19 @@ export const AddNew = () => {
         duration = Number(duration);
         const showData = { type, title, year, duration, director, desc, imageList, actorsList, genreList };
         if (type === 'Movie') {
-            addNewShow('Movie', showData);
+            addNewShow('Movie', showData)
+                .then(result => {
+                    showAdd(result, type);
+                });
+            navigate(`/movies`);
         } else {
-            addNewShow('Series', showData);
+            addNewShow('Series', showData)
+                .then(result => {
+                    showAdd(result, type);
+                });
+            navigate(`/series`);
         }
-        console.log(JSON.stringify(showData));
+        toast.success(`You added ${title} to the ${type} collection!`)
     }
 
     return (
@@ -182,7 +194,6 @@ export const AddNew = () => {
                 />
                 <div className={'images'}>
                     <label className={'label'} htmlFor="imgUrl">Image URL</label>
-                    {/* <button onClick={addNewInput} className={`btn`}><i className="fa-solid fa-plus"></i></button> */}
                     {imageList.map((x, i) => {
                         return (
                             <div className="box" key={i}>
@@ -202,7 +213,6 @@ export const AddNew = () => {
                             </div>
                         );
                     })}
-                    {imageList.join(', ')}
 
                     <label className={'label'} htmlFor="imgUrl">Actors</label>
 
@@ -256,7 +266,7 @@ export const AddNew = () => {
                 </div>
                 <button className={`btn ${'action-btn'}`}>Submit</button>
             </form>
-           
+
         </section>
     )
 };

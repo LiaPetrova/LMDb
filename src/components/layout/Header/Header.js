@@ -1,14 +1,19 @@
+<<<<<<< HEAD
+import { memo, useCallback, useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+=======
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+>>>>>>> parent of 87140975 (update)
 import logo from '../../../assets/images/logo.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useShowsContext } from '../../../contexts/ShowsConext';
 import { filterSearchResults } from '../../../utils/filterSearchResults';
 import styles from './Header.module.css';
-import { SearchPanel } from './SearchPanel/SearchPanel';
+import SearchPanel from './SearchPanel/SearchPanel';
 let lastScrollTop = 0;
 
-export const Header = () => {
+const Header = () => {
 
     const { currentUser, isAdmin } = useAuthContext();
     const [headerBgn, setHeaderBgn] = useState(false);
@@ -20,13 +25,13 @@ export const Header = () => {
     const [type, setType] = useState('All');
 
 
-    const openSearchPanel = () => setSearchPanel(true);
-    const closeSearchPanel = () => {
+    const openSearchPanel = useCallback(() => setSearchPanel(true), []);
+    const closeSearchPanel = useCallback(() => {
         setSearchPanel(false)
         setSearchTerm('');
-    };
+    }, []);
 
-    const changeHandler = (e) => {
+    const changeHandler = useCallback((e) => {
         if (e.target.name === 'type') {
             setType(e.target.value);
         } else {
@@ -42,37 +47,34 @@ export const Header = () => {
             }
             openSearchPanel(true);
         }
-    };
+    }, []);
 
 
-    const changeBackground = () => {
+    const changeBackground = useCallback(() => {
         if (window.scrollY >= 120) {
             setHeaderBgn(true)
         } else {
             setHeaderBgn(false)
         }
 
-    };
+    }, []);
 
 
-    const toggleHeader = () => {
-        let st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+    const toggleHeader = useCallback(() => {
+        let st = window.pageYOffset || document.documentElement.scrollTop;
         if (st > lastScrollTop) {
-            // downscroll code
             setShowHeader(false);
         } else if (st < lastScrollTop) {
-            // upscroll code
             setShowHeader(true);
         } // else was horizontal scroll
         lastScrollTop = st <= 0 ? 0 : st;
-    }
+    }, []);
 
     useEffect(() => {
         changeBackground()
-        // adding the event when scroll change background
         window.addEventListener("scroll", changeBackground);
         window.addEventListener("scroll", toggleHeader);
-    })
+    }, []);
 
 
     return (
@@ -139,5 +141,6 @@ export const Header = () => {
             <SearchPanel searchResult={searchResult} closeSearchPanel={closeSearchPanel} searchPanel={searchPanel} />
         </>
 
-    )
-}
+    );
+};
+export default memo(Header);

@@ -1,0 +1,43 @@
+.sort-drop-down {
+    text-align: right;
+    color: var(--clr-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.sort-drop-down span{
+}
+
+
+.sort-drop-down .select {
+    border: none;
+    background-color: transparent;
+    color: var(--clr-white);
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
+.sort-drop-down .select option {
+    background-color: var(--clr-dark-grey);
+    border-bottom: 0.3px solid var(--clr-grey);
+    padding: 4px 6px;
+    
+
+}
+
+.sort-drop-down button {
+    border: none;
+    background-color: transparent;
+    color: var(--clr-white);
+    margin-left: 0.2rem;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    font-size: 1.5rem;
+
+}
+
+.sort-drop-down button:hover {
+    color: var(--clr-secondary);
+}

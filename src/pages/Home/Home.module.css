@@ -27,19 +27,20 @@
 }
 
 .title-wrapper i {
- margin-top: 0.3rem;
- color: var(--clr-primary);
- font-size: 2rem;
- transition: all 0.6s ease-in-out;
+    margin-top: 0.3rem;
+    color: var(--clr-primary);
+    font-size: 2rem;
+    transition: all 0.6s ease-in-out;
 }
 
 .title-wrapper i:hover {
-    color:  var(--clr-white);
+    color: var(--clr-white);
 }
 
-.series, .movies {
+.series,
+.movies {
     display: flex;
-    gap: 2rem;
+    gap: 2.6rem;
 }
 
 .no-results {
@@ -47,3 +48,4 @@
     font-size: 1.5rem;
     text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
 }
+

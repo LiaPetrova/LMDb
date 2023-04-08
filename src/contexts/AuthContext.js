@@ -15,12 +15,21 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => setCurrentUser(user));
+<<<<<<< HEAD
+        if(currentUser?.uid) {
+            setIsAdmin(currentUser?.uid === process.env.REACT_APP_ADMIN_UID);
+            setLoading(false);
+        } else {
+            setIsAdmin(false);
+        }
+=======
 
         setIsAdmin(currentUser?.uid === process.env.REACT_APP_ADMIN_UID);
         setLoading(false);
         // getUserAdditionalData
         // .then(result => setUserAdditionalData(result));
 
+>>>>>>> parent of 87140975 (update)
         return unsubscribe;
     }, [currentUser, isAdmin]);
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useShowsContext } from "../../../contexts/ShowsConext";
 import { editShow, getOne } from "../../../services/showsService";
-import styles from '../Admin.module.css';
 
 
 export const EditShow = () => {
@@ -19,6 +19,7 @@ export const EditShow = () => {
     const [actorsList, setActorsList] = useState([{ fullName: '', roleName: '', imageUrl: '', wikiUrl: '' }]);
     const [genreList, setGenreList] = useState(['']);
     const navigate = useNavigate();
+    const { showEdit } = useShowsContext();
 
     useEffect(() => {
         getOne(showId, type)
@@ -103,9 +104,15 @@ export const EditShow = () => {
         duration = Number(duration);
         const showData = { type, title, year, duration, director, desc, imageList, actorsList, genreList };
         if (type === 'Movie') {
-            editShow('Movie', showId, showData);
+            editShow('Movie', showId, showData)
+                .then(result => {
+                    showEdit(showId, { id: showId, fields: { ...show, ...showData } }, type)
+                });
         } else {
-            editShow('Series', showId, showData);
+            editShow('Series', showId, showData)
+            .then(result => {
+                showEdit(showId, { id: showId, fields: { ...show, ...showData } }, type)
+            });
         }
         navigate(`/catalog/${type}/${showId}`);
         console.log(JSON.stringify(showData));
@@ -114,14 +121,22 @@ export const EditShow = () => {
 
 
     return (
+<<<<<<< HEAD
+        <section action="" className={'form-section'}>
+            <h2 className='heading'>Edit show</h2>
+            <form action="" className='form' onSubmit={editHandler}>
+                <div className='input-box'>
+                    <div className='label'>Type of show</div>
+=======
         <section action="" className={styles['section']}>
             <h2 className={styles.heading}>Edit show</h2>
             <form action="" className={styles.form} onSubmit={editHandler}>
                 <div className={styles['input-box']}>
                     <div className={styles.label}>Type of show</div>
+>>>>>>> parent of 87140975 (update)
                     <div>
                         <input
-                            className={styles['input-radio']}
+                            className='input-radio'
                             type="radio"
                             id='movie'
                             name='type'
@@ -133,7 +148,7 @@ export const EditShow = () => {
                     </div>
                     <div>
                         <input
-                            className={styles['input-radio']}
+                            className='input-radio'
                             type="radio"
                             id='series'
                             name='type'
@@ -145,66 +160,66 @@ export const EditShow = () => {
                     </div>
                 </div>
                 <br />
-                <div className={styles['input-box']}>
-                    <label className={styles.label} htmlFor="title">Title</label>
+                <div className='input-box'>
+                    <label className='label' htmlFor="title">Title</label>
                     <input
                         type="text"
                         name='title'
                         id='title'
-                        className={styles.input}
+                        className='input'
                         onChange={handleSimpleInputChange}
                         // defaultValue={show.title}
                         value={values.title}
                         required
 
                     />
-                    <div className={styles['input-box']}>
-                        <label className={styles.label} htmlFor="year">Year</label>
+                    <div className='input-box'>
+                        <label className='label' htmlFor="year">Year</label>
                         <input
                             type="number"
                             name='year'
                             id='year'
-                            className={styles.input}
+                            className='input'
                             onChange={handleSimpleInputChange}
                             value={values.year}
                             required
 
                         />
                     </div>
-                    <div className={styles['input-box']}>
-                        <label className={styles.label} htmlFor="duration">Duration</label>
+                    <div className='input-box'>
+                        <label className='label' htmlFor="duration">Duration</label>
                         <input
                             type="number"
                             name='duration'
                             id='duration'
-                            className={styles.input}
+                            className='input'
                             onChange={handleSimpleInputChange}
                             value={values.duration}
                             required
 
                         />
                     </div>
-                    <div className={styles['input-box']}>
-                        <label className={styles.label} htmlFor="director">Director</label>
+                    <div className='input-box'>
+                        <label className='label' htmlFor="director">Director</label>
                         <input
                             type="text"
                             name='director'
                             id='director'
-                            className={styles.input}
+                            className='input'
                             onChange={handleSimpleInputChange}
                             value={values.director}
                             required
 
                         />
                     </div>
-                    <div className={styles['input-box']}>
-                        <label className={styles.label} htmlFor="genre">Genre</label>
+                    <div className='input-box'>
+                        <label className='label' htmlFor="genre">Genre</label>
                     </div>
                     {genreList?.map((x, i) => {
                         return (
                             <div className="box" key={i}>
                                 <input
-                                    className={styles.input}
+                                    className='input'
                                     name="genre"
                                     value={x}
                                     onChange={e => handleInputChange(e, i)}
@@ -223,23 +238,23 @@ export const EditShow = () => {
                     })}
 
 
-                    <label className={styles.label} htmlFor="desc">Description</label>
+                    <label className='label' htmlFor="desc">Description</label>
                     <textarea
                         name='desc'
                         id='desc'
-                        className={`${styles.input} ${styles.textarea}`}
+                        className='input textarea'
                         onChange={handleSimpleInputChange}
                         value={values.desc}
                         required
 
                     />
-                    <div className={styles.images}>
-                        <label className={styles.label} htmlFor="imgUrl">Image URL</label>
+                    <div className='images'>
+                        <label className='label' htmlFor="imgUrl">Image URL</label>
                         {imageList.map((x, i) => {
                             return (
                                 <div className="box" key={i}>
                                     <input
-                                        className={styles.input}
+                                        className='input'
                                         name="movieImgUrl"
                                         value={x}
                                         onChange={e => handleInputChange(e, i)}
@@ -258,13 +273,13 @@ export const EditShow = () => {
                         })}
                         {/* {imageList.join(', ')} */}
 
-                        <label className={styles.label} htmlFor="imgUrl">Actors</label>
+                        <label className='label' htmlFor="imgUrl">Actors</label>
 
                         {actorsList.map((x, i) => {
                             return (
                                 <div key={i}>
                                     <input
-                                        className={styles.input}
+                                        className='input'
                                         name="fullName"
                                         placeholder="Full Name"
                                         defaultValue={x.fullName}
@@ -274,7 +289,7 @@ export const EditShow = () => {
                                     />
 
                                     <input
-                                        className={styles.input}
+                                        className='input'
                                         name="roleName"
                                         placeholder="Role Name"
                                         defaultValue={x.roleName}
@@ -282,7 +297,7 @@ export const EditShow = () => {
                                     />
 
                                     <input
-                                        className={styles.input}
+                                        className='input'
                                         name="imageUrl"
                                         placeholder="Image URL"
                                         defaultValue={x.imageUrl}
@@ -292,7 +307,7 @@ export const EditShow = () => {
                                     />
 
                                     <input
-                                        className={styles.input}
+                                        className='input'
                                         name="wikiUrl"
                                         placeholder="Link to Wikipedia"
                                         defaultValue={x.wikiUrl}
@@ -314,7 +329,7 @@ export const EditShow = () => {
                     </div>
 
                 </div>
-                <button className={`btn ${styles['submit-btn']}`}>Submit</button>
+                <button className='btn action-btn'>Update</button>
             </form>
 
         </section>

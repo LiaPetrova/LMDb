@@ -1,11 +1,15 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
-import { yearParser } from '../../../../utils/parsers';
+import { useParsers } from '../../../../utils/parsers';
 import styles from './SearchPanel.module.css'
-export const SearchPanel = ({
+const SearchPanel = ({
     closeSearchPanel,
     searchPanel,
     searchResult
 }) => {
+
+    const parsers = useParsers();
+
 
     const outsideClickHandler = (e) => {
         if (e.target.tagName === 'SECTION') {
@@ -25,9 +29,9 @@ export const SearchPanel = ({
                     {searchResult.length > 0 ?
                         <ul className={`${styles['result-list']} ${searchResult.length > 0 ? styles['active'] : styles.inactive}`}>
                             {searchResult.map(x => {
-                                return <Link  key={x.id} onClick={closeSearchPanel} to={`catalog/${x.fields.type}/${x.id}`} className='link'>
+                                return <Link key={x.id} onClick={closeSearchPanel} to={`catalog/${x.fields.type}/${x.id}`} className='link'>
                                     <li
-                                       
+
                                         className={styles['result-item']}
                                     >
                                         <div className={styles['img-container']}>
@@ -39,7 +43,7 @@ export const SearchPanel = ({
                                                     {x.fields.title}
                                                 </p>
                                                 <p className={styles.year}>
-                                                    {yearParser(x.fields.year)}
+                                                    {parsers.yearParser(x.fields.year)}
                                                 </p>
                                             </div>
                                             <div className={styles.rating}>
@@ -63,3 +67,5 @@ export const SearchPanel = ({
         </section>
     );
 };
+
+export default memo(SearchPanel);

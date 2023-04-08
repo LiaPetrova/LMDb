@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useInput = (validation) => {
     const [value, setValue] = useState('');
     const [hasTouched, setHasTouched] = useState(false);
 
-    const onChange = (e) => {
+    const onChange = useCallback((e) => {
         setValue(e.target.value);
-    }
-    const onBlur = () => {
+    }, []);
+    const onBlur = useCallback(() => {
         setHasTouched(true);
-    };
+    }, []);
 
-    const fieldReset = () => {
+    const fieldReset = useCallback(() => {
         setValue('');
         setHasTouched(false);
-    }
+    }, []);
 
     const fieldIsValid = validation(value);
     const hasError = !fieldIsValid && hasTouched;

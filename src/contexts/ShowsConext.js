@@ -1,72 +1,153 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { getAll, getAllFromWatchlist, getOne } from "../services/showsService";
 import { useAuthContext } from "./AuthContext";
 
 const ShowsContext = createContext();
 export const useShowsContext = () => useContext(ShowsContext);
-export const ShowsProvider = ({ children }) => {
-    const [moviesList, setMoviesList] = useState([]);
-    const [seriesList, setSeriesList] = useState([]);
-    const [allShowsList, setAllShowsList] = useState([]);
-    const [userWatchlist, setUserWatchlist] = useState([]);
-    const [watchlist, setWatchlist] = useState([]);
-    const { currentUser } = useAuthContext();
-    useEffect(() => {
 
+const showReducer = (state, action) => {
+    switch (action.type) {
+        case 'ADD_SHOWS':
+            return action.payload;
+        case 'SORT_SHOWS':
+            return [...action.payload];
+        case 'ADD_SHOW':
+            return [action.payload, ...state];
+        case 'EDIT_SHOW':
+            return state.map(x => x.id === action.showId ? action.payload : x);
+        case 'DELETE_SHOW':
+            return state.filter(x => x.id !== action.showId);
+        default:
+            return state;
+    }
+};
+
+
+export const ShowsProvider = ({ children }) => {
+
+    const [allShowsList, setAllShowsList] = useState([]);
+    const [watchlist, setWatchlist] = useState(null);
+    const { currentUser } = useAuthContext();
+    const [movies, dispatchMovies] = useReducer(showReducer, []);
+    const [series, dispatchSeries] = useReducer(showReducer, []);
+
+
+    useEffect(() => {
         getAll('Movie')
-            .then(docs => {
-                docs.forEach((doc) => {
-                    // arr.push({
-                    //     id: doc.id,
-                    //     fields: doc.fields
-                    // });
-                    setMoviesList(state => [...state, { id: doc.id, fields: doc.fields }]);
-                    console.log(moviesList);
-                });
-                // setMoviesList(arr);
+            .then(result => {
+                const action = {
+                    type: 'ADD_SHOWS',
+                    payload: result
+                };
+                dispatchMovies(action);
             });
+
         getAll('Series')
-            .then(docs => {
-                docs.forEach((doc) => {
-                    // arr.push({
-                    //     id: doc.id,
-                    //     fields: doc.fields
-                    // });
-                    setSeriesList(state => [...state, { id: doc.id, fields: doc.fields }]);
-                });
-                // setMoviesList(arr);
+            .then(result => {
+                const action = {
+                    type: 'ADD_SHOWS',
+                    payload: result
+                };
+                dispatchSeries(action);
             });
     }, []);
+
     useEffect(() => {
 
         if (currentUser?.uid) {
             getAllFromWatchlist(currentUser.uid)
                 .then(result => {
-                    setUserWatchlist(result);
-                    result.forEach(async (x) => {
+                    result.forEach(async (x, i) => {
                         const show = await getOne(x.showId, x.type);
-                        setWatchlist(state => [...state, { id: show.id, fields: show.fields }]);
+                        if (i === 0) {
+                            return setWatchlist([show]);
+                        } else {
+                            return setWatchlist(state => [...state, show]);
+                        }
                     });
+                    setWatchlist([]);
                 });
         };
 
     }, [currentUser?.uid]);
 
     useEffect(() => {
-        setAllShowsList([...seriesList, ...moviesList]);
-    }, [moviesList, seriesList])
+        setAllShowsList([...movies, ...series]);
+    }, [series, movies]);
 
-//     useEffect(() => {
-// console.log(userWatchlist);
-//        userWatchlist.forEach(async (x) => {
-//             const show = await getOne(x.showId, x.type);
-//             setWatchlist(state => [...state, { id: show.id, fields: show.fields }]);
-//             console.log(watchlist);
-//         });
 
-//     }, [userWatchlist]);
+    const showEdit = (showId, showData, type) => {
+        if (type === 'Movie') {
+            dispatchMovies({
+                type: 'EDIT_SHOW',
+                payload: showData,
+                showId
+            });
+        } else {
+            dispatchSeries({
+                type: 'EDIT_SHOW',
+                payload: showData,
+                showId
+            });
+        }
+    };
 
-    return <ShowsContext.Provider value={{ moviesList, seriesList, watchlist, setWatchlist, allShowsList }}>
+    const showDelete = (showId, type) => {
+        if (type === 'Movie') {
+            dispatchMovies({
+                type: 'DELETE_SHOW',
+                showId
+            });
+        } else {
+            dispatchSeries({
+                type: 'DELETE_SHOW',
+                showId
+            });
+        }
+    };
+
+    const showAdd = (showData, type) => {
+        if (type === 'Movie') {
+
+            dispatchMovies({
+                type: 'ADD_SHOW',
+                payload: showData,
+            });
+        } else {
+            dispatchSeries({
+                type: 'ADD_SHOW',
+                payload: showData,
+            });
+        }
+
+    };
+
+    const showsSort = (showsData, type) => {
+        if (type === 'Movie') {
+
+            dispatchMovies({
+                type: 'SORT_SHOWS',
+                payload: showsData,
+            });
+        } else {
+            dispatchSeries({
+                type: 'SORT_SHOWS',
+                payload: showsData,
+            });
+        }
+    }
+
+    return <ShowsContext.Provider value={{
+        moviesList: movies,
+        seriesList: series,
+        watchlist,
+        setWatchlist,
+        allShowsList,
+        showEdit,
+        showAdd,
+        showsSort,
+        showDelete
+    }}>
         {children}
     </ShowsContext.Provider>
 };

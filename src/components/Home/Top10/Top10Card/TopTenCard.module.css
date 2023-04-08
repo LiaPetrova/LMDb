@@ -1,0 +1,29 @@
+.top-ten-article .wrapper {
+    display: flex;
+    position: relative;
+    width: 20rem;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.number {
+    position: relative;
+    left: -14%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.show-img-wrapper {
+    width: 60%;
+    left: 47%;
+    position: absolute;
+    border-radius: 0.4rem;
+    overflow: hidden;
+}
+
+.show-img {
+    width: 12rem;
+    height: 18rem;
+    object-fit: cover;
+}

@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../../firebase_setup/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { logIn, registerWithGoogle } from "../../../services/authService";
+<<<<<<< HEAD
+=======
 import { useAuthContext } from "../../../contexts/AuthContext";
 import userValidation from "../../../validationFunctions/validationFunctions";
+>>>>>>> parent of 87140975 (update)
 import { useInput } from "../../../hooks/useInput";
 
 
 export const Login = () => {
 
-    const [loading] = useAuthState(auth);
-    const { currentUser } = useAuthContext();
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -22,6 +21,8 @@ export const Login = () => {
 
     const formIsValid = email.fieldIsValid && password.fieldIsValid;
 
+<<<<<<< HEAD
+=======
 
     useEffect(() => {
         if (loading) {
@@ -34,6 +35,7 @@ export const Login = () => {
         };
     }, [currentUser]);
 
+>>>>>>> parent of 87140975 (update)
     const onLoginHandler = async (e) => {
         e.preventDefault();
         if(formIsValid) {

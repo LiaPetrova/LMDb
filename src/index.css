@@ -45,3 +45,6 @@ body {
     box-sizing: border-box;
 }
 
+#root {
+    padding-bottom: 3rem;
+}

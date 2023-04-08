@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { CommentSection } from "../../components/CommentSection/CommentSection";
-import { RatingModal } from "../../components/RatingModal/RatingModal";
+import RatingModal from "../../components/RatingModal/RatingModal";
+import Loader from "../../components/shared/Loader/Loader";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { getOne, handleRating, sendRating } from "../../services/showsService";
-import { durationParser, yearParser } from "../../utils/parsers";
+import { useShowsContext } from "../../contexts/ShowsConext";
+import { deleteShow, getOne, handleRating } from "../../services/showsService";
+import { useParsers } from "../../utils/parsers";
 import styles from './ShowDetails.module.css';
 
 export const ShowDetails = () => {
+
     const navigate = useNavigate();
     const { showId, type } = useParams();
     const [show, setShow] = useState({});
@@ -15,18 +18,23 @@ export const ShowDetails = () => {
     const [rateShow, setRateShow] = useState(false);
     const [commentSectionOpen, setCommentSectionOpen] = useState(false);
     const [selectedSlide, setSelectedSlide] = useState(0);
-
+    const [hasRatedWith, setHasRatedWith] = useState(0);
+    const [hasRated, setHasRated] = useState(false);
+    const [currentRating, setCurrentRating] = useState(0);
+    const [usersRatedCount, setUsersRatedCount] = useState(0);
+    const { showEdit, setWatchlist, showDelete } = useShowsContext();
+    
+    const parsers = useParsers();
+    
+    
+    
+    const closeRateModal = useCallback(() => setRateShow(false), []);
     const openRateModal = () => {
         if (!currentUser) {
             return navigate('/login');
         }
         setRateShow(true);
-    }
-    const closeRateModal = () => setRateShow(false);
-    const [hasRatedWith, setHasRatedWith] = useState(0);
-    const [hasRated, setHasRated] = useState(false);
-    const [currentRating, setCurrentRating] = useState(0);
-    const [usersRatedCount, setUsersRatedCount] = useState(0);
+    };
 
     useEffect(() => {
         getOne(showId, type)
@@ -37,31 +45,58 @@ export const ShowDetails = () => {
                 setCurrentRating(result.fields.rating.ratingPoints);
                 setUsersRatedCount(Object.keys(result.fields.rating.usersRated).length);
             });
-        console.log(currentUser);
 
     }, [showId, type, currentUser]);
 
-    const rateShowHandler = (rating) => {
+    const rateShowHandler = useMemo((rating) => {
         handleRating('send', type, currentUser.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
             .then(result => {
                 setCurrentRating(result.newRatingPoints);
                 setUsersRatedCount(result.usersRatedCount);
+                if (type === 'Movie') {
+                    showEdit(showId, { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } }, 'Movie');
+                } else {
+                    showEdit(showId, { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } }, 'Series');
+                }
+                setWatchlist(state => state.map(x => x.id === showId ? { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } } : x));
             });
         setHasRated(true);
         setHasRatedWith(rating);
         closeRateModal();
-    };
 
-    const removeRateHandler = (rating) => {
+    }, []);
+
+    const removeRateHandler = useCallback((rating) => {
         handleRating('remove', type, currentUser.uid, showId, rating, usersRatedCount, currentRating, hasRated, hasRatedWith)
             .then(result => {
                 setCurrentRating(result.newRatingPoints);
                 setUsersRatedCount(result.usersRatedCount);
+                if (type === 'Movie') {
+                    showEdit(showId, { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } }, 'Movie');
+
+                } else {
+                    showEdit(showId, { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } }, 'Series');
+                }
+                setWatchlist(state => state.map(x => x.id === showId ? { id: showId, fields: { ...show, rating: { ratingPoints: result.newRatingPoints } } } : x));
             });
         setHasRated(false);
         setHasRatedWith(0);
         closeRateModal();
-    };
+    }, []);
+
+    const deleteShowHandler = useCallback(() => {
+        // eslint-disable-next-line no-restricted-globals
+       if(confirm(`Are you sure you want to delete ${show.title}`)) {
+            deleteShow(showId, type);
+            showDelete(showId, type);
+            if(type === 'Movie') {
+                return navigate('/movies');
+            } 
+            return navigate('/series');
+       }
+       
+        
+    }, []);
 
     return (
         <>
@@ -74,7 +109,7 @@ export const ShowDetails = () => {
                 removeRateHandler={removeRateHandler}
             />
 
-            {show.title &&
+            {show.title ?
                 <div className={`${styles['page-wrapper']}`}>
 
 
@@ -83,7 +118,12 @@ export const ShowDetails = () => {
                     </div>
                     <div className={styles['sections-wrapper']}>
                         <section className={`${styles['details-section']} width`}>
-                            {isAdmin && <Link to={`/${type}/${showId}/edit`}><button className={`${styles.edit} btn`}>Edit</button></Link>}
+                            {isAdmin &&
+                                < div className={styles['admin-buttons']}>
+                                    <Link to={`/${type}/${showId}/edit`}><button className={`${styles.edit} btn`}>Edit</button></Link>
+                                    <button className='btn' onClick={deleteShowHandler}>Delete</button>
+                                </div>
+                            }
 
                             <div className={styles.header}>
                                 <div className={styles['left-side']}>
@@ -91,9 +131,9 @@ export const ShowDetails = () => {
                                     <div className={styles['small-info']}>
                                         <p>{show.type}</p>
                                         <i className="fa-solid fa-circle"></i>
-                                        <p>{yearParser(show.year)}</p>
+                                        <p>{parsers.yearParser(show.year)}</p>
                                         <i className="fa-solid fa-circle"></i>
-                                        <p>{durationParser(show.duration)}</p>
+                                        <p>{parsers.durationParser(show.duration)}</p>
                                     </div>
                                 </div>
                                 <div className={styles['rating-wrapper']}>
@@ -156,24 +196,24 @@ export const ShowDetails = () => {
                                                 <div className={styles['arrows-container']}>
                                                     <a
                                                         title={`Go to previous`}
-                                                        href={`#carousel__slide${selectedSlide-1}`}
+                                                        href={`#carousel__slide${selectedSlide - 1}`}
                                                         className={`${styles['carousel__navigation-arrow']} ${selectedSlide > 0 ? '' : styles['hidden']}`}
-                                                        onClick={() => setTimeout(() => setSelectedSlide(currentSlide => currentSlide -1 ), 100)}
-                                                        
-                                                        >
+                                                        onClick={() => setTimeout(() => setSelectedSlide(currentSlide => currentSlide - 1), 100)}
+
+                                                    >
                                                         <i className="fa-solid fa-chevron-left"></i>
                                                     </a>
-                                                    
+
                                                     <a
                                                         title={`Go to next`}
-                                                        href={`#carousel__slide${selectedSlide+1}`}
-                                                        className={`${styles['carousel__navigation-arrow']} ${selectedSlide < show.imageList.length -1 ? '' : styles['hidden']}`}
+                                                        href={`#carousel__slide${selectedSlide + 1}`}
+                                                        className={`${styles['carousel__navigation-arrow']} ${selectedSlide < show.imageList.length - 1 ? '' : styles['hidden']}`}
                                                         onClick={() => setTimeout(() => setSelectedSlide(currentSlide => currentSlide + 1), 100)}
                                                     >
                                                         <i className="fa-solid fa-chevron-right box-shadow"></i>
                                                     </a>
-                                                    
-                                                    
+
+
 
                                                 </div>
                                             </aside>
@@ -229,7 +269,9 @@ export const ShowDetails = () => {
                         </section>
                     </div>
 
-                </div>}
+                </div>
+
+                : <Loader />}
         </>
     );
 };

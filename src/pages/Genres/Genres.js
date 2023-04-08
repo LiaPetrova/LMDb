@@ -54,6 +54,7 @@ export const Genres = () => {
 
     return (
         <section className={styles['genres-section']}>
+            
             <ul className={styles['genres-list']}>
                 {genresList.map(x => {
                    return <li key={x.genre} className={`${styles['genres-list-item']} box-shadow`}>

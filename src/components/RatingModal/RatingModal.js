@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import styles from './RatingModal.module.css'
 
-export const RatingModal = ({
+const RatingModal = ({
     closeRateModal,
     rateShow,
     hasRatedWith,
@@ -14,8 +14,7 @@ export const RatingModal = ({
 
     const outsideClickHandler = (e) => {
         if (e.target.tagName === 'SECTION') {
-            setTimeout(() => closeRateModal(), 300)
-            // closeRateModal();
+            setTimeout(() => closeRateModal(), 300);
         }
     };
 
@@ -76,3 +75,5 @@ export const RatingModal = ({
         </section>
     );
 };
+
+export default memo(RatingModal);

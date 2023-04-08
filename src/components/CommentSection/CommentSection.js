@@ -30,7 +30,8 @@ export const CommentSection = ({ showId }) => {
                 .then(result => setComments(state => [...state, result]));
             commentContent.fieldReset();
         }
-    }
+    };
+    
     return (
         <>
 

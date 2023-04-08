@@ -1,0 +1,49 @@
+.loader-wrapper {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.loader__film {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    display: flex;
+}
+
+.loader__film-img {
+    animation: rotate 1.5s linear infinite;
+}
+
+.loader .text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    color: #F5BF55;
+}
