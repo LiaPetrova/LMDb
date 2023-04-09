@@ -45,8 +45,8 @@ This application consist of:
 | Watchlist       | ❌      | ✔️              |  ✔️     |
 | Write Reviews   | ❌      | ✔️              |  ✔️     |
 | React on Reviews| ❌      | ✔️              |  ✔️     |
-| Edit Reviews    | ❌      | ✔️              |  ✔️     |
-| Delete Reviews   | ❌      | ✔️              |  ✔️     |
+| Edit Own Reviews| ❌      | ✔️              |  ✔️     |
+| Delete Own Reviews| ❌      | ✔️              |  ✔️     |
 | Create Show     | ❌     | ❌             |  ✔️    |
 | Edit Show       | ❌     | ❌             |  ✔️    |
 | Delete Show     | ❌     | ❌             |  ✔️    |
