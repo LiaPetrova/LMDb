@@ -42,6 +42,7 @@ This application consist of:
 | Login/ Register | ✔️      | ❌             | ✔️    |
 | Home page       | ✔️      | ✔️              |  ✔️     |
 | Details         | ✔️      | ✔️              |  ✔️     |
+| Search for shows| ✔️      | ✔️              |  ✔️     |
 | Watchlist       | ❌      | ✔️              |  ✔️     |
 | Write Reviews   | ❌      | ✔️              |  ✔️     |
 | React on Reviews| ❌      | ✔️              |  ✔️     |
@@ -50,34 +51,6 @@ This application consist of:
 | Create Show     | ❌     | ❌             |  ✔️    |
 | Edit Show       | ❌     | ❌             |  ✔️    |
 | Delete Show     | ❌     | ❌             |  ✔️    |
-| Admin Products  | ❌     | ❌             |  ✔️    |
 
- 
- ### Guest-User
- 
- Guest user can access:
- - Home Page
- - Login/Register Page
- - All Topics Page
- - Details Page (he can also view comments for the topic and how many likes they have, but is not able to like and comment)
- - Search Page
-
-### Logged In User
-
-Logged In User can access:
-
-- Home Page
-- All Topics Page
-- Details Page:
-  - If he is the owner of the topic: 
-    - he can edit the topic
-    - he can detele the topic and the comments to it
-  - Everybody including the owner of the topic:
-    - can write comments
-    - can like and then unlike comments
-    - can see how many like the comments have
-    - owner of the comment can detele it
-- Search Page
-- My Topics Page - the he can browse throw his own topics
   
  
