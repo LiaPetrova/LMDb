@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# LMDb - React Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Printscreen-Website](https://github.com/LiaPetrova/LMDb/raw/master/src/assets/Printsreen-Project.jpg)
 
-## Available Scripts
+ <a href="https://lmdb-9b2b4.web.app/" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/5988/5988117.png" width="30" height="30" color="#fff" background-color="#fff" margin-top="2px"/> </a> Deployed Project: https://lmdb-9b2b4.web.app/
+ 
 
-In the project directory, you can run:
+## Idea
 
-### `npm start`
+LMDb (an acronym for Local Movie Database) is an online database of information related to films and television series – including top cast, plot summaries, trivia, ratings, and fan reviews. People can also add shows to their watchlist.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Application Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application is using React as frontend, Firebase for backend and deployment and is made entirely with custom design using CSS.
 
-### `npm test`
+ ## Functionality
+ 
+ ### General Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Authenticate users via Firebase
+  - CRUD Shows for Admin
+  - CRUD Comments on topics
+  - GET and display paginated lists of movies and series
+  - Watchlist
+  - Search for keywords in SHowstitle
+  - Sort Movies and Series by different criteria
+  - Genres Catalog where people can review shows filtered by genres
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| **Permissions** | Guest  | Logged in User | Admin  |
+| --------------- | -----  | -------------- | -----  |
+| Login/ Register | ✔️      | ❌             | ✔️    |
+| Home page       | ✔️      | ✔️              |  ✔️     |
+| Details         | ✔️      | ✔️              |  ✔️     |
+| Search for shows| ✔️      | ✔️              |  ✔️     |
+| Movies and Series Catalog| ✔️      | ✔️              |  ✔️     |
+| Genres Catalog| ✔️      | ✔️              |  ✔️     |
+| Watchlist       | ❌      | ✔️              |  ✔️     |
+| Write Reviews   | ❌      | ✔️              |  ✔️     |
+| React on Reviews| ❌      | ✔️              |  ✔️     |
+| Edit Own Reviews| ❌      | ✔️              |  ✔️     |
+| Delete Own Reviews| ❌      | ✔️              |  ✔️     |
+| Create Show     | ❌     | ❌             |  ✔️    |
+| Edit Show       | ❌     | ❌             |  ✔️    |
+| Delete Show     | ❌     | ❌             |  ✔️    |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  
+ 
