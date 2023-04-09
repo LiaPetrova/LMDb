@@ -1,6 +1,6 @@
 # LMDb - React Project
 
-![Printscreen-Website](https://github.com/LiaPetrova/LMDb/raw/master/src/assets/Printscreen-Project.jpg)
+![Printscreen-Website](https://github.com/LiaPetrova/LMDb/raw/master/src/assets/Printsreen-Project.jpg)
 
  <a href="https://bgtati.web.app/home" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/5988/5988117.png" width="30" height="30" color="#fff" background-color="#fff" margin-top="2px"/> </a> Deployed Project: https://bgtati.web.app/home
  
