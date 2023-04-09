@@ -13,17 +13,6 @@ LMDb (an acronym for Local Movie Database) is an online database of information 
 
 The application is using React as frontend, Firebase for backend and deployment and is made entirely with custom design using CSS.
 
-## Architecture
-This application consist of: 
- - Auth.module - contains Login, Register and My-topics component - which we load lazy
- - Core.module - contains Footer and Header Component,Guards and Interfaces
- - Feature - consist of two Modules
-    - Pages.module - contains Home Page and Page Not Found Component
-    - Topics.module - contains All-Topics, Details, Edit, New Topic, Single Topic, Comments and Search Topic
- - Services - contains Auth.service (Authentication) and Topic.service (CRUD)
- - Shared.module - contains Util folder with Pipes and Methods used all around the application
- 
- 
  ## Functionality
  
  ### General Functionality
