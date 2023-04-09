@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# BGTati - Angular Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Printscreen-Website](https://github.com/LiaPetrova/LMDb/raw/master/src/assets/Printscreen.jpg)
 
-## Available Scripts
+ <a href="https://bgtati.web.app/home" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/5988/5988117.png" width="30" height="30" color="#fff" background-color="#fff" margin-top="2px"/> </a> Deployed Project: https://bgtati.web.app/home
+ 
 
-In the project directory, you can run:
+## Idea
 
-### `npm start`
+This is a forum application dedicated to help dads all around the world to exchange ideas, share opinion or just chat about dads topics.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Application Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application is using Angular as frontend, Firebase for backend and deployment, Material Design Spinner and Snackbar, otherwise CSS for the styles.
 
-### `npm test`
+## Architecture
+This application consist of: 
+ - Auth.module - contains Login, Register and My-topics component - which we load lazy
+ - Core.module - contains Footer and Header Component,Guards and Interfaces
+ - Feature - consist of two Modules
+    - Pages.module - contains Home Page and Page Not Found Component
+    - Topics.module - contains All-Topics, Details, Edit, New Topic, Single Topic, Comments and Search Topic
+ - Services - contains Auth.service (Authentication) and Topic.service (CRUD)
+ - Shared.module - contains Util folder with Pipes and Methods used all around the application
+ 
+ ## Functionality
+ 
+ ### General Functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Authenticate users via Firebase
+  - CRUD Topics
+  - CR*D Comments on topics (no updating required)
+  - GET and display paginated lists of topics
+  - My Topics
+  - Search for keywords in Topic titles
 
-### `npm run build`
+ 
+ ### Guest-User
+ 
+ Guest user can access:
+ - Home Page
+ - Login/Register Page
+ - All Topics Page
+ - Details Page (he can also view comments for the topic and how many likes they have, but is not able to like and comment)
+ - Search Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Logged In User
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Logged In User can access:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Home Page
+- All Topics Page
+- Details Page:
+  - If he is the owner of the topic: 
+    - he can edit the topic
+    - he can detele the topic and the comments to it
+  - Everybody including the owner of the topic:
+    - can write comments
+    - can like and then unlike comments
+    - can see how many like the comments have
+    - owner of the comment can detele it
+- Search Page
+- My Topics Page - the he can browse throw his own topics
+  
+ 
