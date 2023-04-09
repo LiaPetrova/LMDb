@@ -24,6 +24,7 @@ The application is using React as frontend, Firebase for backend and deployment 
   - Watchlist
   - Search for keywords in SHowstitle
   - Sort Movies and Series by different criteria
+  - Genres Catalog where people can review shows filtered by genres
 
 
 | **Permissions** | Guest  | Logged in User | Admin  |
@@ -32,6 +33,8 @@ The application is using React as frontend, Firebase for backend and deployment 
 | Home page       | ✔️      | ✔️              |  ✔️     |
 | Details         | ✔️      | ✔️              |  ✔️     |
 | Search for shows| ✔️      | ✔️              |  ✔️     |
+| Movies and Series Catalog| ✔️      | ✔️              |  ✔️     |
+| Genres Catalog| ✔️      | ✔️              |  ✔️     |
 | Watchlist       | ❌      | ✔️              |  ✔️     |
 | Write Reviews   | ❌      | ✔️              |  ✔️     |
 | React on Reviews| ❌      | ✔️              |  ✔️     |
