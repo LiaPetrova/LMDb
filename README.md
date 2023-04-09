@@ -2,16 +2,16 @@
 
 ![Printscreen-Website](https://github.com/LiaPetrova/LMDb/raw/master/src/assets/Printsreen-Project.jpg)
 
- <a href="https://bgtati.web.app/home" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/5988/5988117.png" width="30" height="30" color="#fff" background-color="#fff" margin-top="2px"/> </a> Deployed Project: https://bgtati.web.app/home
+ <a href="https://lmdb-9b2b4.web.app/" target="_blank" rel="noreferrer"> <img src="https://cdn-icons-png.flaticon.com/512/5988/5988117.png" width="30" height="30" color="#fff" background-color="#fff" margin-top="2px"/> </a> Deployed Project: https://lmdb-9b2b4.web.app/
  
 
 ## Idea
 
-This is a forum application dedicated to help dads all around the world to exchange ideas, share opinion or just chat about dads topics.
+LMDb (an acronym for Local Movie Database) is an online database of information related to films and television series – including top cast, plot summaries, trivia, ratings, and fan reviews. People can also add shows to their watchlist.
 
 ## Application Overview
 
-The application is using Angular as frontend, Firebase for backend and deployment, Material Design Spinner and Snackbar, otherwise CSS for the styles.
+The application is using React as frontend, Firebase for backend and deployment and is made entirely with custom design using CSS.
 
 ## Architecture
 This application consist of: 
@@ -23,16 +23,34 @@ This application consist of:
  - Services - contains Auth.service (Authentication) and Topic.service (CRUD)
  - Shared.module - contains Util folder with Pipes and Methods used all around the application
  
+ 
  ## Functionality
  
  ### General Functionality
 
   - Authenticate users via Firebase
-  - CRUD Topics
-  - CR*D Comments on topics (no updating required)
-  - GET and display paginated lists of topics
-  - My Topics
-  - Search for keywords in Topic titles
+  - CRUD Shows for Admin
+  - CRUD Comments on topics
+  - GET and display paginated lists of movies and series
+  - Watchlist
+  - Search for keywords in SHowstitle
+  - Sort Movies and Series by different criteria
+
+
+| **Permissions** | Guest  | Logged in User | Admin  |
+| --------------- | -----  | -------------- | -----  |
+| Login/ Register | ✔️      | ❌             | ✔️    |
+| Home page       | ✔️      | ✔️              |  ✔️     |
+| Details         | ✔️      | ✔️              |  ✔️     |
+| Watchlist       | ❌      | ✔️              |  ✔️     |
+| Write Reviews   | ❌      | ✔️              |  ✔️     |
+| React on Reviews| ❌      | ✔️              |  ✔️     |
+| Edit Reviews    | ❌      | ✔️              |  ✔️     |
+| Delete Reviews   | ❌      | ✔️              |  ✔️     |
+| Create Show     | ❌     | ❌             |  ✔️    |
+| Edit Show       | ❌     | ❌             |  ✔️    |
+| Delete Show     | ❌     | ❌             |  ✔️    |
+| Admin Products  | ❌     | ❌             |  ✔️    |
 
  
  ### Guest-User
