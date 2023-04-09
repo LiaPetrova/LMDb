@@ -45,6 +45,7 @@
     width: 100%;
     justify-content: space-between;
     padding: 0 0.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .no-results {
@@ -66,13 +67,8 @@
 @media screen and (max-width:790px) {
     .movies,
     .series {
-
         gap: 3rem;
     }
 
-}
-
-@media screen and (max-width:1490px) {
- 
 }
 

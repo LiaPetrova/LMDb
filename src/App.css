@@ -1,3 +1,4 @@
+
 .width {
     width: 80%;
     margin: 0 auto;
@@ -12,7 +13,7 @@
     padding: 0.4rem 1rem;
 
     border-radius: 0.6rem;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     border: 2px solid var(--clr-primary);
     letter-spacing: 1.2px;
@@ -66,12 +67,12 @@
 }
 
 .form-section {
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--clr-white);
     margin: 0 auto;
     padding: 2rem 4rem;
     background-color: var(--clr-dark-grey);
-    max-width: 50%;
+    width: 50%;
     border-radius: 14px;
 }
 
@@ -81,7 +82,7 @@
     margin: 0 auto;
     padding: 2rem 4rem;
     background-color: var(--clr-dark-grey);
-    max-width: 30%;
+    width: 30%;
     border-radius: 14px;
 }
 
@@ -191,14 +192,79 @@
     background: var(--clr-blue);
 }
 
+
+@media screen and (max-width: 1220px) {
+    .form-section {
+        width: 65%;
+    }
+
+    .form-section.auth {
+        width: 42%;
+    }
+}
+
 @media screen and (max-width: 1015px) {
     .width {
         width: 87%;
+    }
+    .form-section{
+        width: 70%;
+    }
+    
+    .form-section.auth {
+        width: 44%;
     }
 }
 
 @media screen and (max-width: 930px) {
     .width {
         width: 95%;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .form-section {
+        width: 75%;
+    }
+    .form-section.auth {
+        width: 47%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .btn {
+        padding: 0.3rem 0.7rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form-section {
+        width: 70%;
+    }
+    .form-section.auth {
+        width: 50%;
+    }
+    .form-section .google-btn {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .link.anchor {
+        font-size: 1.3rem;
+    }
+
+    .link.anchor a {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .form-section.auth {
+        width: 54%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .form-section {
+        width: 65%;
     }
 }

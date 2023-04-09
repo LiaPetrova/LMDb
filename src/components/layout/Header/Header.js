@@ -116,7 +116,7 @@ const Header = () => {
                             <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
                                 <Link to="/add" className={styles.link}>Add</Link>
                             </li>}
-                        <li className={styles["nav-list-item"]}>
+                        <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
                             <Link to="/movies" className={styles.link}>Movies</Link>
                         </li>
 

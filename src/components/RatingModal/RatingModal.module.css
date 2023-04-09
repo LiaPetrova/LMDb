@@ -27,7 +27,7 @@
     padding: 2rem;
     border: 1px solid var(--clr-dark-grey);
     border-radius: 0.6rem;
-    width: 600px;
+    width: 37.5rem;
     scale: 0;
     transition: all 0.8s ease-in-out;
     margin: 15% auto;
@@ -116,5 +116,37 @@ button.remove-rate-btn {
 
 .remove-rate-btn:hover {
     border-color: var(--clr-primary);
+}
+
+@media screen and (max-width: 670px) {
+    .modal-content {
+        width: 32rem;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .modal-content {
+        width: 29rem;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .modal-content {
+        width: 26rem;
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .modal-content {
+        width: 23rem;
+    }
+
+    .star-btn {
+        padding: 0.2rem;
+    }
 }
 

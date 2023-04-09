@@ -352,3 +352,10 @@ color: var(--clr-secondary);
     } 
 
 }
+
+@media screen and (max-width:560px) {
+    .desc {
+        font-size: 0.9rem;
+    }
+
+}

@@ -124,7 +124,7 @@ const Register = () => {
                     </button>
                 </form>
                 <button className={`btn google-btn action-btn`} onClick={onGoogleRegisterHandler}>
-                    Register with Google
+                    Login with Google
                 </button>
                 <div className="link anchor">
                     Already have an account? <Link className="link" to="/login">Login</Link> now.

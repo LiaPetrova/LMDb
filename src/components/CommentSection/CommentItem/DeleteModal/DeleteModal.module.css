@@ -27,7 +27,7 @@
     padding: 2rem;
     border: 1px solid var(--clr-dark-grey);
     border-radius: 0.6rem;
-    width: 600px;
+    width: 37.5rem;
     scale: 0;
     transition: all 0.8s ease-in-out;
     margin: 15% auto;
@@ -78,4 +78,43 @@
 .action-btns button:nth-child(1) {
     background-color: var(--clr-grey);
     border-color: var(--clr-grey);
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 750px) {
+    .modal-content {
+        width: 34rem;
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .modal-content {
+        width: 32rem;
+        padding: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .modal-content {
+        width: 29rem;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 25rem;
+        padding: 1rem;
+
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .modal-content {
+        width: 22rem;
+    }
 }
