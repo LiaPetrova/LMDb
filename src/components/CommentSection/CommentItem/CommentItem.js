@@ -3,6 +3,7 @@ import { deleteComment, removeReaction, sendReaction, updateComment } from '../.
 import { timeAgoHandler } from '../../../utils/timeAgoHadler';
 import styles from './CommentItem.module.css';
 import { DeleteModal } from './DeleteModal/DeleteModal';
+import { useAuthContext } from '../../../contexts/AuthContext';
 
 export const CommentItem = ({
     comment,
@@ -17,8 +18,8 @@ export const CommentItem = ({
     const [dislikesCount, setDislikesCount] = useState(comment.fields.dislikes.length);
     const [openEditComment, setOpenEditComment] = useState(false);
     const [commentContent, setCommentContent] = useState(comment.fields.commentContent);
-
     const [deleteModal, setDeleteModal] = useState(false);
+    const { currentUser } = useAuthContext();
 
     const openDeleteModal = () => setDeleteModal(true);
     const closeDeleteModal = () => setDeleteModal(false);
@@ -102,57 +103,61 @@ export const CommentItem = ({
                             </button>
                         </div>
                     </div>
-                    : <div className={styles['content']}>
-                        <div className={styles.buttons}>
-                            {userId === comment.fields.ownerId ?
-                                <>
-                                    <button
-                                        onClick={() => {
-                                            setOpenWriteReview(false);
-                                            setOpenEditComment(true);
-                                        }}
-                                        className={styles.edit}>
-                                        <i className="fa-solid fa-pen-to-square"></i>
-                                    </button>
-                                    <button
-                                        onClick={openDeleteModal}
-                                        className={styles.delete}>
-                                        <i className="fa-solid fa-trash"></i>
-                                    </button>
-                                </>
-                                : <>
-                                    {(!hasLiked && !hasDisliked) ?
-                                        <>
-                                            <button
-                                                onClick={() => sendReactionHandler('like')}
-                                                className={styles.like}>
-                                                <i className={`fa-solid fa-thumbs-up ${styles['like']}`}></i>
-                                            </button>
-                                            <button
-                                                onClick={() => sendReactionHandler('dislike')}
-                                                className={styles.dislike}>
-                                                <i className={`fa-solid fa-thumbs-down ${styles['dislike']}`}></i>
-                                            </button>
-                                        </>
-                                        : hasLiked ?
-                                            <button
-                                                onClick={() => removeReactionHandler('like')}
-                                                className={styles.like}>
-                                                <i className={`fa-solid fa-thumbs-up ${styles['selected']} ${styles['like']}`}></i>
-                                            </button>
-                                            : <button
-                                                onClick={() => removeReactionHandler('dislike')}
-                                                className={styles.dislike}>
-                                                <i className={`fa-solid fa-thumbs-down ${styles['selected']} ${styles['dislike']}`}></i>
-                                            </button>
+                    :
+                    <div className={styles['content']}>
+                        {currentUser?.uid &&
+                            <div className={styles.buttons}>
 
-                                    }
-                                </>
-                            }
-                        </div>
+                                {userId === comment.fields.ownerId ?
+                                    <>
+                                        <button
+                                            onClick={() => {
+                                                setOpenWriteReview(false);
+                                                setOpenEditComment(true);
+                                            }}
+                                            className={styles.edit}>
+                                            <i className="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button
+                                            onClick={openDeleteModal}
+                                            className={styles.delete}>
+                                            <i className="fa-solid fa-trash"></i>
+                                        </button>
+                                    </>
+                                    : <>
+                                        {(!hasLiked && !hasDisliked) ?
+                                            <>
+                                                <button
+                                                    onClick={() => sendReactionHandler('like')}
+                                                    className={styles.like}>
+                                                    <i className={`fa-solid fa-thumbs-up ${styles['like']}`}></i>
+                                                </button>
+                                                <button
+                                                    onClick={() => sendReactionHandler('dislike')}
+                                                    className={styles.dislike}>
+                                                    <i className={`fa-solid fa-thumbs-down ${styles['dislike']}`}></i>
+                                                </button>
+                                            </>
+                                            : hasLiked ?
+                                                <button
+                                                    onClick={() => removeReactionHandler('like')}
+                                                    className={styles.like}>
+                                                    <i className={`fa-solid fa-thumbs-up ${styles['selected']} ${styles['like']}`}></i>
+                                                </button>
+                                                : <button
+                                                    onClick={() => removeReactionHandler('dislike')}
+                                                    className={styles.dislike}>
+                                                    <i className={`fa-solid fa-thumbs-down ${styles['selected']} ${styles['dislike']}`}></i>
+                                                </button>
+
+                                        }
+                                    </>
+                                }
+                            </div>}
                         <p className={styles.text}>{commentContent}</p>
                         <span className={styles.date}>{timeAgo}</span>
                     </div>
+
                 }
 
             </article >

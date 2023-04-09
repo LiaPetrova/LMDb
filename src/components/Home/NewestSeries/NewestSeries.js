@@ -5,7 +5,6 @@ import ShowCard from "../../shared/ShowCard/ShowCard";
 
 export const NewestSeries = ({ styles }) => {
     const { seriesList } = useShowsContext();
-    console.log(seriesList);
 
     return (
         <section className={styles.section}>

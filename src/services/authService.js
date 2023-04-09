@@ -20,7 +20,6 @@ const registerWithGoogle = async () => {
         }
     } catch (err) {
         console.error(err);
-        alert(err.message);
     }
 };
 const logIn = async (email, password) => {

@@ -115,7 +115,6 @@ const EditShow = () => {
             });
         }
         navigate(`/catalog/${type}/${showId}`);
-        console.log(JSON.stringify(showData));
     }
 
 

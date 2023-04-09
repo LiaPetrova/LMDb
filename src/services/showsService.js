@@ -69,7 +69,6 @@ export const editShow = async (type, showId, showData) => {
         const result = await updateDoc(currentShowRef, {
             ...showData
         });
-        console.log(result);
         return result;
 
     } catch (err) {
@@ -162,7 +161,6 @@ export const handleRating = async (action, type, userId, showId, ratePoints, use
         await setDoc(currentShowRef, { rating: { usersRated: { [userId]: ratePoints }, ratingPoints: newRatingPoints } }, { merge: true });
 
     } else if (action === 'remove') {
-        console.log(newRatingPoints);
         newRatingPoints = ((oldRatingPoints * usersRatedCount) - currentUserRating) / (usersRatedCount - 1) || 0;
         usersRatedCount--;
 

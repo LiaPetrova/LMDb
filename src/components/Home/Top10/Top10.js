@@ -21,8 +21,6 @@ export const Top10 = () => {
         slideContainer.current.scrollBy(960, 0);
     };
 
-    console.log(topTenRated);
-
     return (
         <section className={styles.section}>
 

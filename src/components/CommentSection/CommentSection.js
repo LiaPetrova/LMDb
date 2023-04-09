@@ -17,7 +17,6 @@ export const CommentSection = ({ showId }) => {
     useEffect(() => {
         getAllComments(showId)
             .then(result => {
-                console.log(result);
                 setComments(result)
             });
 

@@ -70,7 +70,6 @@ export const updateComment = async (commentId, newContent) => {
         const result = await updateDoc(currentCommentRef, {
            commentContent: newContent
         });
-        console.log(result);
         return result;
 
     } catch (err) {

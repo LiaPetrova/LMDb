@@ -65,7 +65,6 @@ const AddNew = () => {
             ...state,
             [e.target.name]: e.target.value
         }));
-        // console.log(values);
     };
 
     const submitHandler = (e) => {
