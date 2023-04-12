@@ -14,7 +14,7 @@ const Watchlist = () => {
                 <div className={styles.devider}></div>
                 <h2 className={styles.title}>My watchlist</h2>
             </div>
-            <div className={styles.movies}>
+            <div className={styles.watchlist}>
                 {watchlist !== null
                     ? <>
                         {watchlist.length > 0 ? watchlist.slice(0, end).map(x =>

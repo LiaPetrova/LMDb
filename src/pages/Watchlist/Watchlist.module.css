@@ -32,11 +32,11 @@
  font-size: 2rem;
 }
 
-.series, .movies {
+.watchlist {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     row-gap: 1.5rem;
+    gap: 2.6rem;
 
 }
 
@@ -46,19 +46,45 @@
     text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.8);
 }
 
+@media screen and (max-width:1570px) {
+    .watchlist {
+        gap: 2.2rem;
+    }
+
+}
+
+
+@media screen and (max-width:1460px) {
+    .watchlist {
+        gap: 1.7rem;
+    }
+
+}
+
+@media screen and (max-width:1355px) {
+    .watchlist {
+        gap: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width:1075px) {
+    .watchlist {
+        gap: 1rem;
+    }
+
+}
 @media screen and (max-width:890px) {
-    .movies,
-    .series {
+    .watchlist {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 2rem;
+        gap: 2.8rem;
     }
 
 }
 
 @media screen and (max-width:790px) {
-    .movies,
-    .series {
+    .watchlist {
         gap: 3rem;
     }
 
