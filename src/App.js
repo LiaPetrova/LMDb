@@ -20,6 +20,7 @@ import { ShowDetails } from './pages/ShowDetails/ShowDetails';
 import { GenreCatalog } from './pages/GenreCatalog/GenreCatalog';
 import './App.css';
 import Loader from './components/shared/Loader/Loader';
+import { ScrollButton } from './components/layout/Header/ScrollButton/ScrollButton';
 
 const EditShow = React.lazy(() => import('./pages/Admin/EditShow/EditShow'));
 const AddNew = React.lazy(() => import('./pages/Admin/AddNew/AddNew'));
@@ -110,6 +111,7 @@ function App() {
                             </Routes>
                         </main>
                     </ShowsProvider>
+                    <ScrollButton />
                     <ToastContainer theme='dark' icon={true} position={'top-right'} />
                 </AuthProvider>
             </div>
