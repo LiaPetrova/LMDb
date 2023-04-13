@@ -1,11 +1,11 @@
-.scroll-to-top {
+.scroll-to-top-wrapper {
     position: fixed;
     bottom: 3rem;
     right: 3rem;
-    transition: all 0.6s ease-in-out;
-    visibility: hidden;
+    transition: all 0.4s ease-in;
     z-index: 99;
 }
+
 
 .scroll-to-top i {
     color: var(--clr-white);
@@ -14,10 +14,12 @@
 
 .scroll-to-top.visible {
     visibility: visible;
+    opacity: 1;
 }
 
 .scroll-to-top.hidden {
     visibility: hidden;
+    opacity: 0;
 }
 
 @media screen and (max-width:1220px) {
