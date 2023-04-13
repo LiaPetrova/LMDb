@@ -7,7 +7,7 @@
 
 ## Idea
 
-LMDb (an acronym for Local Movie Database) is an online database of information related to films and television series – including top cast, plot summaries, trivia, ratings, and fan reviews. People can also add shows to their watchlist.
+LMDb (an acronym for Local Movie Database) is an online database of information related to films and television series – including top cast, plot summaries, trivia, ratings, and fan reviews. People can also sort movies and series by different criteria, filter show by their genre and add shows to their watchlist.
 
 ## Application Overview
 
