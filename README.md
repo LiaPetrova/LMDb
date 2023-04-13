@@ -37,9 +37,10 @@ The application is using React as frontend, Firebase for backend and deployment 
 | Genres Catalog| ✔️      | ✔️              |  ✔️     |
 | Watchlist       | ❌      | ✔️              |  ✔️     |
 | Write Reviews   | ❌      | ✔️              |  ✔️     |
-| React on Reviews| ❌      | ✔️              |  ✔️     |
+| React on Reviews| ❌      | ✔️              |  ❌      |
 | Edit Own Reviews| ❌      | ✔️              |  ✔️     |
 | Delete Own Reviews| ❌      | ✔️              |  ✔️     |
+| Delete Everybody's Reviews| ❌      | ❌             |  ✔️     |
 | Create Show     | ❌     | ❌             |  ✔️    |
 | Edit Show       | ❌     | ❌             |  ✔️    |
 | Delete Show     | ❌     | ❌             |  ✔️    |
