@@ -1,6 +1,6 @@
 .env
-
-.cache
  node_modules/.cache
+ ./cashe/*
+node_modules/.cache/.eslintcache
+node_modules/.cache/babel-loader/*
 
- .eslintcache
