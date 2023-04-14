@@ -9,7 +9,6 @@ export const GenreCatalog = () => {
     const { allShowsList } = useShowsContext();
     const { genre } = useParams();
     const [filteredShows, setFilteredShows] = useState([]);
-    const { showsSort } = useShowsContext();
     const [end, setEnd] = useState(5);
 
     useEffect(() => {
@@ -18,13 +17,11 @@ export const GenreCatalog = () => {
     }, [allShowsList, genre]);
 
     const CallBack = useCallback((sortedShows) => {
-        return showsSort(sortedShows, 'Movie');
+        return setFilteredShows(state => [...sortedShows]);
     }, []);
     return (
         <section className={styles.section}>
-            {/* <div className={styles['title-wrapper']}>
-                <h2 className={styles.title}>Browse throw newest movies</h2>
-            </div> */}
+           
             <SortDropDown handleCallBack={CallBack} showsList={filteredShows} />
             <div className={styles.shows}>
                 {filteredShows.length > 0 ? filteredShows.slice(0, end).map(x =>
