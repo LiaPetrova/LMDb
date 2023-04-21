@@ -14,7 +14,6 @@ export const useParsers = (() => {
     const textShortener = (text) => {
         let x = window.innerWidth || document.documentElement.clientWidth;
         if (x <= 434) {
-            console.log(1);
 
             if (text.length > 122) {
                 return `${text.slice(0, 121)}...`
@@ -24,7 +23,6 @@ export const useParsers = (() => {
             
             
         } else if (x <= 852) {
-            console.log(2);
 
             if (text.length > 170) {
                 return `${text.slice(0, 168)}...`
@@ -32,7 +30,6 @@ export const useParsers = (() => {
                 return text;
             }
         } else if (x <= 1024) {
-            console.log(3);
             if (text.length > 250) {
                 return `${text.slice(0, 249)}...`
             } else {

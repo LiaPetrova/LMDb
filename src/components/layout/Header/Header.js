@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png';
 import { useAuthContext } from '../../../contexts/AuthContext';
 import { useShowsContext } from '../../../contexts/ShowsConext';
@@ -19,6 +19,7 @@ const Header = () => {
     const { allShowsList, moviesList, seriesList } = useShowsContext();
     const [type, setType] = useState('All');
     const [hamburgerIsOpen, setHamburgerIsOpen] = useState(false);
+    const pathname = useLocation().pathname;
 
 
     const openSearchPanel = useCallback(() => setSearchPanel(true), []);
@@ -28,6 +29,7 @@ const Header = () => {
     }, []);
 
     const changeHandler = useCallback((e) => {
+
         if (e.target.name === 'type') {
             setType(e.target.value);
         } else {
@@ -51,6 +53,7 @@ const Header = () => {
 
 
     const changeBackground = useCallback(() => {
+
         if (window.scrollY >= 120) {
             setHeaderBgn(true)
         } else {
@@ -114,30 +117,30 @@ const Header = () => {
                     <ul className={`${styles["nav-list"]} ${hamburgerIsOpen ? styles.active : styles.inactive}`}>
                         {isAdmin &&
                             <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                                <Link to="/add" className={styles.link}>Add</Link>
+                                <Link to="/add" className={`${styles.link} ${pathname === '/add' && styles['active-nav']}`}>Add</Link>
                             </li>}
                         <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                            <Link to="/movies" className={styles.link}>Movies</Link>
+                            <Link to="/movies" className={`${styles.link} ${pathname === '/movies' && styles['active-nav']}`}>Movies</Link>
                         </li>
 
                         <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                            <Link to='/series' className={styles.link}>Series</Link>
+                            <Link to='/series' className={`${styles.link} ${pathname === '/series' && styles['active-nav']}`}>Series</Link>
                         </li>
                         <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                            <Link to='/genres' className={styles.link}>Genres</Link>
+                            <Link to='/genres' className={`${styles.link} ${pathname === '/genres' && styles['active-nav']}`}>Genres</Link>
                         </li>
                         {!currentUser ?
                             <>
                                 <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                                    <Link to='/login' className={styles.link}>Login</Link>
+                                    <Link to='/login' className={`${styles.link} ${pathname === '/login' && styles['active-nav']}`}>Login</Link>
                                 </li>
                                 <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                                    <Link to='/register' className={styles.link}>Register</Link>
+                                    <Link to='/register' className={`${styles.link} ${pathname === '/register' && styles['active-nav']}`}>Register</Link>
                                 </li>
                             </>
                             : <>
                                 <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
-                                    <Link to='/watchlist' className={styles.link}>Watchlist</Link>
+                                    <Link to='/watchlist' className={`${styles.link} ${pathname === '/watchlist' && styles['active-nav']}`}>Watchlist</Link>
                                 </li>
                                 <li onClick={hamburgerMenuHandler} className={styles["nav-list-item"]}>
                                     <Link to='/logout' className={styles.link}>Logout</Link>
@@ -153,30 +156,30 @@ const Header = () => {
                     <ul className={styles["nav-list"]}>
                         {isAdmin &&
                             <li className={styles["nav-list-item"]}>
-                                <Link to="/add" className={styles.link}>Add</Link>
+                                <Link to="/add" className={`${styles.link} ${pathname === '/add' && styles['active-nav']}`}>Add</Link>
                             </li>}
                         <li className={styles["nav-list-item"]}>
-                            <Link to="/movies" className={styles.link}>Movies</Link>
+                            <Link to="/movies" className={`${styles.link} ${pathname === '/movies' && styles['active-nav']}`}>Movies</Link>
                         </li>
 
                         <li className={styles["nav-list-item"]}>
-                            <Link to='/series' className={styles.link}>Series</Link>
+                            <Link to='/series' className={`${styles.link} ${pathname === '/series' && styles['active-nav']}`}>Series</Link>
                         </li>
                         <li className={styles["nav-list-item"]}>
-                            <Link to='/genres' className={styles.link}>Genres</Link>
+                            <Link to='/genres' className={`${styles.link} ${pathname === '/genres' && styles['active-nav']}`}>Genres</Link>
                         </li>
                         {!currentUser ?
                             <>
                                 <li className={styles["nav-list-item"]}>
-                                    <Link to='/login' className={styles.link}>Login</Link>
+                                    <Link to='/login' className={`${styles.link} ${pathname === '/login' && styles['active-nav']}`}>Login</Link>
                                 </li>
                                 <li className={styles["nav-list-item"]}>
-                                    <Link to='/register' className={styles.link}>Register</Link>
+                                    <Link to='/register' className={`${styles.link} ${pathname === '/register' && styles['active-nav']}`}>Register</Link>
                                 </li>
                             </>
                             : <>
                                 <li className={styles["nav-list-item"]}>
-                                    <Link to='/watchlist' className={styles.link}>Watchlist</Link>
+                                    <Link to='/watchlist' className={`${styles.link} ${pathname === '/watchlist' && styles['active-nav']}`}>Watchlist</Link>
                                 </li>
                                 <li className={styles["nav-list-item"]}>
                                     <Link to='/logout' className={styles.link}>Logout</Link>
