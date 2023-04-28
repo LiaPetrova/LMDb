@@ -40,12 +40,14 @@ const Header = () => {
                 setSearchResults(filterSearchResults(moviesList, e.target.value));
             } else if (type === 'series') {
                 setSearchResults(filterSearchResults(seriesList, e.target.value));
+
             } else {
                 setSearchResults(filterSearchResults(allShowsList, e.target.value));
+
             }
             openSearchPanel(true);
         }
-    }, [moviesList, seriesList, allShowsList]);
+    }, [moviesList, seriesList, allShowsList, type]);
 
     const hamburgerMenuHandler = () => {
         setHamburgerIsOpen(!hamburgerIsOpen);
