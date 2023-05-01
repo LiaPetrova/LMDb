@@ -589,10 +589,10 @@
 
 
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 430px) {
     .header .title {
         font-size: 1.6rem;
-        width: 16rem;
+        width: 15rem;
 
     }
 
@@ -629,4 +629,12 @@
     .bgn-img {
         width: 24rem;
     }
+}
+
+@media screen and (max-width: 380px) {
+
+    .header .title {
+        width: 13rem;
+    }
+
 }
