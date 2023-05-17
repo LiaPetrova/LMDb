@@ -7,7 +7,7 @@
 
 ## Idea
 
-LMDb, which stands for Local Movie Database, is a an excellent resource for finding the latest and greatest in cinematic entertainment.
+LMDb, which stands for Local Movie Database and is a an excellent resource for finding the latest and greatest in cinematic entertainment.
 
 With a vast database of titles, LMDb offers a wealth of information on each film and series, including cast information, comprehensive plot summaries, up-to-date ratings, and insightful fan reviews. This invaluable resource is a fantastic way to stay informed on the latest and greatest in the world of cinema.
 
